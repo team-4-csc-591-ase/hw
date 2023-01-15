@@ -39,9 +39,6 @@ jobs:
       - name: Run tests and collect coverage
         run: |
           source $VENV
-          curl -Os https://uploader.codecov.io/latest/linux/codecov
-          chmod +x codecov
-          ./codecov
           python -m pytest --cov-report term --cov-report xml:coverage.xml --cov=src
 
       - name: Upload coverage to Codecov
