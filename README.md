@@ -1,5 +1,8 @@
 # hw
-
+![example branch parameter](https://github.com/team-4-csc-591-ase/hw/actions/workflows/main.yml/badge.svg?branch=main)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![DOI](https://zenodo.org/badge/589088031.svg)](https://zenodo.org/badge/latestdoi/589088031)
+[![codecov](https://codecov.io/gh/team-4-csc-591-ase/hw/branch/main/graph/badge.svg?token=UUKFDSSVL5)](https://codecov.io/gh/team-4-csc-591-ase/hw)
 ______________________________________________________________________
 
 ## Installation
