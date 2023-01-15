@@ -2,7 +2,7 @@ import math
 import sys
 
 
-class Newclass:
+class Sym:
     n = 0
     has: dict = {} 
     most = 0

@@ -23,7 +23,7 @@ import math
 import sys
 
 
-class Newclass:
+class Sym:
     n = 0
     has: dict = {}  # has : Dict[]
     most = 0
@@ -58,7 +58,7 @@ class Newclass:
         return -e
 
 
-testobj = Newclass()
+testobj = Sym()
 
 testlist = ["a", "a", "a", "a", "b", "b", "c"]
 for x in testlist:
@@ -104,7 +104,7 @@ eg("num", "check nums", function()
 """
 
 
-class newNum:
+class Num:
     Seed = 937162211
     n, mu, m2 = 0, 0, 0
     lo, hi = sys.maxsize, -sys.maxsize
@@ -134,7 +134,7 @@ class newNum:
         return math.floor(n * mult + 0.5) / mult
 
 
-numobj = newNum()
+numobj = Num()
 
 numList = [1, 1, 1, 1, 2, 2, 3]
 
@@ -142,7 +142,7 @@ for val in numList:
     numobj.add(val)
 print(11 / 7 == numobj.mid(val) and 0.787 == round(numobj.div(val), 3))
 
-# num1,num2 = newNum(), newNum()
+# num1,num2 = Num(), Num()
 # for i in range(1,pow(10,3)):
 #     num1.add(num1.rand(0,1))
 # for i in range(1,pow(10,3)):

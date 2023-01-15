@@ -1,4 +1,6 @@
-class newNum:
+import math
+import sys
+class Num:
     Seed = 937162211
     n, mu, m2 = 0, 0, 0
     lo, hi = sys.maxsize, -sys.maxsize
