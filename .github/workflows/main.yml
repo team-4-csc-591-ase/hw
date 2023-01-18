@@ -39,7 +39,7 @@ jobs:
       - name: Run tests
         run: |
           source $VENV
-          python -m TestEngine tests/
+          python -m TestEngine --path tests
 
       - name: Upload coverage to Codecov
         run: |
