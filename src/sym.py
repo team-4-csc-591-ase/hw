@@ -4,7 +4,7 @@ import sys
 
 class Sym:
     n = 0
-    has: dict = {} 
+    has: dict = {}
     most = 0
     mode = None
 
