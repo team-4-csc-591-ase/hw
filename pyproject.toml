@@ -16,6 +16,7 @@ flake8 = "^6.0.0"
 pre-commit = "^2.20.0"
 mypy = "^0.991"
 pytest-cov = '^4.0.0'
+tqdm = '^4.64.1'
 
 [tool.isort]
 profile = "black"

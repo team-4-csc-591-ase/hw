@@ -36,13 +36,15 @@ jobs:
           mypy src/
           mypy tests/
 
-      - name: Run tests and collect coverage
+      - name: Run tests
         run: |
           source $VENV
-          python -m pytest --cov-report term --cov-report xml:coverage.xml --cov=src
+          python -m TestEngine tests/
 
       - name: Upload coverage to Codecov
         run: |
+          source $VENV
+          python -m pytest --cov-report term --cov-report xml:coverage.xml --cov=src
           curl -Os https://uploader.codecov.io/latest/linux/codecov
           chmod +x codecov
           ./codecov -t ${CODECOV_TOKEN}
