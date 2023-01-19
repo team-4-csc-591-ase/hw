@@ -1,15 +1,11 @@
 import logging
-import sys
 import traceback
 
-sys.path.insert(0, "../src")
-
-
-from num import *
+from src import num
 
 
 def test_num():
-    numobj = Num()
+    numobj = num.Num()
 
     numList = [1, 1, 1, 1, 2, 2, 3]
 

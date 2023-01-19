@@ -1,16 +1,12 @@
 import logging
-import sys
 import traceback
 
-sys.path.insert(0, "../src")
-
-
-from num import *
+from src import num
 
 
 def test_rand():
     # Have to add seed
-    num1, num2 = Num(), Num()
+    num1, num2 = num.Num(), num.Num()
     for i in range(1, pow(10, 3)):
         num1.add(num1.rand(0, 1))
     for i in range(1, pow(10, 3)):

@@ -1,15 +1,11 @@
 import logging
-import sys
 import traceback
 
-sys.path.insert(0, "../src")
-
-
-from sym import *
+from src import sym
 
 
 def test_sym():
-    symobj = Sym()
+    symobj = sym.Sym()
 
     symlist = ["a", "a", "a", "a", "b", "b", "c"]
     for x in symlist:
