@@ -1,7 +1,7 @@
 import math
 import sys
 
-from config import CONSTS
+from config import CONSTS  # type: ignore
 
 
 class Num:
