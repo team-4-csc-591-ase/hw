@@ -5,6 +5,11 @@ from src import num
 
 
 def test_num():
+    """
+    Args: None
+    Returns: Bool
+
+    """
     numobj = num.Num()
 
     numList = [1, 1, 1, 1, 2, 2, 3]
