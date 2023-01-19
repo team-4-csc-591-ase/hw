@@ -19,7 +19,7 @@ def test_num():
 
 def custom_assert_equals(val1, val2, msg=""):
     if val1 != val2:
-        logging.error()
+        logging.error(msg)
         traceback.print_stack()
         return False
     else:
