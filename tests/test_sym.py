@@ -5,6 +5,11 @@ from src import sym
 
 
 def test_sym():
+    """
+    Args : None
+    Returns: Bool
+
+    """
     symobj = sym.Sym()
 
     symlist = ["a", "a", "a", "a", "b", "b", "c"]
@@ -17,6 +22,16 @@ def test_sym():
 
 
 def custom_assert_equals(val1, val2, msg=""):
+    """
+
+    Args:
+        val1: str
+        val2: str
+        msg: str
+
+    Returns: Bool
+
+    """
     if val1 != val2:
         logging.error(msg)
         traceback.print_stack()

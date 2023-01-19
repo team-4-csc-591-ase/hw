@@ -1,4 +1,8 @@
+import math
 import re
+from typing import cast
+
+from src.config import _CONSTS, CONSTS
 
 
 # convert t to a string. sort named keys.
@@ -65,3 +69,23 @@ def settings(s: str) -> dict:
 #         elif val.isdigit():
 #             d[key] = int(val)
 #     return d
+def rand(lo, hi) -> float:
+    """
+    Args: hi, lo
+
+    Return : float
+    """
+    lo, hi = lo or 0, hi or 1
+    seed: int = cast(int, _CONSTS[CONSTS.seed.name])
+    seed = (16807 * seed) % 2147483647
+    return lo + (hi - lo) * seed / 2147483647
+
+
+def rnd(n, n_places=3) -> float:
+    """
+    Args: n, n_places = 3
+
+    Return : float
+    """
+    mult = pow(10, n_places)
+    return math.floor(n * mult + 0.5) / mult

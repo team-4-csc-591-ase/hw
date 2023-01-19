@@ -8,23 +8,21 @@ class Sym:
     most = 0
     mode = None
 
-    """
-    Args: n, nPlaces = 3
-
-    Return : float
-    """
-
     def rnd(self, nPlaces) -> float:
+        """
+        Args: n, nPlaces = 3
+
+        Return : float
+        """
         mult = math.pow(10, 3)
         return math.floor((self.n * mult) + 0.5) / mult
 
-    """
-    Args: x
-
-    Return : None
-    """
-
     def add(self, x) -> None:
+        """
+        Args: x
+
+        Return : None
+        """
         if x != "?":
             self.n = self.n + 1
             if x in self.has:
@@ -35,22 +33,21 @@ class Sym:
             if self.has[x] > self.most:
                 self.most, self.mode = self.has[x], x
 
-    """
-    Args: x
-
-    Return : int
-    """
-
     def mid(self, x) -> Optional[Any]:
+        """
+        Args: x
+
+        Return : int
+        """
         return self.mode
 
-    """
-    Args: x
-
-    Return : float
-    """
-
     def div(self, x) -> float:
+        """
+        Args: x
+
+        Return : float
+        """
+
         def fun(p):
             return p * (math.log2(p))
 
