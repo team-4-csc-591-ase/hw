@@ -1,12 +1,17 @@
-from typing import Dict, Any
 from enum import Enum
+from typing import Any, Dict
 
 
 class CONSTS(Enum):
-    SEED = "SEED",
+    seed = "seed"
+    dump = "dump"
+    go = "go"
+    help = "help"
 
 
 _CONSTS: Dict[str, Any] = {
-    CONSTS.SEED.name: 937162211,
-
+    CONSTS.seed.name: 937162211,
+    CONSTS.dump.name: False,
+    CONSTS.go.name: "data",
+    CONSTS.help.name: False,
 }

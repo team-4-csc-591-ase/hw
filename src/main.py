@@ -1,5 +1,6 @@
 import argparse
-from src.config import CONSTS
+
+from src.config import _CONSTS, CONSTS
 
 
 class Main:
@@ -27,7 +28,13 @@ class Main:
             default=937162211,
         )
         argument = parser.parse_args()
-        _CONSTS.update({CONSTS.SEED.name: argument.seed})
+        _CONSTS.update(
+            {
+                CONSTS.seed.name: argument.seed,
+                CONSTS.dump.name: argument.dump,
+                CONSTS.go.name: argument.go,
+            }
+        )
         print(argument)
 
 
