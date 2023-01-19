@@ -39,7 +39,7 @@ poetry install
 
 ______________________________________________________________________
 
-#Documentation
+## Documentation
 
 Done using Sphinx - available [here](https://team-4-csc-591-ase.github.io/hw)
 
