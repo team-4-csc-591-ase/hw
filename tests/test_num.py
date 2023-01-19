@@ -12,7 +12,7 @@ def test_num():
     for val in numList:
         numobj.add(val)
 
-    return custom_assert_equals(
+    assert custom_assert_equals(
         11 / 7, numobj.mid(), "Check Nums"
     ) and custom_assert_equals(0.787, round(numobj.div(), 3), "Check Nums")
 

@@ -11,7 +11,7 @@ def test_sym():
     for x in symlist:
         symobj.add(x)
 
-    return custom_assert_equals(
+    assert custom_assert_equals(
         "a", symobj.mid(x), "Check Sym"
     ) and custom_assert_equals(1.379, round(symobj.div(x), 3), "Check Sym")
 

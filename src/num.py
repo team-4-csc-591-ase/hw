@@ -37,8 +37,11 @@ class Num:
     Return : bool
     """
 
-    def div(self) -> bool:
-        return (self.m2 < 0 or self.n < 2) and 0 or pow((self.m2 / (self.n - 1)), 0.5)
+    def div(self) -> float:
+        if self.m2 < 0 or self.n < 2:
+            return 0
+        else:
+            return (self.m2 / (self.n - 1)) ** 0.5
 
     """
     Args: hi, lo
@@ -47,9 +50,10 @@ class Num:
     """
 
     def rand(self, lo, hi) -> float:
-        lo, hi = self.lo or 0, self.hi or 1
-        Seed = (16807 * self.Seed) % 2147483647
-        return lo + (hi - lo) * Seed / 2147483647
+        lo, hi = lo or 0, hi or 1
+        seed = self.Seed
+        seed = (16807 * seed) % 2147483647
+        return lo + (hi - lo) * seed / 2147483647
 
     """
     Args: n, nPlaces = 3
