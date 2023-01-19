@@ -1,3 +1,5 @@
+from enum import Enum
+
 the = """USAGE:   script.lua  [OPTIONS] [-g ACTION]
 
 OPTIONS:
@@ -7,3 +9,7 @@ OPTIONS:
   -s  --seed  random number seed   = 937162211
 
 ACTIONS:"""
+
+
+class CONSTS(Enum):
+    SEED = 937162211

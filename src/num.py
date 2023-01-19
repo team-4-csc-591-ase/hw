@@ -1,9 +1,10 @@
 import math
 import sys
 
+from config import CONSTS
+
 
 class Num:
-    Seed = 937162211
     n, mu, m2 = 0, 0, 0
     lo, hi = sys.maxsize, -sys.maxsize
 
@@ -43,24 +44,22 @@ class Num:
         else:
             return (self.m2 / (self.n - 1)) ** 0.5
 
-    """
-    Args: hi, lo
-
-    Return : float
-    """
-
     def rand(self, lo, hi) -> float:
+        """
+        Args: hi, lo
+
+        Return : float
+        """
         lo, hi = lo or 0, hi or 1
-        seed = self.Seed
+        seed = CONSTS.SEED.name
         seed = (16807 * seed) % 2147483647
         return lo + (hi - lo) * seed / 2147483647
 
-    """
-    Args: n, nPlaces = 3
+    def rnd(self, n, n_places=3) -> float:
+        """
+        Args: n, n_places = 3
 
-    Return : float
-    """
-
-    def rnd(self, n, nPlaces=3) -> float:
-        mult = pow(10, nPlaces)
+        Return : float
+        """
+        mult = pow(10, n_places)
         return math.floor(n * mult + 0.5) / mult
