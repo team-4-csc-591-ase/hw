@@ -12,6 +12,5 @@ def test_the(mock_print) -> None:
 
     """
     options = _CONSTS.copy()
-    options[CONSTS.go.name] = "all"
     oo(options)
-    mock_print.assert_called_with("{ :dump False :go all :help False :seed 937162211}")
+    mock_print.assert_called_with("{ :dump False :go data :help False :seed 937162211}")
