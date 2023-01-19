@@ -48,20 +48,20 @@ def settings(s: str) -> dict:
     return dict(re.findall(r"\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)", s))
 
 
-def reformat(d: dict) -> dict:
-    """
-
-    Args:
-        d: Dict
-
-    Returns: Reformatted Dictionary
-
-    """
-    for key, val in d.items():
-        if val == "false":
-            d[key] = False
-        elif val == "true":
-            d[key] = True
-        elif val.isdigit():
-            d[key] = int(val)
-    return d
+# def reformat(d: dict) -> dict:
+#     """
+#
+#     Args:
+#         d: Dict
+#
+#     Returns: Reformatted Dictionary
+#
+#     """
+#     for key, val in d.items():
+#         if val == "false":
+#             d[key] = False
+#         elif val == "true":
+#             d[key] = True
+#         elif val.isdigit():
+#             d[key] = int(val)
+#     return d

@@ -1,15 +1,17 @@
 from enum import Enum
-
-the = """USAGE:   script.lua  [OPTIONS] [-g ACTION]
-
-OPTIONS:
-  -d  --dump  on crash, dump stack = false
-  -g  --go    start-up action      = data
-  -h  --help  show help            = false
-  -s  --seed  random number seed   = 937162211
-
-ACTIONS:"""
+from typing import Any, Dict
 
 
 class CONSTS(Enum):
-    SEED = 937162211
+    seed = "seed"
+    dump = "dump"
+    go = "go"
+    help = "help"
+
+
+_CONSTS: Dict[str, Any] = {
+    CONSTS.seed.name: 937162211,
+    CONSTS.dump.name: False,
+    CONSTS.go.name: "data",
+    CONSTS.help.name: False,
+}
