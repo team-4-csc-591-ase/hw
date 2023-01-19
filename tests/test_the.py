@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from src.config import _CONSTS, CONSTS
+from src.config import _CONSTS
 from src.utils import oo
 
 
