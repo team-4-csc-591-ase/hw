@@ -39,6 +39,12 @@ poetry install
 
 ______________________________________________________________________
 
+#Documentation
+
+Done using Sphinx - available [here](https://team-4-csc-591-ase.github.io/hw)
+
+______________________________________________________________________
+
 ## Team
 
 | Name          | Unity id |
