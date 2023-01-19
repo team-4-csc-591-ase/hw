@@ -1,7 +1,8 @@
 import math
 import sys
+from typing import cast
 
-from .config import CONSTS
+from src.config import CONSTS
 
 
 class Num:
@@ -51,7 +52,7 @@ class Num:
         Return : float
         """
         lo, hi = lo or 0, hi or 1
-        seed = CONSTS.SEED.name
+        seed: int = cast(int, CONSTS.SEED.value)
         seed = (16807 * seed) % 2147483647
         return lo + (hi - lo) * seed / 2147483647
 
