@@ -39,6 +39,18 @@ poetry install
 
 ______________________________________________________________________
 
+## License
+
+This project is licensed under MIT license available in [LICENSE](https://github.com/team-4-csc-591-ase/hw/blob/main/LICENSE.md) file
+
+______________________________________________________________________
+
+## Documentation
+
+Done using Sphinx - available [here](https://team-4-csc-591-ase.github.io/hw)
+
+______________________________________________________________________
+
 ## Team
 
 | Name          | Unity id |
