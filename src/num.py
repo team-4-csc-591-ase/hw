@@ -9,9 +9,10 @@ class Num:
 
     """
     Args: n
-    
+
     Return : None
     """
+
     def add(self, n) -> None:
         if n != "?":
             self.n = self.n + 1
@@ -26,6 +27,7 @@ class Num:
 
     Return : Float
     """
+
     def mid(self) -> float:
         return self.mu
 
@@ -34,6 +36,7 @@ class Num:
 
     Return : bool
     """
+
     def div(self) -> bool:
         return (self.m2 < 0 or self.n < 2) and 0 or pow((self.m2 / (self.n - 1)), 0.5)
 
@@ -42,6 +45,7 @@ class Num:
 
     Return : float
     """
+
     def rand(self, lo, hi) -> float:
         lo, hi = self.lo or 0, self.hi or 1
         Seed = (16807 * self.Seed) % 2147483647
@@ -49,9 +53,10 @@ class Num:
 
     """
     Args: n, nPlaces = 3
-    
+
     Return : float
     """
+
     def rnd(self, n, nPlaces=3) -> float:
         mult = pow(10, nPlaces)
         return math.floor(n * mult + 0.5) / mult

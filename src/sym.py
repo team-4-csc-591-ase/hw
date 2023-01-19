@@ -1,4 +1,5 @@
 import math
+from typing import Any, Optional
 
 
 class Sym:
@@ -12,6 +13,7 @@ class Sym:
 
     Return : float
     """
+
     def rnd(self, nPlaces) -> float:
         mult = math.pow(10, 3)
         return math.floor((self.n * mult) + 0.5) / mult
@@ -21,6 +23,7 @@ class Sym:
 
     Return : None
     """
+
     def add(self, x) -> None:
         if x != "?":
             self.n = self.n + 1
@@ -37,7 +40,8 @@ class Sym:
 
     Return : int
     """
-    def mid(self, x)->int:
+
+    def mid(self, x) -> Optional[Any]:
         return self.mode
 
     """
@@ -45,7 +49,8 @@ class Sym:
 
     Return : float
     """
-    def div(self, x)->float:
+
+    def div(self, x) -> float:
         def fun(p):
             return p * (math.log2(p))
 
