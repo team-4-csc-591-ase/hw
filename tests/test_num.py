@@ -13,8 +13,8 @@ def test_num():
         numobj.add(val)
 
     return custom_assert_equals(
-        11 / 7, numobj.mid(val), "Check Nums"
-    ) and custom_assert_equals(0.787, round(numobj.div(val), 3), "Check Nums")
+        11 / 7, numobj.mid(), "Check Nums"
+    ) and custom_assert_equals(0.787, round(numobj.div(), 3), "Check Nums")
 
 
 def custom_assert_equals(val1, val2, msg=""):
