@@ -1,0 +1,12 @@
+Path provided: tests
+Files to ignore: ['__pycache__']
+Test files: tests/test_num.py
+Running test test_num - success
+Test files: tests/__init__.py
+Test files: tests/test_sym.py
+Running test test_sym - success
+Test files: tests/test_the.py
+Running test test_the - success
+Test files: tests/test_rand.py
+Running test test_rand - success
+Tests succeeded ✅
