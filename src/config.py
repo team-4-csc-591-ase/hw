@@ -7,6 +7,7 @@ class CONSTS(Enum):
     dump = "dump"
     go = "go"
     help = "help"
+    file = "file"
 
 
 _CONSTS: Dict[str, Any] = {
@@ -14,4 +15,5 @@ _CONSTS: Dict[str, Any] = {
     CONSTS.dump.name: False,
     CONSTS.go.name: "data",
     CONSTS.help.name: False,
+    CONSTS.file.name: "../etc/data/auto93.csv",
 }
