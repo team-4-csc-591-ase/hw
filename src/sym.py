@@ -3,24 +3,31 @@ from typing import Any, Optional
 
 
 class Sym:
-    n = 0
-    has: dict = {}
-    most = 0
-    mode = None
+    def __init__(self, at=None, txt=None) -> None:
+        self.n = 0
+        self.has: dict = {}
+        self.most = 0
+        self.mode = None
 
-    def rnd(self, nPlaces) -> float:
-        """
-        Args: n, nPlaces = 3
+        if at:
+            self.at = at
+        else:
+            self.at = 0
+        if txt:
+            self.txt = txt
+        else:
+            self.txt = ""
 
-        Return : float
+    def rnd(self, x, n) -> float:
         """
-        mult = math.pow(10, 3)
-        return math.floor((self.n * mult) + 0.5) / mult
+        Args: x
+        Return : int
+        """
+        return x
 
     def add(self, x) -> None:
         """
         Args: x
-
         Return : None
         """
         if x != "?":
@@ -36,7 +43,6 @@ class Sym:
     def mid(self, x) -> Optional[Any]:
         """
         Args: x
-
         Return : int
         """
         return self.mode
@@ -44,7 +50,6 @@ class Sym:
     def div(self, x) -> float:
         """
         Args: x
-
         Return : float
         """
 
