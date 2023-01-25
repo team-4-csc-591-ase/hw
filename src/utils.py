@@ -1,6 +1,6 @@
 import math
 import re
-from typing import cast
+from typing import Any, cast
 
 from src.config import _CONSTS, CONSTS
 
@@ -52,23 +52,6 @@ def settings(s: str) -> dict:
     return dict(re.findall(r"\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)", s))
 
 
-# def reformat(d: dict) -> dict:
-#     """
-#
-#     Args:
-#         d: Dict
-#
-#     Returns: Reformatted Dictionary
-#
-#     """
-#     for key, val in d.items():
-#         if val == "false":
-#             d[key] = False
-#         elif val == "true":
-#             d[key] = True
-#         elif val.isdigit():
-#             d[key] = int(val)
-#     return d
 def rand(lo, hi) -> float:
     """
     Args: hi, lo
@@ -89,3 +72,27 @@ def rnd(n, n_places=3) -> float:
     """
     mult = pow(10, n_places)
     return math.floor(n * mult + 0.5) / mult
+
+
+def coerce(s: str) -> Any:
+    """
+
+    Args:
+        s:
+
+    Returns:
+
+    """
+
+    if s == "true":
+        return True
+    elif s == "false":
+        return False
+    # checks if number is an integer
+    elif s.isnumeric():
+        return int(s)
+    # checks if in_str is a non-integer number
+    elif re.search(r"[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?$", s) is not None:
+        return float(s)
+    else:
+        return s
