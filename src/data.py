@@ -1,10 +1,12 @@
+from typing import Any, List
+
 from src import utils
 
 
 class Data:
     def __init__(self, src) -> None:
         self.cols = None
-        self.rows = []
+        self.rows: List[Any] = []
         self.n = 0
         if isinstance(src, str):
             self.read(src)
