@@ -1,6 +1,7 @@
 import math
 import re
-from typing import Any, cast, Callable
+from typing import Any, Callable, cast
+
 from src.config import _CONSTS, CONSTS
 
 
@@ -99,4 +100,3 @@ def coerce(s: str) -> Any:
         return float(s)
     else:
         return s
-
