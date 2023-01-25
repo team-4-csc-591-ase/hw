@@ -1,6 +1,6 @@
 import math
 import re
-from typing import cast
+from typing import Callable, cast
 
 from src.config import _CONSTS, CONSTS
 
@@ -89,3 +89,7 @@ def rnd(n, n_places=3) -> float:
     """
     mult = pow(10, n_places)
     return math.floor(n * mult + 0.5) / mult
+
+
+def csv(file_name: str, function: Callable):
+    return True
