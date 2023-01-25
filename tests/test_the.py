@@ -13,4 +13,4 @@ def test_the(mock_print) -> None:
     """
     options = _CONSTS.copy()
     oo(options)
-    mock_print.assert_called_with("{ :dump False :go data :help False :seed 937162211}")
+    mock_print.assert_called_with("{ :dump False :file ../etc/data/auto93.csv :go data :help False :seed 937162211}")
