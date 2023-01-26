@@ -108,9 +108,10 @@ class TestEngine:
 
         """
         for ignore in self.ignore_list:
-            if path.endswith(ignore) or path.startswith(ignore):
+            if path.find(ignore):
                 return None
-            self.process_file(path)
+            else:
+                self.process_file(path)
 
     def run_single_file(self, file: str) -> None:
         """
