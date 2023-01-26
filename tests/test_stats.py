@@ -4,7 +4,7 @@ from src.utils import o
 
 
 def test_stats():
-    data = Data(CONSTS.file.name).read()
+    data = Data(CONSTS.file.name)
     # TODO: Fix later when data classes are merged
     if data == {}:
         print(data)

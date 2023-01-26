@@ -2,7 +2,7 @@ import math
 import re
 from typing import Any, Callable, cast
 
-from src.config import _CONSTS, CONSTS
+from src.config import CONSTS, CONSTS_LIST
 
 
 # convert t to a string. sort named keys.
@@ -59,7 +59,7 @@ def rand(lo, hi) -> float:
     Return : float
     """
     lo, hi = lo or 0, hi or 1
-    seed: int = cast(int, _CONSTS[CONSTS.seed.name])
+    seed: int = cast(int, CONSTS_LIST[CONSTS.seed.name])
     seed = (16807 * seed) % 2147483647
     return lo + (hi - lo) * seed / 2147483647
 

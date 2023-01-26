@@ -1,4 +1,4 @@
-from src.config import CONSTS
+from src.config import CONSTS, CONSTS_LIST
 from src.utils import csv
 
 
@@ -9,5 +9,5 @@ def test_csv():
         nonlocal n
         n += len(t)
 
-    csv(CONSTS.file.name, fun)
+    csv(CONSTS_LIST[CONSTS.file.name], fun)
     return n == 8 * 399
