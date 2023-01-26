@@ -4,6 +4,30 @@ src package
 Submodules
 ----------
 
+src.cols module
+---------------
+
+.. automodule:: src.cols
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.config module
+-----------------
+
+.. automodule:: src.config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.data module
+---------------
+
+.. automodule:: src.data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 src.main module
 ---------------
 
@@ -20,10 +44,26 @@ src.num module
    :undoc-members:
    :show-inheritance:
 
+src.rows module
+---------------
+
+.. automodule:: src.rows
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 src.sym module
 --------------
 
 .. automodule:: src.sym
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.utils module
+----------------
+
+.. automodule:: src.utils
    :members:
    :undoc-members:
    :show-inheritance:
