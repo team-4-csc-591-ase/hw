@@ -1,5 +1,5 @@
-from num import Num  # type: ignore
-from sym import Sym  # type: ignore
+from src import Num  # type: ignore
+from src import Sym  # type: ignore
 
 
 class Cols:
