@@ -1,11 +1,15 @@
 import math
 import re
+from pathlib import Path
 from typing import Any, Callable, cast
 
 from src.config import CONSTS, CONSTS_LIST
 
 
-# convert t to a string. sort named keys.
+def get_project_root() -> str:
+    return str(Path(__file__).parent.parent)
+
+
 def o(t: dict) -> str:
     """
 

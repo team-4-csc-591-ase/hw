@@ -14,6 +14,13 @@ class Main:
             default=False,
         )
         parser.add_argument(
+            "-f",
+            "--file",
+            help="name of file",
+            required=False,
+            default="../etc/data/auto93.csv",
+        )
+        parser.add_argument(
             "-g",
             "--go",
             help="start-up action",
@@ -33,6 +40,7 @@ class Main:
                 CONSTS.seed.name: argument.seed,
                 CONSTS.dump.name: argument.dump,
                 CONSTS.go.name: argument.go,
+                CONSTS.file.name: argument.file,
             }
         )
         print(argument)

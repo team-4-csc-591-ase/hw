@@ -1,13 +1,18 @@
+import os
+
 from src.config import CONSTS, CONSTS_LIST
-from src.utils import csv
+from src.data import Data
+from src.utils import get_project_root
 
 
-def test_csv():
-    n = 0
+def test_csv() -> None:
+    """
 
-    def fun(t):
-        nonlocal n
-        n += len(t)
+    Returns:
 
-    csv(CONSTS_LIST[CONSTS.file.name], fun)
-    return n == 8 * 399
+    """
+    project_root = get_project_root()
+    file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
+    f = str(project_root) + "/" + file_path
+    data = Data(f)
+    assert data.n == 8 * 399

@@ -8,7 +8,6 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/team-4-csc-591-ase/hw)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/team-4-csc-591-ase/hw)](https://github.com/team-4-csc-591-ase/hw/releases/tag/v1.0.0)
 
-
 [![contributors](https://img.shields.io/github/contributors/team-4-csc-591-ase/hw)](https://github.com/team-4-csc-591-ase/hw/graphs/contributors)
 [![GitHub issues](https://img.shields.io/github/issues-raw/team-4-csc-591-ase/hw)](https://github.com/team-4-csc-591-ase/hw/issues)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/team-4-csc-591-ase/hw)](https://github.com/team-4-csc-591-ase/hw/issues?q=is%3Aissue+is%3Aclosed)
@@ -25,12 +24,10 @@ ______________________________________________________________________
 
 ## Submissions
 
-
 | Homework #                                                      |
 |-----------------------------------------------------------------|
 | [Homework 1](https://github.com/team-4-csc-591-ase/hw/tree/1.0) |
-| [Homework 2](https://github.com/team-4-csc-591-ase/hw/tree/2.0) |       
-
+| [Homework 2](https://github.com/team-4-csc-591-ase/hw/tree/2.0) |
 
 ______________________________________________________________________
 

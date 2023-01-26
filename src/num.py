@@ -2,9 +2,10 @@ import sys
 
 
 class Num:
-    def __init__(self, at=None, txt=None) -> None:
+    def __init__(self, at=None, txt=None, name: str = "") -> None:
         self.n, self.mu, self.m2 = 0, 0, 0
         self.lo, self.hi = sys.maxsize, -sys.maxsize
+        self._name = name
         if at:
             self.at = at
         else:
@@ -17,6 +18,14 @@ class Num:
             self.w = -1
         else:
             self.w = 1
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._name = name
 
     def add(self, n) -> None:
         """

@@ -1,30 +1,36 @@
-from src import Num  # type: ignore
-from src import Sym  # type: ignore
+import re
+from typing import List, Union
+
+from src.num import Num  # type: ignore
+from src.sym import Sym  # type: ignore
 
 
 class Cols:
-    def __init__(self, t) -> None:
-        self.names = t
-        self.all = []
-        self.x = []
-        self.y = []
+    def __init__(self, names: List[str]):
+        self.names = names
+        self.all = list()
         self.klass = None
+        self.x = list()
+        self.y = list()
 
-        for name in t:
-            if name[0].isupper():
-                col = Num(t.index(name), name)
+        for c, s in enumerate(names):
+            if re.match("^[A-Z]*", s):
+                col: Union[Num, Sym] = Num(c, s)
             else:
-                col = Sym(t.index(name), name)
-
+                col = Sym(c, s)
             self.all.append(col)
 
-            if name[-1] != "X":
-                if name[-1] == "!":
-                    self.klass = name
-                if name[-1] == "+" or name[-1] == "-" or name[-1] == "!":
-                    self.y.append(name)
+            if not re.match(r".*X$", s):
+                if (
+                    re.match(r".*\+$", s)
+                    or re.match(r".*\-$", s)
+                    or re.match(r".*\!$", s)
+                ):
+                    self.y.append(col)
                 else:
-                    self.x.append(name)
+                    self.x.append(col)
+                if re.match("!$", s):
+                    self.klass = col
 
     def add(self, row) -> None:
         """
@@ -35,6 +41,6 @@ class Cols:
         Returns: None
 
         """
-        total_columns = self.x.copy() + self.y.copy()
-        for col in total_columns:
-            col.add(row.cells[col.at])
+        for _, names in enumerate(zip(self.x, self.y)):
+            for i, col in enumerate(names):
+                col.add(row.cells[i])

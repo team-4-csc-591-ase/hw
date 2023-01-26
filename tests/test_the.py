@@ -15,7 +15,7 @@ def test_the(mock_print) -> None:
     oo(options)
     mock_print.assert_called_with(
         "{ :dump False "
-        ":file ../etc/data/auto93.csv "
+        ":file auto93.csv "
         ":go data "
         ":help False "
         ":seed 937162211}"
