@@ -39,7 +39,7 @@ jobs:
       - name: Run tests
         run: |
           source $VENV
-          python -m TestEngine --path tests
+          python -m TestEngine --path tests --ignore .pytest_cache,__pycache__,.mypy_cache
 
       - name: Upload coverage to Codecov
         run: |
