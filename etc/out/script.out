@@ -10,3 +10,25 @@ Running test test_the - success
 Test files: tests/test_rand.py
 Running test test_rand - success
 Tests succeeded ✅
+Path provided: tests
+Files to ignore: ['__pycache__']
+Test files: tests/test_num.py
+Running test test_num - success
+Test files: tests/test_stats.py
+xmid { : 1.5728643216080398}
+xdiv { : 0.8020548777266148}
+ymid { : 23.844221105527648}
+ydiv { : 8.340720074222057}
+Running test test_stats - success
+Test files: tests/__init__.py
+Test files: tests/test_sym.py
+Running test test_sym - success
+Test files: tests/test_the.py
+Running test test_the - success
+Test files: tests/test_rand.py
+Running test test_rand - success
+Test files: tests/test_data.py
+Running test test_data - success
+Test files: tests/test_csv.py
+Running test test_csv - success
+Tests succeeded ✅

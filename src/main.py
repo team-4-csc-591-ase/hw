@@ -1,6 +1,6 @@
 import argparse
 
-from src.config import _CONSTS, CONSTS
+from src.config import CONSTS, CONSTS_LIST
 
 
 class Main:
@@ -12,6 +12,13 @@ class Main:
             help="on crash, dump stack",
             required=False,
             default=False,
+        )
+        parser.add_argument(
+            "-f",
+            "--file",
+            help="name of file",
+            required=False,
+            default="../etc/data/auto93.csv",
         )
         parser.add_argument(
             "-g",
@@ -28,11 +35,12 @@ class Main:
             default=937162211,
         )
         argument = parser.parse_args()
-        _CONSTS.update(
+        CONSTS_LIST.update(
             {
                 CONSTS.seed.name: argument.seed,
                 CONSTS.dump.name: argument.dump,
                 CONSTS.go.name: argument.go,
+                CONSTS.file.name: argument.file,
             }
         )
         print(argument)

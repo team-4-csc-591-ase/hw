@@ -107,11 +107,9 @@ class TestEngine:
         Returns:
 
         """
-        for ignore in self.ignore_list:
-            if path.find(ignore):
-                return None
-            else:
-                self.process_file(path)
+        if path in self.ignore_list:
+            return None
+        self.process_file(path)
 
     def run_single_file(self, file: str) -> None:
         """

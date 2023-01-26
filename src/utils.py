@@ -1,11 +1,15 @@
 import math
 import re
-from typing import Callable, cast
+from pathlib import Path
+from typing import Any, Callable, cast
 
-from src.config import _CONSTS, CONSTS
+from src.config import CONSTS, CONSTS_LIST
 
 
-# convert t to a string. sort named keys.
+def get_project_root() -> str:
+    return str(Path(__file__).parent.parent)
+
+
 def o(t: dict) -> str:
     """
 
@@ -52,23 +56,6 @@ def settings(s: str) -> dict:
     return dict(re.findall(r"\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)", s))
 
 
-# def reformat(d: dict) -> dict:
-#     """
-#
-#     Args:
-#         d: Dict
-#
-#     Returns: Reformatted Dictionary
-#
-#     """
-#     for key, val in d.items():
-#         if val == "false":
-#             d[key] = False
-#         elif val == "true":
-#             d[key] = True
-#         elif val.isdigit():
-#             d[key] = int(val)
-#     return d
 def rand(lo, hi) -> float:
     """
     Args: hi, lo
@@ -76,7 +63,7 @@ def rand(lo, hi) -> float:
     Return : float
     """
     lo, hi = lo or 0, hi or 1
-    seed: int = cast(int, _CONSTS[CONSTS.seed.name])
+    seed: int = cast(int, CONSTS_LIST[CONSTS.seed.name])
     seed = (16807 * seed) % 2147483647
     return lo + (hi - lo) * seed / 2147483647
 
@@ -93,3 +80,27 @@ def rnd(n, n_places=3) -> float:
 
 def csv(file_name: str, function: Callable):
     return True
+
+
+def coerce(s: str) -> Any:
+    """
+
+    Args:
+        s:
+
+    Returns:
+
+    """
+
+    if s == "true":
+        return True
+    elif s == "false":
+        return False
+    # checks if number is an integer
+    elif s.isnumeric():
+        return int(s)
+    # checks if in_str is a non-integer number
+    elif re.search(r"[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?$", s) is not None:
+        return float(s)
+    else:
+        return s
