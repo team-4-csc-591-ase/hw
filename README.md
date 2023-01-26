@@ -9,7 +9,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/team-4-csc-591-ase/hw)](https://github.com/team-4-csc-591-ase/hw/releases/tag/v1.0.0)
 
 
-[![contributors](https://img.shields.io/github/contributors/ashishjoshi2605/CSC591_Group5_Lua2Py_2)](https://github.com/ashishjoshi2605/CSC591_Group5_Lua2Py_2/graphs/contributors?style=plastic)
+[![contributors](https://img.shields.io/github/contributors/team-4-csc-591-ase/hw)](https://github.com/team-4-csc-591-ase/hw/graphs/contributors)
 [![GitHub issues](https://img.shields.io/github/issues-raw/team-4-csc-591-ase/hw)](https://github.com/team-4-csc-591-ase/hw/issues)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/team-4-csc-591-ase/hw)](https://github.com/team-4-csc-591-ase/hw/issues?q=is%3Aissue+is%3Aclosed)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/team-4-csc-591-ase/hw)](https://github.com/team-4-csc-591-ase/hw/pulls)
