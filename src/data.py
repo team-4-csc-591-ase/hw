@@ -110,3 +110,14 @@ class Data:
                 left, right, node.A, node.B = right, left, node.B, node.A
             node.left = self.sway(left, min, cols, node.A)
         return node
+
+    def around(self, row1, rows, cols):
+        if rows is None:
+            rows = self.rows
+
+        def distance(row2):
+            return {"row": row2, "dist": self.dist(row1, row2, cols)}
+
+        sorted_rows = sorted(map(distance, rows), key=lambda x: x["dist"])
+
+        return sorted_rows
