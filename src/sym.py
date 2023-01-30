@@ -61,7 +61,7 @@ class Sym:
             e = e + fun(v / self.n)
         return -e
 
-    def dist(self,s1,s2) -> int:
+    def dist(self, s1, s2) -> int:
         """
 
         Args:
@@ -71,11 +71,9 @@ class Sym:
         Returns: int
 
         """
-        if s1=="?" and s2=="?":
+        if s1 == "?" and s2 == "?":
             return 1
-        if (s1==s2):
+        if s1 == s2:
             return 0
         else:
             return 1
-
-
