@@ -90,7 +90,6 @@ class Data:
             d = d + col.dist(row1.cells[col.at], row2.cells[col.at]) ** CONSTS.p.name
         return (d / n) ** (1 / CONSTS.p.name)
 
-
     def clone(self, init):
         data = Data(list(self.cols.names))
         map(self.add, init or [])
@@ -111,4 +110,3 @@ class Data:
                 left, right, node.A, node.B = right, left, node.B, node.A
             node.left = self.sway(left, min, cols, node.A)
         return node
-
