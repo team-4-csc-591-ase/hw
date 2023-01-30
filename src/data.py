@@ -90,8 +90,25 @@ class Data:
             d = d + col.dist(row1.cells[col.at], row2.cells[col.at]) ** CONSTS.p.name
         return (d / n) ** (1 / CONSTS.p.name)
 
+
     def clone(self, init):
         data = Data(list(self.cols.names))
         map(self.add, init or [])
 
         return data
+
+    def sway(self, rows=None, min=None, cols=None, above=None):
+        rows = rows or self.rows
+        min = min or len(rows) ** CONSTS.min.name
+        cols = cols or self.cols.x
+        node = {"data": self.clone(rows)}
+
+        if len(rows) > 2 * min:
+            left, right, node.A, node.B, node.min = self.half(
+                rows, cols, above
+            )  # need to check if it's node.A or node['A']
+            if self.better(node.B, node.A):
+                left, right, node.A, node.B = right, left, node.B, node.A
+            node.left = self.sway(left, min, cols, node.A)
+        return node
+
