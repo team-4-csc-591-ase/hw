@@ -8,6 +8,7 @@ class CONSTS(Enum):
     go = "go"
     help = "help"
     file = "file"
+    p = "p"
 
 
 CONSTS_LIST: Dict[str, Any] = {
@@ -16,4 +17,5 @@ CONSTS_LIST: Dict[str, Any] = {
     CONSTS.go.name: "data",
     CONSTS.help.name: False,
     CONSTS.file.name: "auto93.csv",
+    CONSTS.p.name: 2,
 }

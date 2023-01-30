@@ -18,5 +18,6 @@ def test_the(mock_print) -> None:
         ":file auto93.csv "
         ":go data "
         ":help False "
+        ":p 2 "
         ":seed 937162211}"
     )

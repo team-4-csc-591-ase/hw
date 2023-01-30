@@ -1,7 +1,9 @@
+import math
 from typing import Any, Callable, Dict, List, Union
 
 from src import utils
 from src.cols import Cols
+from src.config import CONSTS
 from src.rows import Rows
 
 
@@ -55,3 +57,19 @@ class Data:
                 v = utils.rnd(v, n_places)
             t[col.name] = v
         return t
+
+    def better(self, row1, row2):
+        s1, s2, ys = 0, 0, self.cols.y
+        for col in ys:
+            x = col.norm(row1.cells[col.at])
+            y = col.norm(row2.cells[col.at])
+            s1 = s1 - math.exp(col.w * (x - y) / len(ys))
+            s2 = s2 - math.exp(col.w * (y - x) / len(ys))
+        return s1 / len(ys) < s2 / len(ys)
+
+    def dist(self, row1, row2, cols):
+        n, d = 0, 0
+        for col in cols or self.cols.x:
+            n = n + 1
+            d = d + col.dist(row1.cells[col.at], row2.cells[col.at]) ** CONSTS.p.name
+        return (d / n) ** (1 / CONSTS.p.name)

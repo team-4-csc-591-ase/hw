@@ -34,6 +34,13 @@ class Main:
             required=False,
             default=937162211,
         )
+        parser.add_argument(
+            "-p",
+            "--p",
+            help="distance coefficient",
+            required=False,
+            default=2,
+        )
         argument = parser.parse_args()
         CONSTS_LIST.update(
             {
@@ -41,6 +48,7 @@ class Main:
                 CONSTS.dump.name: argument.dump,
                 CONSTS.go.name: argument.go,
                 CONSTS.file.name: argument.file,
+                CONSTS.p.name: argument.p,
             }
         )
         print(argument)
