@@ -21,6 +21,14 @@ class Data:
                 self.add(line)
 
     def add(self, element: List[str]) -> None:
+        """
+
+        Args:
+            element: List[str]
+
+        Returns: None
+
+        """
         if not self.cols:
             self.cols = Cols(element)
 
@@ -34,6 +42,14 @@ class Data:
                 td.add(row.cells[td.at])
 
     def parse_csv(self, file: str) -> None:
+        """
+
+        Args:
+            file: String
+
+        Returns: None
+
+        """
         with open(file, "r") as csv:
             lines = csv.readlines()
             for line in lines:
@@ -73,6 +89,12 @@ class Data:
             n = n + 1
             d = d + col.dist(row1.cells[col.at], row2.cells[col.at]) ** CONSTS.p.name
         return (d / n) ** (1 / CONSTS.p.name)
+
+    def clone(self, init):
+        data = Data(list(self.cols.names))
+        map(self.add, init or [])
+
+        return data
 
     def sway(self, rows=None, min=None, cols=None, above=None):
         rows = rows or self.rows

@@ -61,12 +61,12 @@ class Sym:
             e = e + fun(v / self.n)
         return -e
 
-    def dist(self, s1, s2) -> int:
+    def dist(self, s1: Any, s2: Any) -> int:
         """
 
         Args:
-            s1: str
-            s2: str
+            s1: Any
+            s2: Any
 
         Returns: int
 

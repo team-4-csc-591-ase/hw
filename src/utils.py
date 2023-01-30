@@ -1,7 +1,7 @@
 import math
 import re
 from pathlib import Path
-from typing import Any, Callable, cast
+from typing import Any, cast
 
 from src.config import CONSTS, CONSTS_LIST
 
@@ -78,10 +78,6 @@ def rnd(n, n_places=3) -> float:
     return math.floor(n * mult + 0.5) / mult
 
 
-def csv(file_name: str, function: Callable):
-    return True
-
-
 def coerce(s: str) -> Any:
     """
 
@@ -153,13 +149,13 @@ def kap(t, fun):
     return u
 
 
-def show(node, what, cols, nPlaces, lvl=0):
+def show(node, what, cols, n_places, lvl=0):
     if node:
         lvl = lvl or 0
         print("| " * lvl + str(len(node.data.rows) + " "))
         if not node.left or lvl == 0:
-            print(o(node.data.stats("mid", node.data.cols.y, nPlaces)))
+            print(o(node.data.stats("mid", node.data.cols.y, n_places)))
         else:
             print("")
-        show(node.left, what, cols, nPlaces, lvl + 1)
-        show(node.right, what, cols, nPlaces, lvl + 1)
+        show(node.left, what, cols, n_places, lvl + 1)
+        show(node.right, what, cols, n_places, lvl + 1)

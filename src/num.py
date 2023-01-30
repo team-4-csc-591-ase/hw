@@ -1,4 +1,5 @@
 import sys
+from typing import Any
 
 
 class Num:
@@ -77,7 +78,7 @@ class Num:
         else:
             return (n - self.lo) / (self.hi - self.lo + 1e-32)
 
-    def dist(self, n1, n2) -> int:
+    def dist(self, n1: Any, n2: Any) -> int:
         """
 
         Args:
