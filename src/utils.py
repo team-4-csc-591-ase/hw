@@ -103,9 +103,10 @@ def coerce(s: str) -> Any:
 
 
 def cosine(a, b, c):
-    x1 = (a**2 + c**2 - b**2) / (2 * c)
+    den = 1 if c == 0 else 2 * c
+    x1 = (a**2 + c**2 - b**2) / den
     x2 = max(0, min(1, x1))
-    y = (a**2 - x2**2) ** 0.5
+    y = abs((a**2 - x2**2)) ** 0.5
     return x2, y
 
 
@@ -152,10 +153,10 @@ def kap(t, fun):
 def show(node, what, cols, n_places, lvl=0):
     if node:
         lvl = lvl or 0
-        print("| " * lvl + str(len(node.data.rows) + " "))
-        if not node.left or lvl == 0:
-            print(o(node.data.stats("mid", node.data.cols.y, n_places)))
+        print("| " * lvl, str(len(node["data"].rows)), " ")
+        if not node.get("left", None) or lvl == 0:
+            print(o(node["data"].stats("mid", node["data"].cols.y, n_places)))
         else:
             print("")
-        show(node.left, what, cols, n_places, lvl + 1)
-        show(node.right, what, cols, n_places, lvl + 1)
+        show(node.get("left", None), what, cols, n_places, lvl + 1)
+        show(node.get("right", None), what, cols, n_places, lvl + 1)

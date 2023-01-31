@@ -1,8 +1,8 @@
-from src.data import Data
-from src.utils import get_project_root
 import os
+
 from src.config import CONSTS, CONSTS_LIST
-from src.utils import show
+from src.data import Data
+from src.utils import get_project_root, show
 
 
 def test_optimize():
