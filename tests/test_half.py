@@ -2,7 +2,7 @@ import os
 
 from src.config import CONSTS, CONSTS_LIST
 from src.data import Data
-from src.utils import get_project_root
+from src.utils import get_project_root, o
 
 
 def test_half():
@@ -13,7 +13,7 @@ def test_half():
     data = Data(f)
     left, right, A, B, mid, c = data.half()
     print(len(left), len(right), len(data.rows))
-    print(A, c)
-    print(mid)
-    print(B)
+    print(o(A), c)
+    print(o(mid))
+    print(o(B))
     assert True

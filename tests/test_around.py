@@ -11,6 +11,7 @@ def test_around():
     f = str(project_root) + "/" + file_path
 
     data = Data(f)
+
     # print(0, 0, o(data.rows[1]))
     # print(data.around(data.rows[1]))
     for n, t in enumerate(data.around(data.rows[1])):
