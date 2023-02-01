@@ -10,24 +10,46 @@ def get_project_root() -> str:
     return str(Path(__file__).parent.parent)
 
 
-def o(t: dict) -> str:
-    """
+# def o(t: dict) -> str:
+#     """
+#
+#     Args:
+#         t: dict
+#
+#     Returns: str
+#
+#     """
+#
+#     result = "{"
+#     keys = list(t.keys())
+#     keys.sort()
+#     for key in keys:
+#         result += " :" + str(key) + " " + str(t[key])
+#
+#     result += "}"
+#     return result
+def o(t):
+    if type(t) != dict and type(t) != list:
+        return str(t)
 
-    Args:
-        t: dict
+    def fun(k, v):
+        if str(k).find("_") != 0:
+            v = o(v)
+            return ":" + str(k) + " " + o(v)
 
-    Returns: str
+        else:
+            return False
 
-    """
-
-    result = "{"
-    keys = list(t.keys())
-    keys.sort()
-    for key in keys:
-        result += " :" + str(key) + " " + str(t[key])
-
-    result += "}"
-    return result
+    array = []
+    if type(t) == dict:
+        for key in t:
+            output = fun(key, t[key])
+            if output:
+                array.append(output)
+            array.sort()
+    elif type(t) == list:
+        array = t
+    return "{" + " ".join(str(val) for val in array) + "}"
 
 
 # print t then return it
@@ -103,9 +125,10 @@ def coerce(s: str) -> Any:
 
 
 def cosine(a, b, c):
-    x1 = (a**2 + c**2 - b**2) / (2 * c)
+    den = 1 if c == 0 else 2 * c
+    x1 = (a**2 + c**2 - b**2) / den
     x2 = max(0, min(1, x1))
-    y = (a**2 - x2**2) ** 0.5
+    y = abs((a**2 - x2**2)) ** 0.5
     return x2, y
 
 
@@ -135,15 +158,15 @@ def lt(x):
 
 def map(t, fun):
     u = []
-    for k, v in t.items():
+    for k, v in enumerate(t):
         v, k = fun(v)
         u[k or (1 + len(u))] = v
     return u
 
 
 def kap(t, fun):
-    u = []
-    for k, v in t.items():
+    u = {}
+    for k, v in enumerate(t):
         v, k = fun(k, v)
         u[k or (1 + len(u))] = v
     return u
@@ -152,10 +175,10 @@ def kap(t, fun):
 def show(node, what, cols, n_places, lvl=0):
     if node:
         lvl = lvl or 0
-        print("| " * lvl + str(len(node.data.rows) + " "))
-        if not node.left or lvl == 0:
-            print(o(node.data.stats("mid", node.data.cols.y, n_places)))
+        print("| " * lvl, str(len(node["data"].rows)), " ")
+        if not node.get("left", None) or lvl == 0:
+            print(o(node["data"].stats("mid", node["data"].cols.y, n_places)))
         else:
             print("")
-        show(node.left, what, cols, n_places, lvl + 1)
-        show(node.right, what, cols, n_places, lvl + 1)
+        show(node.get("left", None), what, cols, n_places, lvl + 1)
+        show(node.get("right", None), what, cols, n_places, lvl + 1)
