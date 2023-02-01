@@ -92,10 +92,8 @@ class Data:
         return s1 / len(ys) < s2 / len(ys)
 
     def dist(self, row1, row2, cols=None):
-        # print("row1=", row1, "row2=", row2, "cols=", cols)
         n, d = 0, 0
         for _, col in enumerate(self.cols.x or cols):
-            # print("inside for", col)
             n = n + 1
             d = d + col.dist(row1[col.at], row2[col.at]) ** CONSTS_LIST[CONSTS.p.name]
         return (d / n) ** (1 / CONSTS_LIST[CONSTS.p.name])
@@ -155,6 +153,7 @@ class Data:
         if "right" not in node:
             node["right"] = None
         return node
+
 
     def half(self, rows=None, cols=None, above=None):
         def distD(row1, row2):
