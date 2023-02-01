@@ -154,7 +154,6 @@ class Data:
             node["right"] = None
         return node
 
-
     def half(self, rows=None, cols=None, above=None):
         def distD(row1, row2):
             return self.dist(row1, row2, cols)
