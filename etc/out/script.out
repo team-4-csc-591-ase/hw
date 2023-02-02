@@ -32,3 +32,119 @@ Running test test_data - success
 Test files: tests/test_csv.py
 Running test test_csv - success
 Tests succeeded ✅
+Path provided: tests
+Files to ignore: ['__pycache__']
+Test files: tests/test_num.py
+Running test test_num - success
+Test files: tests/test_stats.py
+xmid 1.57
+xdiv 0.802
+ymid 23.84
+ydiv 8.341
+Running test test_stats - success
+Test files: tests/test_half.py
+200 198 398
+{4 110 87 2672 17.5 70 2 30} 0.0
+{4 151 85 2855 17.6 78 1 20}
+{4 110 87 2672 17.5 70 2 30}
+Running test test_half - success
+Test files: tests/test_optimize.py
+ 398  
+{:Acc+ 15.6 :Lbs- 2970.4 :Mpg+ 23.8}
+|  200  
+
+| |  99  
+
+| | |  50  
+
+| | | |  24  
+{:Acc+ 17.0 :Lbs- 2035.7 :Mpg+ 29.2}
+Running test test_optimize - success
+Test files: tests/__init__.py
+Test files: tests/test_clone.py
+Running test test_clone - success
+Test files: tests/test_sym.py
+Running test test_sym - success
+Test files: tests/test_the.py
+Running test test_the - success
+Test files: tests/test_rand.py
+Running test test_rand - success
+Test files: tests/test_cluster.py
+ 398  
+{:Acc+ 15.6 :Lbs- 2970.4 :Mpg+ 23.8}
+|  200  
+
+| |  101  
+
+| | |  51  
+
+| | | |  26  
+{:Acc+ 15.2 :Lbs- 2306.8 :Mpg+ 28.1}
+| | | |  25  
+{:Acc+ 16.5 :Lbs- 2577.8 :Mpg+ 26.4}
+| | |  50  
+
+| | | |  26  
+{:Acc+ 16.3 :Lbs- 2738.4 :Mpg+ 26.9}
+| | | |  24  
+{:Acc+ 16.1 :Lbs- 2583.9 :Mpg+ 25.0}
+| |  99  
+
+| | |  50  
+
+| | | |  26  
+{:Acc+ 17.2 :Lbs- 2087.3 :Mpg+ 28.8}
+| | | |  24  
+{:Acc+ 17.0 :Lbs- 2035.7 :Mpg+ 29.2}
+| | |  49  
+
+| | | |  25  
+{:Acc+ 16.8 :Lbs- 2072.7 :Mpg+ 33.2}
+| | | |  24  
+{:Acc+ 17.2 :Lbs- 1986.8 :Mpg+ 37.5}
+|  198  
+
+| |  100  
+
+| | |  51  
+
+| | | |  26  
+{:Acc+ 15.3 :Lbs- 2816.0 :Mpg+ 25.8}
+| | | |  25  
+{:Acc+ 16.9 :Lbs- 3186.0 :Mpg+ 20.4}
+| | |  49  
+
+| | | |  25  
+{:Acc+ 16.7 :Lbs- 3263.1 :Mpg+ 20.0}
+| | | |  24  
+{:Acc+ 16.8 :Lbs- 3390.8 :Mpg+ 20.8}
+| |  98  
+
+| | |  50  
+
+| | | |  26  
+{:Acc+ 13.6 :Lbs- 3903.7 :Mpg+ 16.2}
+| | | |  24  
+{:Acc+ 12.8 :Lbs- 4038.8 :Mpg+ 14.2}
+| | |  48  
+
+| | | |  25  
+{:Acc+ 13.4 :Lbs- 4212.2 :Mpg+ 15.2}
+| | | |  23  
+{:Acc+ 11.0 :Lbs- 4452.8 :Mpg+ 13.0}
+Running test test_cluster - success
+Test files: tests/test_data.py
+Running test test_data - success
+Test files: tests/test_csv.py
+Running test test_csv - success
+Test files: tests/test_around.py
+0 0.0 [8, 360, 215, 4615, 14, 70, 1, 10]
+50 0.05 [8, 318, 150, 4077, 14, 72, 1, 10]
+100 0.12 [6, 262, 85, 3015, 17, 82, 1, 40]
+150 0.17 [6, 225, 100, 3651, 17.7, 76, 1, 20]
+200 0.27 [4, 146, 67, 3250, 21.8, 80, 2, 30]
+250 0.3 [5, 121, 67, 2950, 19.9, 80, 2, 40]
+300 0.33 [4, 100, '?', 2320, 15.8, 81, 2, 30]
+350 0.34 [4, 91, 67, 1965, 15.7, 82, 3, 30]
+Running test test_around - success
+Tests succeeded ✅ 
