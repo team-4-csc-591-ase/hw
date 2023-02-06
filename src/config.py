@@ -19,7 +19,7 @@ CONSTS_LIST: Dict[str, Any] = {
     CONSTS.dump.name: False,
     CONSTS.go.name: "data",
     CONSTS.help.name: False,
-    CONSTS.file.name: "auto93.csv",
+    CONSTS.file.name: "repgrid1.csv",
     CONSTS.p.name: 2,
     CONSTS.Far.name: 0.95,
     CONSTS.min.name: 0.5,

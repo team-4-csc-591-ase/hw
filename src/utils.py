@@ -1,3 +1,5 @@
+import copy
+import json
 import math
 import re
 from pathlib import Path
@@ -186,3 +188,85 @@ def show(node, what, cols, n_places, lvl=0):
 
 def last(t):
     return t[len(t) - 1]
+
+
+def dofile(sFile):
+    with open(sFile) as f:
+        return json.load(f)
+
+
+def repgrid(sFile, Data):
+    t = dofile(sFile)
+    rows = repRows(t, transpose(t.cols))
+    cols = repCols(t.cols)
+    show(rows.cluster(), "mid", rows.cols.all, 1)
+    show(cols.cluster(), "mid", cols.cols.all, 1)
+    repPlace(rows)
+
+
+def repRows(t, Data, rows):
+    rows = list(rows)
+    for j, s in enumerate(rows[-1]):
+        rows[0][j] = rows[0][j] + ":" + s
+    rows.pop()
+    for n, row in enumerate(rows):
+        if n == 0:
+            row.append("thingX")
+        else:
+            u = t.rows[len(t.rows) - n - 1]
+            row.append(u[-1])
+    return Data(rows)
+
+
+def repPlace(data, n=20):
+    g = [[" " for j in range(n + 1)] for i in range(n + 1)]
+    maxy = 0
+    print("")
+    for r, row in enumerate(data.rows):
+        c = chr(64 + r)
+        print(c, row[-1])
+        x, y = int(row.x * n // 1), int(row.y * n // 1)
+        maxy = max(maxy, y + 1)
+        g[y + 1][x + 1] = c
+    print("")
+    for y in range(maxy):
+        print(*g[y])
+
+
+# def repPlace(data, n=20):
+#     g = []
+#     for i in range(n+1):
+#         g.append([])
+#     for j in range(n+1):
+#         g[i].append(" ")
+#     maxy = 0
+#     print("")
+#     for r, row in enumerate(data.rows):
+#         c = chr(64 + r + 1)
+#         print(c, row.cells[-1])
+#         x, y = int(row.x * n // 1), int(row.y * n // 1)
+#         maxy = max(maxy, y + 1)
+#         g[y + 1][x + 1] = c
+#     print("")
+#     for y in range(1, maxy + 1):
+#         print("".join(g[y]))
+
+
+def transpose(t):
+    transposed = []
+    for i in range(len(t[0])):
+        transposed.append([row[i] for row in t])
+    return transposed
+
+
+def repCols(cols, Data):
+    cols = copy.copy(cols)
+    for col in cols:
+        col[-1] = col[0] + ":" + col[len(col) - 1]
+        for j in range(1, len(col)):
+            col[j - 1] = col[j]
+        col.pop()
+    first_col = [f"Num{j}" for j in range(1, len(cols[0]) + 1)]
+    first_col.append("thingX")
+    cols.insert(0, first_col)
+    return Data(cols)
