@@ -49,15 +49,15 @@ Test files: tests/test_half.py
 {4 110 87 2672 17.5 70 2 30}
 Running test test_half - success
 Test files: tests/test_optimize.py
- 398  
+ 398
 {:Acc+ 15.6 :Lbs- 2970.4 :Mpg+ 23.8}
-|  200  
+|  200
 
-| |  99  
+| |  99
 
-| | |  50  
+| | |  50
 
-| | | |  24  
+| | | |  24
 {:Acc+ 17.0 :Lbs- 2035.7 :Mpg+ 29.2}
 Running test test_optimize - success
 Test files: tests/__init__.py
@@ -70,67 +70,67 @@ Running test test_the - success
 Test files: tests/test_rand.py
 Running test test_rand - success
 Test files: tests/test_cluster.py
- 398  
+ 398
 {:Acc+ 15.6 :Lbs- 2970.4 :Mpg+ 23.8}
-|  200  
+|  200
 
-| |  101  
+| |  101
 
-| | |  51  
+| | |  51
 
-| | | |  26  
+| | | |  26
 {:Acc+ 15.2 :Lbs- 2306.8 :Mpg+ 28.1}
-| | | |  25  
+| | | |  25
 {:Acc+ 16.5 :Lbs- 2577.8 :Mpg+ 26.4}
-| | |  50  
+| | |  50
 
-| | | |  26  
+| | | |  26
 {:Acc+ 16.3 :Lbs- 2738.4 :Mpg+ 26.9}
-| | | |  24  
+| | | |  24
 {:Acc+ 16.1 :Lbs- 2583.9 :Mpg+ 25.0}
-| |  99  
+| |  99
 
-| | |  50  
+| | |  50
 
-| | | |  26  
+| | | |  26
 {:Acc+ 17.2 :Lbs- 2087.3 :Mpg+ 28.8}
-| | | |  24  
+| | | |  24
 {:Acc+ 17.0 :Lbs- 2035.7 :Mpg+ 29.2}
-| | |  49  
+| | |  49
 
-| | | |  25  
+| | | |  25
 {:Acc+ 16.8 :Lbs- 2072.7 :Mpg+ 33.2}
-| | | |  24  
+| | | |  24
 {:Acc+ 17.2 :Lbs- 1986.8 :Mpg+ 37.5}
-|  198  
+|  198
 
-| |  100  
+| |  100
 
-| | |  51  
+| | |  51
 
-| | | |  26  
+| | | |  26
 {:Acc+ 15.3 :Lbs- 2816.0 :Mpg+ 25.8}
-| | | |  25  
+| | | |  25
 {:Acc+ 16.9 :Lbs- 3186.0 :Mpg+ 20.4}
-| | |  49  
+| | |  49
 
-| | | |  25  
+| | | |  25
 {:Acc+ 16.7 :Lbs- 3263.1 :Mpg+ 20.0}
-| | | |  24  
+| | | |  24
 {:Acc+ 16.8 :Lbs- 3390.8 :Mpg+ 20.8}
-| |  98  
+| |  98
 
-| | |  50  
+| | |  50
 
-| | | |  26  
+| | | |  26
 {:Acc+ 13.6 :Lbs- 3903.7 :Mpg+ 16.2}
-| | | |  24  
+| | | |  24
 {:Acc+ 12.8 :Lbs- 4038.8 :Mpg+ 14.2}
-| | |  48  
+| | |  48
 
-| | | |  25  
+| | | |  25
 {:Acc+ 13.4 :Lbs- 4212.2 :Mpg+ 15.2}
-| | | |  23  
+| | | |  23
 {:Acc+ 11.0 :Lbs- 4452.8 :Mpg+ 13.0}
 Running test test_cluster - success
 Test files: tests/test_data.py
@@ -147,4 +147,4 @@ Test files: tests/test_around.py
 300 0.33 [4, 100, '?', 2320, 15.8, 81, 2, 30]
 350 0.34 [4, 91, 67, 1965, 15.7, 82, 3, 30]
 Running test test_around - success
-Tests succeeded ✅ 
+Tests succeeded ✅

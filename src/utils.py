@@ -175,10 +175,14 @@ def kap(t, fun):
 def show(node, what, cols, n_places, lvl=0):
     if node:
         lvl = lvl or 0
-        print("| " * lvl, str(len(node["data"].rows)), " ")
-        if not node.get("left", None) or lvl == 0:
-            print(o(node["data"].stats("mid", node["data"].cols.y, n_places)))
+        print("|.. " * lvl, "")
+        if not node["left"] and last(last(node["data"].rows).cells):
+            print(o(last(last(node["data"].rows).cells)))
         else:
-            print("")
-        show(node.get("left", None), what, cols, n_places, lvl + 1)
-        show(node.get("right", None), what, cols, n_places, lvl + 1)
+            print("%.f" % round(100 * node["c"], n_places))
+        show(node["left"], what, cols, n_places, lvl + 1)
+        show(node["right"], what, cols, n_places, lvl + 1)
+
+
+def last(t):
+    return t[len(t) - 1]
