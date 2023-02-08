@@ -31,10 +31,10 @@ def test_rand():
     assert True
 
 
-def custom_assert_equals(val1, val2, msg=""):
-    if val1 != val2:
-        logging.error(msg)
-        traceback.print_stack()
-        return False
-    else:
-        return True
+# def custom_assert_equals(val1, val2, msg=""):
+#     if val1 != val2:
+#         logging.error(msg)
+#         traceback.print_stack()
+#         return False
+#     else:
+#         return True
