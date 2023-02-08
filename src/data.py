@@ -14,13 +14,13 @@ class Data:
         if isinstance(src, str):
             self.parse_csv(src)
         else:
-            if src is None:
-                src = []
-            self.add(src)
-            # for line in src:
-            #     self.add(line)
+            # if src is None:
+            #     src = []
+            # self.add(src)
+            for line in src:
+                self.add(line)
 
-    def add(self, element: List[str]) -> None:
+    def add(self, element: Any) -> None:
         """
 
         Args:
@@ -29,17 +29,24 @@ class Data:
         Returns: None
 
         """
-        if not self.cols:
-            self.cols = Cols(element)
+        # if not self.cols:
+        #     self.cols = Cols(element)
+        #
+        # else:
+        #     row = Rows(element)
+        #     self.rows.append(row.cells)
+        #     for td in self.cols.x:
+        #         td.add(row.cells[td.at])
+        #
+        #     for td in self.cols.y:
+        #         td.add(row.cells[td.at])
 
+        if self.cols:
+            element = element if hasattr(element, "cells") else Rows(element)
+            self.rows.append(element)
+            self.cols.add(element)
         else:
-            row = Rows(element)
-            self.rows.append(row.cells)
-            for td in self.cols.x:
-                td.add(row.cells[td.at])
-
-            for td in self.cols.y:
-                td.add(row.cells[td.at])
+            self.cols = Cols(element)
 
     def parse_csv(self, file: str) -> None:
         """
@@ -83,7 +90,7 @@ class Data:
 
     def dist(self, row1, row2, cols=None):
         n, d = 0, 0
-        for _, col in enumerate(self.cols.x or cols):
+        for _, col in enumerate(cols or self.cols.x):
             n = n + 1
             d = (
                 d
@@ -156,4 +163,4 @@ hi hello
 
     def furthest(self, row1, rows, cols=None):
         t = self.around(row1, rows, cols)
-        return t[-1]  # t[-1][0]
+        return t[-1]

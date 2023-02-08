@@ -76,7 +76,7 @@ class Num:
         if n == "?":
             return n
         else:
-            return (n - self.lo) / (self.hi - self.lo + 1e-32)
+            return (float(n) - self.lo) / (self.hi - self.lo + 1e-32)
 
     def dist(self, n1: Any, n2: Any) -> int:
         """
