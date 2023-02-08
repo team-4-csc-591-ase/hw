@@ -10,6 +10,6 @@ def test_cluster():
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
 
-    data = Data(f)
+    data = Data("/Users/ritwik/Projects/hw/etc/data/auto93.csv")
     show(data.cluster(), "mid", data.cols.y, 1)
     assert True

@@ -192,9 +192,10 @@ def last(t):
     return t[len(t) - 1]
 
 
-def dofile(sFile):
-    with open(sFile) as f:
-        return json.load(f)
+# def dofile(sFile):
+#     print(sFile)
+#     with open(sFile) as f:
+#         return json.load(f)
 
 
 def dofile(sFile):
@@ -257,7 +258,7 @@ def repPlace(data, n=20):
     print("")
     for r, row in enumerate(data.rows):
         c = chr(64 + r)
-        print(c, row[-1])
+        print(c, row.cells[-1])
         x, y = int(row.x * n // 1), int(row.y * n // 1)
         maxy = max(maxy, y + 1)
         g[y + 1][x + 1] = c

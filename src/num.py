@@ -73,7 +73,7 @@ class Num:
         Returns: float
 
         """
-        if n == "?":
+        if isinstance(n, str) or n == "?":
             return n
         else:
             return (float(n) - self.lo) / (self.hi - self.lo + 1e-32)
@@ -88,18 +88,18 @@ class Num:
         Returns: int
 
         """
-        if n1 == "?" and n2 == "?":
+        if (isinstance(n1, str) or n1 == "?") and (isinstance(n2, str) or n2 == "?"):
             return 1
         n1 = self.norm(n1)
         n2 = self.norm(n2)
 
-        if n1 == "?":
+        if isinstance(n1, str) or n1 == "?":
             if n2 < 0.5:
                 n1 = 1
             else:
                 n1 = 0
 
-        if n2 == "?":
+        if isinstance(n2, str) or n2 == "?":
             if n1 < 0.5:
                 n2 = 1
             else:

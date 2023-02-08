@@ -105,7 +105,7 @@ class Data:
         data = Data(self.cols.names)
         _ = list(map(data.add, init))
         return data
-hi hello
+
     def around(self, row1, rows=None, cols=None):
         rows = rows or self.rows
 
@@ -120,16 +120,16 @@ hi hello
         rows = rows or self.rows
         cols = cols or self.cols.x
         node = {"data": self.clone(rows)}  # xxx cloning
-        if len(rows) >= 2:
+        if len(rows) > 2:
             left, right, node["A"], node["B"], node["mid"], node["c"] = self.half(
                 rows, cols, above
             )
             node["left"] = self.cluster(left, cols, node["A"])
             node["right"] = self.cluster(right, cols, node["B"])
-        # if "left" not in node:
-        #     node["left"] = None
-        # if "right" not in node:
-        #     node["right"] = None
+        if "left" not in node:
+            node["left"] = None
+        if "right" not in node:
+            node["right"] = None
         return node
 
     def half(self, rows=None, cols=None, above=None):
@@ -149,9 +149,9 @@ hi hello
         # B = self.around(A, some)[int(CONSTS_LIST[CONSTS.Far.name] * len(rows))]["row"]
         B = self.furthest(A, rows)["row"]  # self.furthest(A, rows)
         c = distD(A, B)
-        left, right = [], []
+        left, right, mid = [], [], None
         for n, tmp in enumerate(
-            sorted(map(lambda row: project(row), rows), key=lambda x: x["x"])
+            sorted(list(map(lambda row: project(row), rows)), key=lambda x: x["x"])
         ):
             if n <= len(rows) // 2:
                 left.append(tmp["row"])

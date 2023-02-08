@@ -1,13 +1,14 @@
-import logging
-import math
-import traceback
-
-from src import num
-from src.utils import rand, rnd
+# import logging
+# import math
+# import traceback
+#
+# from src import num
+# from src.utils import rand, rnd
 
 
 def test_rand():
     """
+    Not needed for HW4
     Args: None
     Returns: Bool
 
@@ -28,6 +29,7 @@ def test_rand():
     #     0.5, math.floor(m1 * 10) / 10, "Check Rand"
     # )
     assert True
+
 
 def custom_assert_equals(val1, val2, msg=""):
     if val1 != val2:
