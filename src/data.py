@@ -85,7 +85,11 @@ class Data:
         n, d = 0, 0
         for _, col in enumerate(self.cols.x or cols):
             n = n + 1
-            d = d + col.dist(row1[col.at], row2[col.at]) ** CONSTS_LIST[CONSTS.p.name]
+            d = (
+                d
+                + col.dist(row1.cells[col.at], row2.cells[col.at])
+                ** CONSTS_LIST[CONSTS.p.name]
+            )
         return (d / n) ** (1 / CONSTS_LIST[CONSTS.p.name])
 
     def clone(self, init=None):

@@ -177,7 +177,9 @@ def kap(t, fun):
 def show(node, what, cols, n_places, lvl=0):
     if node:
         lvl = lvl or 0
-        print("|.. " * lvl, "")
+        # print("|.. " * lvl, "")
+        print("| " * lvl, str(len(node["data"].rows)), " ")
+
         if not node["left"] and last(last(node["data"].rows).cells):
             print(o(last(last(node["data"].rows).cells)))
         else:
@@ -195,17 +197,34 @@ def dofile(sFile):
         return json.load(f)
 
 
-def repgrid(sFile, Data):
+def dofile(sFile):
+    file = open(sFile, "r", encoding="utf-8")
+    text = (
+        re.findall(r"(?<=return )[^.]*", file.read())[0]
+        .replace("{", "[")
+        .replace("}", "]")
+        .replace("=", ":")
+        .replace("[\n", "{\n")
+        .replace(" ]", " }")
+        .replace("'", '"')
+        .replace("_", '"_"')
+    )
+    file.close()
+    file_json = json.loads(re.sub(r"(\w+):", r'"\1":', text)[:-2] + "}")
+    return file_json
+
+
+def repgrid(sFile, Data=None):
     t = dofile(sFile)
-    rows = repRows(t, transpose(t.cols))
-    cols = repCols(t.cols)
+    rows = repRows(t, transpose(t["cols"]), Data)
+    cols = repCols(t["cols"], Data)
     show(rows.cluster(), "mid", rows.cols.all, 1)
     show(cols.cluster(), "mid", cols.cols.all, 1)
     repPlace(rows)
 
 
-def repRows(t, Data, rows):
-    rows = list(rows)
+def repRows(t, rows, Data=None):
+    rows = copy.deepcopy(rows)
     for j, s in enumerate(rows[-1]):
         rows[0][j] = rows[0][j] + ":" + s
     rows.pop()
@@ -213,9 +232,23 @@ def repRows(t, Data, rows):
         if n == 0:
             row.append("thingX")
         else:
-            u = t.rows[len(t.rows) - n - 1]
-            row.append(u[-1])
+            u = t["rows"][len(t["rows"]) - n]
+            row.append(u[len(u) - 1])
     return Data(rows)
+
+
+# def repRows(t, DATA, rows):
+#     rows = deepcopy(rows)
+#     for j, s in enumerate(rows[-1]):
+#         rows[0][j] = rows[0][j] + ":" + s
+#     rows.pop()
+#     for n, row in enumerate(rows):
+#         if n == 0:
+#             row.append('thingX')
+#         else:
+#             u = t['rows'][- n]
+#             row.append(u[len(u) - 1])
+#     return  DATA(rows)
 
 
 def repPlace(data, n=20):
@@ -259,7 +292,7 @@ def transpose(t):
     return transposed
 
 
-def repCols(cols, Data):
+def repCols(cols, Data=None):
     cols = copy.copy(cols)
     for col in cols:
         col[-1] = col[0] + ":" + col[len(col) - 1]

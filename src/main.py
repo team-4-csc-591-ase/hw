@@ -18,7 +18,7 @@ class Main:
             "--file",
             help="name of file",
             required=False,
-            default="../etc/data/auto93.csv",
+            default="../etc/data/repgrid1.csv",
         )
         parser.add_argument(
             "-g",
