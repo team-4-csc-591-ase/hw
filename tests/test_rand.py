@@ -28,6 +28,7 @@ def test_rand():
     # assert result <= 5 and custom_assert_equals(
     #     0.5, math.floor(m1 * 10) / 10, "Check Rand"
     # )
+    print("Not required for HW4")
     assert True
 
 

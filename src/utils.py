@@ -383,6 +383,15 @@ def transpose(t):
 
 
 def repCols(cols, Data):
+    """
+
+    Args:
+        cols:
+        Data:
+
+    Returns:
+
+    """
     cols = copy.copy(cols)
     for i, col in enumerate(cols):
         col[len(col) - 1] = col[0] + ":" + col[len(col) - 1]

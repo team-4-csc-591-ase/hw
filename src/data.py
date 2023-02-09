@@ -212,5 +212,15 @@ class Data:
         return left, right, A, B, mid, c
 
     def furthest(self, row1, rows, cols=None):
+        """
+
+        Args:
+            row1:
+            rows:
+            cols:
+
+        Returns:
+
+        """
         t = self.around(row1, rows, cols)
         return t[-1]

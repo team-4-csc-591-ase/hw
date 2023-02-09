@@ -34,5 +34,5 @@ def test_stats() -> None:
     # assert expected_xdiv == actual_xdiv
     # assert expected_ymid == actual_ymid
     # assert expected_ydiv == actual_ydiv
-
+    print("Not required for HW4")
     assert True

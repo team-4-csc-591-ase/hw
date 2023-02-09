@@ -17,4 +17,5 @@ def test_optimize():
     #
     # data = Data(f)
     # show(data.sway(), "mid", data.cols.y, 1)
+    print("Not required for HW4")
     assert True

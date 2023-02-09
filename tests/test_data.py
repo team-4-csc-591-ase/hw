@@ -6,6 +6,11 @@
 
 
 def test_data():
+    """
+    Not required for Hw4
+    Returns:
+
+    """
     # project_root = get_project_root()
     # file_path=os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     # f = str(project_root) + "/" + file_path
@@ -16,4 +21,5 @@ def test_data():
     #     and data.cols.x[1].at == 1
     #     and len(data.cols.x) == 4
     # )
+    print("Not required for HW4")
     assert True

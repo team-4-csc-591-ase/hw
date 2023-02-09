@@ -6,6 +6,11 @@
 
 
 def test_clone():
+    """
+    Not required for HW 4
+    Returns:
+
+    """
     # project_root = get_project_root()
     # file_path=os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     # f = str(project_root) + "/" + file_path
@@ -18,4 +23,5 @@ def test_clone():
     #     and data1.cols.x[1].at == data2.cols.x[1].at
     #     and len(data1.cols.x) == len(data2.cols.x)
     # )
+    print("Not required for HW4")
     assert True
