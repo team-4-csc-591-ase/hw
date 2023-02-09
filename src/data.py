@@ -7,6 +7,10 @@ from src.rows import Rows
 
 
 class Data:
+    """
+    The Data Class
+    """
+
     def __init__(self, src: Union[str, List[str]]) -> None:
         self.cols: Union[Cols, None] = None
         self.rows: List[Any] = []
@@ -14,9 +18,6 @@ class Data:
         if isinstance(src, str):
             self.parse_csv(src)
         else:
-            # if src is None:
-            #     src = []
-            # self.add(src)
             if isinstance(src[0], str):
                 self.add(src)
             else:
@@ -32,22 +33,6 @@ class Data:
         Returns: None
 
         """
-        # if not self.cols:
-        #     self.cols = Cols(element)
-        #
-        # else:
-        #     row = Rows(element)
-        #     self.rows.append(row.cells)
-        #     for td in self.cols.x:
-        #         td.add(row.cells[td.at])
-        #
-        #     for td in self.cols.y:
-        #         td.add(row.cells[td.at])
-
-        # if self.cols:
-        #     element = element if hasattr(element, "cells") else Rows(element)
-        #     self.rows.append(element)
-        #     self.cols.add(element)
         if self.cols:
             if isinstance(element, list):
                 element = Rows(element)
@@ -60,7 +45,7 @@ class Data:
         """
 
         Args:
-            file: String
+            file: File path
 
         Returns: None
 
@@ -73,30 +58,35 @@ class Data:
                 self.add(split_line)
                 self.n += len(split_line)
 
-    # def stats(
-    #     self, fun: Union[str, Callable], show_cols: Union[Cols, None], n_places
-    # ) -> Dict[str, int]:
-    #     if show_cols is None:
-    #         show_cols = self.cols.y  # type: ignore
-    #     t: Dict[str, int] = {}
-    #     for col in show_cols:  # type: ignore
-    #         if isinstance(fun, str):
-    #             v = getattr(col, fun)()
-    #         else:
-    #             v = fun(col)
-    #         if isinstance(v, int):
-    #             v = utils.rnd(v, n_places)
-    #         t[col.name] = v
-    #     return t
-
     def stats(self, what: str, cols: Union[Cols, None], n_places: int):
-        def fun(k, col):
-            callable = getattr(col, what)
-            return col.rnd(callable(), n_places), col.txt
+        """
+
+        Args:
+            what:
+            cols:
+            n_places:
+
+        Returns:
+
+        """
+
+        def fun(col):
+            _callable = getattr(col, what)
+            return col.rnd(_callable(), n_places), col.txt
 
         return utils.kap(cols, fun)
 
     def dist(self, row1, row2, cols=None):
+        """
+
+        Args:
+            row1:
+            row2:
+            cols:
+
+        Returns:
+
+        """
         n, d = 0, 0
         for _, col in enumerate(cols or self.cols.x):
             n = n + 1
@@ -108,27 +98,54 @@ class Data:
         return (d / n) ** (1 / CONSTS_LIST[CONSTS.p.name])
 
     def clone(self, init=None):
-        if init is None:
-            init = []
+        """
+
+        Args:
+            init:
+
+        Returns:
+
+        """
+        init = [] if not init else init
         data = Data(self.cols.names)
         _ = list(map(data.add, init))
         return data
 
     def around(self, row1, rows=None, cols=None):
-        rows = rows or self.rows
+        """
+
+        Args:
+            row1:
+            rows:
+            cols:
+
+        Returns:
+
+        """
 
         def distance(row2):
             return {"row": row2, "dist": self.dist(row1, row2, cols)}
 
+        rows = rows or self.rows
         sorted_rows = sorted(list(map(distance, rows)), key=lambda x: x["dist"])
 
         return sorted_rows
 
     def cluster(self, rows=None, cols=None, above=None):
+        """
+
+        Args:
+            rows:
+            cols:
+            above:
+
+        Returns:
+
+        """
         rows = rows or self.rows
         cols = cols or self.cols.x
-        node = {"data": self.clone(rows)}  # xxx cloning
-        if len(rows) > 2:
+        node = {"data": self.clone(rows)}
+        if len(rows) >= 2:
             left, right, node["A"], node["B"], node["mid"], node["c"] = self.half(
                 rows, cols, above
             )
@@ -141,27 +158,52 @@ class Data:
         return node
 
     def half(self, rows=None, cols=None, above=None):
-        def distD(row1, row2):
-            return self.dist(row1, row2, cols)
+        """
+
+        Args:
+            rows:
+            cols:
+            above:
+
+        Returns:
+
+        """
 
         def project(row):
+            """
+
+            Args:
+                row:
+
+            Returns:
+
+            """
             x, y = utils.cosine(distD(row, A), distD(row, B), c)
             row.x = row.x or x
             row.y = row.y or y
             return {"row": row, "x": x, "y": y}
 
-        rows = rows or self.rows
+        def distD(row1, row2):
+            """
 
-        # some = utils.many(rows, CONSTS_LIST[CONSTS.Sample.name])
+            Args:
+                row1:
+                row2:
+
+            Returns:
+
+            """
+            return self.dist(row1, row2, cols)
+
+        rows = rows or self.rows
         A = above or utils.any(rows)
-        # B = self.around(A, some)[int(CONSTS_LIST[CONSTS.Far.name] * len(rows))]["row"]
-        B = self.furthest(A, rows)["row"]  # self.furthest(A, rows)
+        B = self.furthest(A, rows)["row"]
         c = distD(A, B)
-        left, right, mid = [], [], None
-        for n, tmp in enumerate(
-            sorted(list(map(lambda row: project(row), rows)), key=lambda x: x["x"])
-        ):
-            if n <= len(rows) // 2:
+
+        left, right, nums, mid = [], [], 0, None
+        for tmp in sorted(list(map(project, rows)), key=lambda x: x["x"]):
+            nums += 1
+            if nums <= len(rows) / 2:
                 left.append(tmp["row"])
                 mid = tmp["row"]
             else:
@@ -171,4 +213,4 @@ class Data:
 
     def furthest(self, row1, rows, cols=None):
         t = self.around(row1, rows, cols)
-        return t[len(t) - 1]
+        return t[-1]

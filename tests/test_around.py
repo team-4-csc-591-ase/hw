@@ -6,6 +6,9 @@
 
 
 def test_around():
+    """
+    Not required for HW4
+    """
     # project_root = get_project_root()
     # file_path=os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     # f = str(project_root) + "/" + file_path
@@ -17,4 +20,5 @@ def test_around():
     # for n, t in enumerate(data.around(data.rows[1])):
     #     if n % 50 == 0:
     #         print(n, rnd(t["dist"], 2), (t["row"]))
+    print("Not required for HW4")
     assert True
