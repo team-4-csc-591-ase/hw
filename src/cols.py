@@ -23,7 +23,7 @@ class Cols:
             if not re.match(r".*X$", s):
                 if (
                     re.match(r".*\+$", s)
-                    # or re.match(r".*\-$", s)
+                    or re.match(r".*\-$", s)
                     or re.match(r".*\!$", s)
                 ):
                     self.y.append(col)

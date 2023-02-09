@@ -26,15 +26,16 @@ def test_repcols():
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
 
-    raw = utils.dofile(f)
-    t = utils.repCols(raw["cols"], Data)
-    for col in t.cols.all:
-        print(vars(col))
-    for row in t.rows:
-        print(vars(row))
+    x = utils.dofile(f)["cols"]
+    t = utils.repCols(x, Data)
 
-    # show(repCols(dofile(f)['cols'], Data).cluster(),"mid",data.cols.all,1)
-    assert True
+    for i in t.cols.all:
+        allDict = i.__dict__
+        allDict["a"] = allDict.__class__.__name__
+        allDict["id"] = id(allDict)
+        # print(utils.o(i.__dict__))
+        d = dict(sorted(allDict.items()))
+        print(d)
 
     print()
     for i in t.rows:

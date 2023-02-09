@@ -3,20 +3,13 @@ from typing import Any, Optional
 
 
 class Sym:
-    def __init__(self, at=None, txt=None) -> None:
+    def __init__(self, at=0, txt="") -> None:
         self.n = 0
         self.has: dict = {}
         self.most = 0
         self.mode = None
-
-        if at:
-            self.at = at
-        else:
-            self.at = 0
-        if txt:
-            self.txt = txt
-        else:
-            self.txt = ""
+        self.at = at
+        self.txt = txt
 
     def rnd(self, x, n) -> float:
         """
