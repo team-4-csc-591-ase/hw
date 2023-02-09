@@ -7,7 +7,7 @@ from src.utils import get_project_root
 
 # def test_repcols():
 #     project_root = get_project_root()
-#     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
+#     file_path=os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
 #     f = str(project_root) + "/" + file_path
 #
 #     raw = utils.dofile(f)
