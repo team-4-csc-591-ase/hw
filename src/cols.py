@@ -41,6 +41,5 @@ class Cols:
         Returns: None
 
         """
-        for _, names in enumerate(zip(self.x, self.y)):
-            for i, col in enumerate(names):
-                col.add(row.cells[i])
+        for indx in self.x + self.y:
+            indx.add(row.cells[indx.at])

@@ -17,8 +17,11 @@ class Data:
             # if src is None:
             #     src = []
             # self.add(src)
-            for line in src:
-                self.add(line)
+            if isinstance(src[0], str):
+                self.add(src)
+            else:
+                for line in src:
+                    self.add(line)
 
     def add(self, element: Any) -> None:
         """
@@ -41,8 +44,13 @@ class Data:
         #     for td in self.cols.y:
         #         td.add(row.cells[td.at])
 
+        # if self.cols:
+        #     element = element if hasattr(element, "cells") else Rows(element)
+        #     self.rows.append(element)
+        #     self.cols.add(element)
         if self.cols:
-            element = element if hasattr(element, "cells") else Rows(element)
+            if isinstance(element, list):
+                element = Rows(element)
             self.rows.append(element)
             self.cols.add(element)
         else:
@@ -112,7 +120,7 @@ class Data:
         def distance(row2):
             return {"row": row2, "dist": self.dist(row1, row2, cols)}
 
-        sorted_rows = sorted(map(distance, rows), key=lambda x: x["dist"])
+        sorted_rows = sorted(list(map(distance, rows)), key=lambda x: x["dist"])
 
         return sorted_rows
 
@@ -163,4 +171,4 @@ class Data:
 
     def furthest(self, row1, rows, cols=None):
         t = self.around(row1, rows, cols)
-        return t[-1]
+        return t[len(t) - 1]

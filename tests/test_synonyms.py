@@ -7,12 +7,16 @@ from src.utils import get_project_root
 
 
 def test_synonyms():
+    print()
     project_root = get_project_root()
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
     data = Data(f)
     utils.show(
-        utils.repCols(utils.dofile(f)["cols"], Data).cluster(), "mid", data.cols.all, 1
+        node=utils.repCols(utils.dofile(f)["cols"], Data).cluster(),
+        what=0,
+        cols=data.cols.all,
+        n_places=0,
     )
     # utils.show(utils.repCols(utils.dofile(f)['cols']).cluster())
     return True

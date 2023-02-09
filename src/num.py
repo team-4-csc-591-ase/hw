@@ -64,7 +64,7 @@ class Num:
         else:
             return round(x, n)
 
-    def norm(self, n) -> float:
+    def norm(self, n) -> str | float:
         """
 
         Args:

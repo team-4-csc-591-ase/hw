@@ -54,7 +54,7 @@ class Sym:
         """
 
         def fun(p):
-            return p * (math.log2(p))
+            return p * (math.log(p, 2))
 
         e = 0
         for k, v in self.has.items():
