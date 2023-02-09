@@ -3,7 +3,7 @@ from typing import Any
 
 
 class Num:
-    def __init__(self, at=None, txt=None, name: str = "") -> None:
+    def __init__(self, at=0, txt="") -> None:
         self.n, self.mu, self.m2 = 0, 0, 0
         self.lo, self.hi = float("inf"), float("-inf")
         # self._name = name

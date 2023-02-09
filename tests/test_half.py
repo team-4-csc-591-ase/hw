@@ -16,4 +16,3 @@ def test_half():
     print(o(A), c)
     print(o(mid))
     print(o(B))
-    assert True
