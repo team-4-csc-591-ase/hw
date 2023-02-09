@@ -1,3 +1,5 @@
+import copy
+import json
 import math
 import re
 from pathlib import Path
@@ -7,28 +9,23 @@ from src.config import CONSTS, CONSTS_LIST
 
 
 def get_project_root() -> str:
+    """
+    Get absolute path of the project
+    Returns: Path in string format
+
+    """
     return str(Path(__file__).parent.parent)
 
 
-# def o(t: dict) -> str:
-#     """
-#
-#     Args:
-#         t: dict
-#
-#     Returns: str
-#
-#     """
-#
-#     result = "{"
-#     keys = list(t.keys())
-#     keys.sort()
-#     for key in keys:
-#         result += " :" + str(key) + " " + str(t[key])
-#
-#     result += "}"
-#     return result
 def o(t):
+    """
+
+    Args:
+        t:
+
+    Returns:
+
+    """
     if type(t) != dict and type(t) != list:
         return str(t)
 
@@ -52,7 +49,6 @@ def o(t):
     return "{" + " ".join(str(val) for val in array) + "}"
 
 
-# print t then return it
 def oo(t: dict) -> dict:
     """
 
@@ -125,6 +121,16 @@ def coerce(s: str) -> Any:
 
 
 def cosine(a, b, c):
+    """
+
+    Args:
+        a:
+        b:
+        c:
+
+    Returns:
+
+    """
     den = 1 if c == 0 else 2 * c
     x1 = (a**2 + c**2 - b**2) / den
     x2 = max(0, min(1, x1))
@@ -133,14 +139,40 @@ def cosine(a, b, c):
 
 
 def rint(lo, hi):
+    """
+
+    Args:
+        lo:
+        hi:
+
+    Returns:
+
+    """
     return math.floor(0.5 + rand(lo, hi))
 
 
 def any(t):
+    """
+
+    Args:
+        t:
+
+    Returns:
+
+    """
     return t[rint(0, len(t) - 1)]
 
 
 def many(t, n):
+    """
+
+    Args:
+        t:
+        n:
+
+    Returns:
+
+    """
     u = []
     for i in range(n):
         u.append(any(t))
@@ -148,15 +180,42 @@ def many(t, n):
 
 
 def push(t, x):
+    """
+
+    Args:
+        t:
+        x:
+
+    Returns:
+
+    """
     t.append(x)
 
 
 def lt(x):
+    """
+
+    Args:
+        x:
+
+    Returns:
+
+    """
+
     def fun(a, b):
         return a[x] < b[x]
 
 
 def map(t, fun):
+    """
+
+    Args:
+        t:
+        fun:
+
+    Returns:
+
+    """
     u = []
     for k, v in enumerate(t):
         v, k = fun(v)
@@ -165,6 +224,15 @@ def map(t, fun):
 
 
 def kap(t, fun):
+    """
+
+    Args:
+        t:
+        fun:
+
+    Returns:
+
+    """
     u = {}
     for k, v in enumerate(t):
         v, k = fun(k, v)
@@ -172,13 +240,167 @@ def kap(t, fun):
     return u
 
 
-def show(node, what, cols, n_places, lvl=0):
+def show(node, what=0, cols=0, n_places=0, lvl=0):
+    """
+
+    Args:
+        node:
+        what:
+        cols:
+        n_places:
+        lvl:
+
+    Returns:
+
+    """
     if node:
-        lvl = lvl or 0
-        print("| " * lvl, str(len(node["data"].rows)), " ")
-        if not node.get("left", None) or lvl == 0:
-            print(o(node["data"].stats("mid", node["data"].cols.y, n_places)))
+        string = "|.." * lvl
+        if node["left"] is None:
+            print(string, o(last(last(node["data"].rows).cells)))
         else:
-            print("")
-        show(node.get("left", None), what, cols, n_places, lvl + 1)
-        show(node.get("right", None), what, cols, n_places, lvl + 1)
+            string1 = "%.f" % (rnd(100 * node["c"]))
+            print(string, string1)
+        show(node["left"], what, cols, n_places, lvl + 1)
+        show(node["right"], what, cols, n_places, lvl + 1)
+
+
+def last(t):
+    """
+
+    Args:
+        t:
+
+    Returns:
+
+    """
+    return t[-1]
+
+
+def dofile(file):
+    """
+
+    Args:
+        file:
+
+    Returns:
+
+    """
+    file = open(file, "r", encoding="utf-8")
+    text = (
+        re.findall(r"(?<=return )[^.]*", file.read())[0]
+        .replace("{", "[")
+        .replace("}", "]")
+        .replace("=", ":")
+        .replace("[\n", "{\n")
+        .replace(" ]", " }")
+        .replace("'", '"')
+        .replace("_", '"_"')
+    )
+    file.close()
+    file_json = json.loads(re.sub(r"(\w+):", r'"\1":', text)[:-2] + "}")
+    return file_json
+
+
+def repgrid(file, Data=None):
+    """
+
+    Args:
+        file:
+        Data:
+
+    Returns:
+
+    """
+    t = dofile(file)
+    rows = repRows(t, transpose(t["cols"]), Data)
+    cols = repCols(t["cols"], Data)
+    show(rows.cluster(), "mid", rows.cols.all, 1)
+    show(cols.cluster(), "mid", cols.cols.all, 1)
+    repPlace(rows)
+
+
+def repRows(t, rows, Data=None):
+    """
+
+    Args:
+        t:
+        rows:
+        Data:
+
+    Returns:
+
+    """
+    rows = copy.deepcopy(rows)
+    for j, s in enumerate(rows[len(rows) - 1]):
+        rows[0][j] = rows[0][j] + ":" + s
+    rows.pop()
+    for n, row in enumerate(rows):
+        if n == 0:
+            row.append("thingX")
+        else:
+            u = t["rows"][len(t["rows"]) - n]
+            row.append(u[len(u) - 1])
+    return Data(rows)
+
+
+def repPlace(data, n=20):
+    """
+
+    Args:
+        data:
+        n:
+
+    Returns:
+
+    """
+    g = [[" " for _ in range(n + 1)] for i in range(n + 1)]
+    maxy = 0
+    print()
+    for r, row in enumerate(data.rows):
+        c = chr(65 + r)
+        print(c, row.cells[-1])
+        x, y = int(row.x * n // 1), int(row.y * n // 1)
+        maxy = max(maxy, y + 1)
+        g[y + 1][x + 1] = c
+    print()
+    for y in range(maxy):
+        print(*g[y])
+
+
+def transpose(t):
+    """
+
+    Args:
+        t:
+
+    Returns:
+
+    """
+    transposed = []
+    for i in range(len(t[0])):
+        transposed.append([row[i] for row in t])
+    return transposed
+
+
+def repCols(cols, Data):
+    """
+
+    Args:
+        cols:
+        Data:
+
+    Returns:
+
+    """
+    cols = copy.copy(cols)
+    for i, col in enumerate(cols):
+        col[len(col) - 1] = col[0] + ":" + col[len(col) - 1]
+        for j in range(1, len(col)):
+            col[j - 1] = col[j]
+        col.pop()
+    s = []
+    for i in range(len(cols[0])):
+        s.append("Num" + str(i))
+    cols.insert(0, s)
+    cols[0][len(cols[0]) - 1] = "thingX"
+    return Data(cols)

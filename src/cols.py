@@ -14,7 +14,7 @@ class Cols:
         self.y = list()
 
         for c, s in enumerate(names):
-            if re.match("^[A-Z]*", s):
+            if re.match(r"^[A-Z]+", s):
                 col: Union[Num, Sym] = Num(c, s)
             else:
                 col = Sym(c, s)
@@ -41,6 +41,5 @@ class Cols:
         Returns: None
 
         """
-        for _, names in enumerate(zip(self.x, self.y)):
-            for i, col in enumerate(names):
-                col.add(row.cells[i])
+        for indx in self.x + self.y:
+            indx.add(row.cells[indx.at])
