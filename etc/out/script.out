@@ -221,7 +221,7 @@ Test files: tests/test_optimize.py
 Not required for HW4
 Running test test_optimize - success
 Test files: tests/test_copy.py
-b4 {'a': 1, 'b': {'c': 2, 'd': [3]}} 
+b4 {'a': 1, 'b': {'c': 2, 'd': [3]}}
 after {'a': 1, 'b': {'c': 2, 'd': [10000]}}
 Running test test_copy - success
 Test files: tests/__init__.py
@@ -275,17 +275,17 @@ H IntelligentAgents
 I InformationHighway
 J BroadbandNetworks
 
-                                         
-  F                             B        
-                                         
-                                         
-                                         
-                                         
-                                         
-                            I            
-            E       D   J                
-          G                              
-                      A                  
+
+  F                             B
+
+
+
+
+
+                            I
+            E       D   J
+          G
+                      A
 Running test test_position - success
 Test files: tests/test_csv.py
 Not required for HW4
@@ -341,16 +341,16 @@ H IntelligentAgents
 I InformationHighway
 J BroadbandNetworks
 
-                                         
-  F                             B        
-                                         
-                                         
-                                         
-                                         
-                                         
-                            I            
-            E       D   J                
-          G                              
-                      A                  
+
+  F                             B
+
+
+
+
+
+                            I
+            E       D   J
+          G
+                      A
 Running test test_every - success
-Tests succeeded ✅ 
+Tests succeeded ✅
