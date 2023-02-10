@@ -16,5 +16,5 @@ rows={                      { _, _, _, _, _, _, _, _, _, 'Facebook'},
                             { _, _, _,  'Pinterest'},
                             { _, _,  'YouTube'},
                             { _, 'WhatsApp'},
-                            {'WeChat'}}
+                            {'Reddit'}}
 }

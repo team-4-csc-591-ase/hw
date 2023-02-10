@@ -45,7 +45,7 @@ Test files: tests/test_reprows.py
 {'n': 10, 'mu': 2.9, 'm2': 18.9, 'lo': 1, 'hi': 5, 'at': 4, 'txt': 'BasicUI:InteractiveUI', 'w': 1}
 {'n': 10, 'mu': 2.9, 'm2': 18.900000000000002, 'lo': 1, 'hi': 5, 'at': 5, 'txt': 'LessSecure:MoreSecure', 'w': 1}
 {'n': 0, 'has': {}, 'most': 0, 'mode': None, 'at': 6, 'txt': 'thingX'}
-{'cells': [1, 2, 4, 3, 5, 1, 'WeChat'], 'x': None, 'y': None}
+{'cells': [1, 2, 4, 3, 5, 1, 'Reddit'], 'x': None, 'y': None}
 {'cells': [5, 5, 2, 5, 3, 2, 'WhatsApp'], 'x': None, 'y': None}
 {'cells': [3, 1, 5, 3, 1, 1, 'YouTube'], 'x': None, 'y': None}
 {'cells': [1, 1, 4, 5, 3, 3, 'Pinterest'], 'x': None, 'y': None}
@@ -63,7 +63,7 @@ Test files: tests/test_optimize.py
 Not required for HW4
 Running test test_optimize - success
 Test files: tests/test_copy.py
-b4 {'a': 1, 'b': {'c': 2, 'd': [3]}}
+b4 {'a': 1, 'b': {'c': 2, 'd': [3]}} 
 after {'a': 1, 'b': {'c': 2, 'd': [10000]}}
 Running test test_copy - success
 Test files: tests/__init__.py
@@ -90,7 +90,7 @@ Test files: tests/test_prototypes.py
 |..|.. 53
 |..|..|.. LinkedIn
 |..|..|.. 44
-|..|..|..|.. WeChat
+|..|..|..|.. Reddit
 |..|..|..|.. Facebook
 Running test test_prototypes - success
 Test files: tests/test_the.py
@@ -106,7 +106,7 @@ Not required for HW4
 Running test test_data - success
 Test files: tests/test_position.py
 
-A WeChat
+A Reddit
 B WhatsApp
 C YouTube
 D Pinterest
@@ -117,16 +117,16 @@ H Twitter
 I Instagram
 J Facebook
 
-
-  F                         C
-
-
-          G
-
-            H       I
-        B           D
-                        J
-                    A
+                                         
+  F                         C            
+                                         
+                                         
+          G                              
+                                         
+            H       I                    
+        B           D                    
+                        J                
+                    A                    
 
 Running test test_position - success
 Test files: tests/test_csv.py
@@ -154,7 +154,7 @@ Test files: tests/test_every.py
 |..|.. 53
 |..|..|.. LinkedIn
 |..|..|.. 44
-|..|..|..|.. WeChat
+|..|..|..|.. Reddit
 |..|..|..|.. Facebook
  64
 |.. 62
@@ -168,7 +168,7 @@ Test files: tests/test_every.py
 |..|..|.. IrrelevantContent:RelevantContent
 |..|..|.. BasicUI:InteractiveUI
 
-A WeChat
+A Reddit
 B WhatsApp
 C YouTube
 D Pinterest
@@ -179,16 +179,16 @@ H Twitter
 I Instagram
 J Facebook
 
-
-  F                         C
-
-
-          G
-
-            H       I
-        B           D
-                        J
-                    A
-
+                                         
+  F                         C            
+                                         
+                                         
+          G                              
+                                         
+            H       I                    
+        B           D                    
+                        J                
+                    A                    
+                                         
 Running test test_every - success
-Tests succeeded ✅
+Tests succeeded ✅ 
