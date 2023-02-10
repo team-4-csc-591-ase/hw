@@ -1,23 +1,148 @@
-============================= test session starts ==============================
-platform darwin -- Python 3.11.1, pytest-7.2.1, pluggy-1.0.0
-rootdir: /Users/urvashikar/Documents/GitHub/hw
-plugins: cov-4.0.0
-collected 19 items
-
-tests/test_around.py Not required for HW4
-.
-tests/test_clone.py Not required for HW4
-.
-tests/test_cluster.py Not required for HW4
-.
-tests/test_copy.py b4 {'a': 1, 'b': {'c': 2, 'd': [3]}} 
+Path provided: tests
+Files to ignore: ['__pycache__']
+Test files: tests/test_repcols.py
+{'n': 8, 'mu': 3.5, 'm2': 6.0, 'lo': 2, 'hi': 5, 'at': 0, 'txt': 'Num0', 'w': 1}
+{'n': 8, 'mu': 3.0, 'm2': 8.0, 'lo': 1, 'hi': 4, 'at': 1, 'txt': 'Num1', 'w': 1}
+{'n': 8, 'mu': 2.875, 'm2': 12.875, 'lo': 1, 'hi': 5, 'at': 2, 'txt': 'Num2', 'w': 1}
+{'n': 8, 'mu': 3.25, 'm2': 5.5, 'lo': 2, 'hi': 5, 'at': 3, 'txt': 'Num3', 'w': 1}
+{'n': 8, 'mu': 4.0, 'm2': 11.999999999999998, 'lo': 2, 'hi': 5, 'at': 4, 'txt': 'Num4', 'w': 1}
+{'n': 8, 'mu': 2.0, 'm2': 3.9999999999999996, 'lo': 1, 'hi': 3, 'at': 5, 'txt': 'Num5', 'w': 1}
+{'n': 8, 'mu': 2.1250000000000004, 'm2': 8.875000000000002, 'lo': 1, 'hi': 4, 'at': 6, 'txt': 'Num6', 'w': 1}
+{'n': 8, 'mu': 2.125, 'm2': 6.875, 'lo': 1, 'hi': 4, 'at': 7, 'txt': 'Num7', 'w': 1}
+{'n': 8, 'mu': 2.2500000000000004, 'm2': 7.500000000000001, 'lo': 1, 'hi': 4, 'at': 8, 'txt': 'Num8', 'w': 1}
+{'n': 8, 'mu': 2.75, 'm2': 13.5, 'lo': 1, 'hi': 5, 'at': 9, 'txt': 'Num9', 'w': 1}
+{'n': 0, 'has': {}, 'most': 0, 'mode': None, 'at': 10, 'txt': 'thingX'}
+{'cells': [5, 4, 5, 4, 5, 1, 1, 2, 1, 3, 'Feeling Connected:FOMO'], 'x': None, 'y': None}
+{'cells': [4, 3, 3, 2, 2, 2, 3, 1, 3, 1, 'SparksCreativity:MindlessScrolling'], 'x': None, 'y': None}
+{'cells': [4, 3, 1, 3, 2, 1, 4, 2, 4, 3, 'AdsAreUseful:AdsAreAnnoying'], 'x': None, 'y': None}
+{'cells': [2, 4, 2, 3, 4, 2, 2, 4, 1, 1, 'Secure:Insecure'], 'x': None, 'y': None}
+{'cells': [3, 3, 4, 3, 5, 2, 1, 2, 2, 4, 'NonAddictive:Addictive'], 'x': None, 'y': None}
+{'cells': [3, 2, 2, 3, 4, 3, 3, 1, 3, 2, 'Information:Misinformation'], 'x': None, 'y': None}
+{'cells': [3, 1, 2, 5, 5, 2, 2, 2, 2, 3, 'FreeAccess:ParentalControls'], 'x': None, 'y': None}
+{'cells': [4, 4, 4, 3, 5, 3, 1, 3, 2, 5, 'EasyToUse:DifficultToKeepUp'], 'x': None, 'y': None}
+Running test test_repcols - success
+Test files: tests/test_num.py
+Running test test_num - success
+Test files: tests/test_synonyms.py
+ 59
+|.. 36
+|..|.. 25
+|..|..|.. NonAddictive:Addictive
+|..|..|.. EasyToUse:DifficultToKeepUp
+|..|.. 51
+|..|..|.. FreeAccess:ParentalControls
+|..|..|.. Feeling Connected:FOMO
+|.. 59
+|..|.. 35
+|..|..|.. AdsAreUseful:AdsAreAnnoying
+|..|..|.. SparksCreativity:MindlessScrolling
+|..|.. 49
+|..|..|.. Secure:Insecure
+|..|..|.. Information:Misinformation
+Running test test_synonyms - success
+Test files: tests/test_stats.py
+Not required for HW4
+Running test test_stats - success
+Test files: tests/test_reprows.py
+{'n': 10, 'mu': 3.1, 'm2': 26.899999999999995, 'lo': 1, 'hi': 5, 'at': 0, 'txt': 'Feeling Connected:FOMO', 'w': 1}
+{'n': 10, 'mu': 2.4, 'm2': 8.399999999999999, 'lo': 1, 'hi': 4, 'at': 1, 'txt': 'SparksCreativity:MindlessScrolling', 'w': 1}
+{'n': 10, 'mu': 2.6999999999999997, 'm2': 12.1, 'lo': 1, 'hi': 4, 'at': 2, 'txt': 'AdsAreUseful:AdsAreAnnoying', 'w': 1}
+{'n': 10, 'mu': 2.5, 'm2': 12.5, 'lo': 1, 'hi': 4, 'at': 3, 'txt': 'Secure:Insecure', 'w': 1}
+{'n': 10, 'mu': 2.9, 'm2': 12.9, 'lo': 1, 'hi': 5, 'at': 4, 'txt': 'NonAddictive:Addictive', 'w': 1}
+{'n': 10, 'mu': 2.5999999999999996, 'm2': 6.399999999999998, 'lo': 1, 'hi': 4, 'at': 5, 'txt': 'Information:Misinformation', 'w': 1}
+{'n': 10, 'mu': 2.6999999999999997, 'm2': 16.1, 'lo': 1, 'hi': 5, 'at': 6, 'txt': 'FreeAccess:ParentalControls', 'w': 1}
+{'n': 10, 'mu': 3.4, 'm2': 14.400000000000002, 'lo': 1, 'hi': 5, 'at': 7, 'txt': 'EasyToUse:DifficultToKeepUp', 'w': 1}
+{'n': 0, 'has': {}, 'most': 0, 'mode': None, 'at': 8, 'txt': 'thingX'}
+{'cells': [5, 4, 4, 2, 3, 3, 3, 4, 'Reddit'], 'x': None, 'y': None}
+{'cells': [4, 3, 3, 4, 3, 2, 1, 4, 'Whatsapp'], 'x': None, 'y': None}
+{'cells': [5, 3, 1, 2, 4, 2, 2, 4, 'Youtube'], 'x': None, 'y': None}
+{'cells': [4, 2, 3, 3, 3, 3, 5, 3, 'Pinterest'], 'x': None, 'y': None}
+{'cells': [5, 2, 2, 4, 5, 4, 5, 5, 'LinkedIn'], 'x': None, 'y': None}
+{'cells': [1, 2, 1, 2, 2, 3, 2, 3, 'Snapchat'], 'x': None, 'y': None}
+{'cells': [1, 3, 4, 2, 1, 3, 2, 1, 'Tiktok'], 'x': None, 'y': None}
+{'cells': [2, 1, 2, 4, 2, 1, 2, 3, 'Twitter'], 'x': None, 'y': None}
+{'cells': [1, 3, 4, 1, 2, 3, 2, 2, 'Instagram'], 'x': None, 'y': None}
+{'cells': [3, 1, 3, 1, 4, 2, 3, 5, 'Facebook'], 'x': None, 'y': None}
+Running test test_reprows - success
+Test files: tests/test_half.py
+Not required for HW4
+Running test test_half - success
+Test files: tests/test_optimize.py
+Not required for HW4
+Running test test_optimize - success
+Test files: tests/test_copy.py
+b4 {'a': 1, 'b': {'c': 2, 'd': [3]}} 
 after {'a': 1, 'b': {'c': 2, 'd': [10000]}}
-.
-tests/test_csv.py Not required for HW4
-.
-tests/test_data.py Not required for HW4
-.
-tests/test_every.py 
+Running test test_copy - success
+Test files: tests/__init__.py
+Test files: tests/test_clone.py
+Not required for HW4
+Running test test_clone - success
+Test files: tests/test_sym.py
+Running test test_sym - success
+Test files: tests/test_prototypes.py
+ 62
+|.. 45
+|..|.. 42
+|..|..|.. Snapchat
+|..|..|.. Tiktok
+|..|.. 48
+|..|..|.. Facebook
+|..|..|.. 55
+|..|..|..|.. Twitter
+|..|..|..|.. Instagram
+|.. 51
+|..|.. 33
+|..|..|.. LinkedIn
+|..|..|.. Pinterest
+|..|.. 37
+|..|..|.. Whatsapp
+|..|..|.. 41
+|..|..|..|.. Reddit
+|..|..|..|.. Youtube
+Running test test_prototypes - success
+Test files: tests/test_the.py
+Running test test_the - success
+Test files: tests/test_rand.py
+Not required for HW4
+Running test test_rand - success
+Test files: tests/test_cluster.py
+Not required for HW4
+Running test test_cluster - success
+Test files: tests/test_data.py
+Not required for HW4
+Running test test_data - success
+Test files: tests/test_position.py
+
+A Reddit
+B Whatsapp
+C Youtube
+D Pinterest
+E LinkedIn
+F Snapchat
+G Tiktok
+H Twitter
+I Instagram
+J Facebook
+
+                                         
+  F                       E              
+                                         
+                                         
+                                         
+                                         
+                D                        
+            C                            
+      H   J B                            
+Running test test_position - success
+Test files: tests/test_csv.py
+Not required for HW4
+Running test test_csv - success
+Test files: tests/test_around.py
+Not required for HW4
+Running test test_around - success
+Test files: tests/test_every.py
+
  62
 |.. 45
 |..|.. 42
@@ -73,115 +198,5 @@ J Facebook
                 D                        
             C                            
       H   J B                            
-.
-tests/test_half.py Not required for HW4
-.
-tests/test_num.py .
-tests/test_optimize.py Not required for HW4
-.
-tests/test_position.py 
-A Reddit
-B Whatsapp
-C Youtube
-D Pinterest
-E LinkedIn
-F Snapchat
-G Tiktok
-H Twitter
-I Instagram
-J Facebook
-
-                                         
-  F                       E              
-                                         
-                                         
-                                         
-                                         
-                D                        
-            C                            
-      H   J B                            
-.
-tests/test_prototypes.py  62
-|.. 45
-|..|.. 42
-|..|..|.. Snapchat
-|..|..|.. Tiktok
-|..|.. 48
-|..|..|.. Facebook
-|..|..|.. 55
-|..|..|..|.. Twitter
-|..|..|..|.. Instagram
-|.. 51
-|..|.. 33
-|..|..|.. LinkedIn
-|..|..|.. Pinterest
-|..|.. 37
-|..|..|.. Whatsapp
-|..|..|.. 41
-|..|..|..|.. Reddit
-|..|..|..|.. Youtube
-.
-tests/test_rand.py Not required for HW4
-.
-tests/test_repcols.py {'n': 8, 'mu': 3.5, 'm2': 6.0, 'lo': 2, 'hi': 5, 'at': 0, 'txt': 'Num0', 'w': 1}
-{'n': 8, 'mu': 3.0, 'm2': 8.0, 'lo': 1, 'hi': 4, 'at': 1, 'txt': 'Num1', 'w': 1}
-{'n': 8, 'mu': 2.875, 'm2': 12.875, 'lo': 1, 'hi': 5, 'at': 2, 'txt': 'Num2', 'w': 1}
-{'n': 8, 'mu': 3.25, 'm2': 5.5, 'lo': 2, 'hi': 5, 'at': 3, 'txt': 'Num3', 'w': 1}
-{'n': 8, 'mu': 4.0, 'm2': 11.999999999999998, 'lo': 2, 'hi': 5, 'at': 4, 'txt': 'Num4', 'w': 1}
-{'n': 8, 'mu': 2.0, 'm2': 3.9999999999999996, 'lo': 1, 'hi': 3, 'at': 5, 'txt': 'Num5', 'w': 1}
-{'n': 8, 'mu': 2.1250000000000004, 'm2': 8.875000000000002, 'lo': 1, 'hi': 4, 'at': 6, 'txt': 'Num6', 'w': 1}
-{'n': 8, 'mu': 2.125, 'm2': 6.875, 'lo': 1, 'hi': 4, 'at': 7, 'txt': 'Num7', 'w': 1}
-{'n': 8, 'mu': 2.2500000000000004, 'm2': 7.500000000000001, 'lo': 1, 'hi': 4, 'at': 8, 'txt': 'Num8', 'w': 1}
-{'n': 8, 'mu': 2.75, 'm2': 13.5, 'lo': 1, 'hi': 5, 'at': 9, 'txt': 'Num9', 'w': 1}
-{'n': 0, 'has': {}, 'most': 0, 'mode': None, 'at': 10, 'txt': 'thingX'}
-{'cells': [5, 4, 5, 4, 5, 1, 1, 2, 1, 3, 'Feeling Connected:FOMO'], 'x': None, 'y': None}
-{'cells': [4, 3, 3, 2, 2, 2, 3, 1, 3, 1, 'SparksCreativity:MindlessScrolling'], 'x': None, 'y': None}
-{'cells': [4, 3, 1, 3, 2, 1, 4, 2, 4, 3, 'AdsAreUseful:AdsAreAnnoying'], 'x': None, 'y': None}
-{'cells': [2, 4, 2, 3, 4, 2, 2, 4, 1, 1, 'Secure:Insecure'], 'x': None, 'y': None}
-{'cells': [3, 3, 4, 3, 5, 2, 1, 2, 2, 4, 'NonAddictive:Addictive'], 'x': None, 'y': None}
-{'cells': [3, 2, 2, 3, 4, 3, 3, 1, 3, 2, 'Information:Misinformation'], 'x': None, 'y': None}
-{'cells': [3, 1, 2, 5, 5, 2, 2, 2, 2, 3, 'FreeAccess:ParentalControls'], 'x': None, 'y': None}
-{'cells': [4, 4, 4, 3, 5, 3, 1, 3, 2, 5, 'EasyToUse:DifficultToKeepUp'], 'x': None, 'y': None}
-.
-tests/test_reprows.py {'n': 10, 'mu': 3.1, 'm2': 26.899999999999995, 'lo': 1, 'hi': 5, 'at': 0, 'txt': 'Feeling Connected:FOMO', 'w': 1}
-{'n': 10, 'mu': 2.4, 'm2': 8.399999999999999, 'lo': 1, 'hi': 4, 'at': 1, 'txt': 'SparksCreativity:MindlessScrolling', 'w': 1}
-{'n': 10, 'mu': 2.6999999999999997, 'm2': 12.1, 'lo': 1, 'hi': 4, 'at': 2, 'txt': 'AdsAreUseful:AdsAreAnnoying', 'w': 1}
-{'n': 10, 'mu': 2.5, 'm2': 12.5, 'lo': 1, 'hi': 4, 'at': 3, 'txt': 'Secure:Insecure', 'w': 1}
-{'n': 10, 'mu': 2.9, 'm2': 12.9, 'lo': 1, 'hi': 5, 'at': 4, 'txt': 'NonAddictive:Addictive', 'w': 1}
-{'n': 10, 'mu': 2.5999999999999996, 'm2': 6.399999999999998, 'lo': 1, 'hi': 4, 'at': 5, 'txt': 'Information:Misinformation', 'w': 1}
-{'n': 10, 'mu': 2.6999999999999997, 'm2': 16.1, 'lo': 1, 'hi': 5, 'at': 6, 'txt': 'FreeAccess:ParentalControls', 'w': 1}
-{'n': 10, 'mu': 3.4, 'm2': 14.400000000000002, 'lo': 1, 'hi': 5, 'at': 7, 'txt': 'EasyToUse:DifficultToKeepUp', 'w': 1}
-{'n': 0, 'has': {}, 'most': 0, 'mode': None, 'at': 8, 'txt': 'thingX'}
-{'cells': [5, 4, 4, 2, 3, 3, 3, 4, 'Reddit'], 'x': None, 'y': None}
-{'cells': [4, 3, 3, 4, 3, 2, 1, 4, 'Whatsapp'], 'x': None, 'y': None}
-{'cells': [5, 3, 1, 2, 4, 2, 2, 4, 'Youtube'], 'x': None, 'y': None}
-{'cells': [4, 2, 3, 3, 3, 3, 5, 3, 'Pinterest'], 'x': None, 'y': None}
-{'cells': [5, 2, 2, 4, 5, 4, 5, 5, 'LinkedIn'], 'x': None, 'y': None}
-{'cells': [1, 2, 1, 2, 2, 3, 2, 3, 'Snapchat'], 'x': None, 'y': None}
-{'cells': [1, 3, 4, 2, 1, 3, 2, 1, 'Tiktok'], 'x': None, 'y': None}
-{'cells': [2, 1, 2, 4, 2, 1, 2, 3, 'Twitter'], 'x': None, 'y': None}
-{'cells': [1, 3, 4, 1, 2, 3, 2, 2, 'Instagram'], 'x': None, 'y': None}
-{'cells': [3, 1, 3, 1, 4, 2, 3, 5, 'Facebook'], 'x': None, 'y': None}
-.
-tests/test_stats.py Not required for HW4
-.
-tests/test_sym.py .
-tests/test_synonyms.py  59
-|.. 36
-|..|.. 25
-|..|..|.. NonAddictive:Addictive
-|..|..|.. EasyToUse:DifficultToKeepUp
-|..|.. 51
-|..|..|.. FreeAccess:ParentalControls
-|..|..|.. Feeling Connected:FOMO
-|.. 59
-|..|.. 35
-|..|..|.. AdsAreUseful:AdsAreAnnoying
-|..|..|.. SparksCreativity:MindlessScrolling
-|..|.. 49
-|..|..|.. Secure:Insecure
-|..|..|.. Information:Misinformation
-.
-tests/test_the.py .
-
-============================== 19 passed in 0.04s ==============================
+Running test test_every - success
+Tests succeeded ✅ 
