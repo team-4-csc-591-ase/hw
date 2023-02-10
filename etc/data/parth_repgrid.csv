@@ -1,14 +1,12 @@
 local _ = " "
 return {
  domain="Social Media",
- cols={   {'Feeling Connected', 5, 4, 5, 4, 5, 1, 1, 2, 1, 3, 'FOMO'},
-               {'SparksCreativity', 4, 3, 3, 2, 2, 2, 3, 1, 3, 1, 'MindlessScrolling'},
-  {'AdsAreUseful', 4, 3, 1, 3, 2, 1, 4, 2, 4, 3, 'AdsAreAnnoying'},
-       {'Secure' , 2, 4, 2, 3, 4, 2, 2, 4, 1, 1, 'Insecure'},
-{'NonAddictive', 3, 3, 4, 3, 5, 2, 1, 2, 2, 4, 'Addictive'},
-      {'Information', 3, 2, 2, 3, 4, 3, 3, 1, 3, 2, 'Misinformation'},
-       {'FreeAccess', 3, 1, 2, 5, 5, 2, 2, 2, 2, 3, 'ParentalControls'},
-      {'EasyToUse', 4, 4, 4, 3, 5, 3, 1, 3, 2, 5, 'DifficultToKeepUp'}},
+ cols={   {'LessTimeSpent', 1, 5, 3, 1, 1, 4, 2, 5, 5, 1, 'MoreTimeSpent'},
+          {'IrrelevantContent', 2, 5, 1, 1, 1, 5, 4, 5, 3, 1, 'RelevantContent'},
+          {'DifficultyInContentSharing', 4, 2, 5, 4, 1, 3, 4, 1, 5, 5, 'EaseInContentSharing'},
+          {'LowEngagement', 3, 5, 3, 5, 1, 4, 3, 5, 5, 1, 'HighEngagement'},
+          {'BasicUI', 5, 3, 1, 3, 2, 4, 3, 5, 1, 2, 'InteractiveUI'},
+          {'LessSecure', 1, 2, 1, 3, 3, 5, 4, 5, 2, 3, 'MoreSecure'}},
 rows={                      { _, _, _, _, _, _, _, _, _, 'Facebook'},
                             { _, _, _, _, _, _, _, _, 'Instagram'},
                             { _, _, _, _, _, _, _, 'Twitter'},
@@ -16,7 +14,7 @@ rows={                      { _, _, _, _, _, _, _, _, _, 'Facebook'},
                             { _, _, _, _, _,  'Snapchat'},
                             { _, _, _, _,  'LinkedIn'},
                             { _, _, _,  'Pinterest'},
-                            { _, _,  'Youtube'},
-                            { _, 'Whatsapp'},
-                            {'Reddit'}}
+                            { _, _,  'YouTube'},
+                            { _, 'WhatsApp'},
+                            {'WeChat'}}
 }
