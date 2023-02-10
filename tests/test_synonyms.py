@@ -18,4 +18,3 @@ def test_synonyms():
         cols=data.cols.all,
         n_places=0,
     )
-    return True
