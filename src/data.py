@@ -1,6 +1,6 @@
 from typing import Any, List, Union
 
-from src import utils
+from src import lists, utils
 from src.cols import Cols
 from src.config import CONSTS, CONSTS_LIST
 from src.rows import Rows
@@ -74,7 +74,7 @@ class Data:
             _callable = getattr(col, what)
             return col.rnd(_callable(), n_places), col.txt
 
-        return utils.kap(cols, fun)
+        return lists.kap(cols, fun)
 
     def dist(self, row1, row2, cols=None):
         """
