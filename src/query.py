@@ -3,6 +3,7 @@ import math
 from src.lists import per
 
 
+
 def div(col):
     if hasattr(col, "isSym"):
         e = 0

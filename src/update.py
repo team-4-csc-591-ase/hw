@@ -41,3 +41,4 @@ def extend(range, n, s):
     range.lo = min(n, range.lo)
     range.hi = max(n, range.hi)
     add(range.y, s)
+

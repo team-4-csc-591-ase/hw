@@ -30,4 +30,7 @@ CONSTS_LIST: Dict[str, Any] = {
     CONSTS.cliffs.name: 0.147,
     CONSTS.bins.name: 16,
     CONSTS.Max.name: 512,
+    CONSTS.Reuse.name: True,
+    CONSTS.Halves.name: 512,
+    CONSTS.rest.name: 4,
 }
