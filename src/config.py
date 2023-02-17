@@ -15,6 +15,9 @@ class CONSTS(Enum):
     cliffs = "cliffs"
     bins = "bins"
     Max = "Max"
+    Reuse = "Reuse"
+    Halves = "Halves"
+    rest = "rest"
 
 
 CONSTS_LIST: Dict[str, Any] = {

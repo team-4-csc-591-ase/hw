@@ -7,6 +7,9 @@ class Sym:
         self.at = n
         self.txt = s
         self.isSym = True
+        self.isKlass = False
+        self.isIgnored = False
+        self.isGoal = False
 
     # def rnd(self, x, n) -> float:
     #     """

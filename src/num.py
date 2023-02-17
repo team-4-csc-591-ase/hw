@@ -7,6 +7,10 @@ class Num:
         self.has: dict = {}
         self.lo = float("inf")
         self.hi = float("-inf")
+        self.isKlass = False
+        self.isIgnored = False
+        self.isGoal = False
+
         if "-" in self.txt:
             self.w = -1
         else:

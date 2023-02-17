@@ -7,6 +7,9 @@ from src.sym import Sym  # type: ignore
 
 class Col:
     def __init__(self, names: List[str]):
+        self.isIgnored = False
+        self.isKlass = False
+        self.isGoal = False
         for c, s in enumerate(names):
             if re.match(r"^[A-Z]+", s):
                 col: Union[Num, Sym] = Num(c, s)

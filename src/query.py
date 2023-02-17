@@ -1,7 +1,7 @@
 import math
 
-from src.lists import per
-
+from src.config import CONSTS, CONSTS_LIST
+from src.lists import kap, per
 
 
 def div(col):
