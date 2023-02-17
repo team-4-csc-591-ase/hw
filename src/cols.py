@@ -1,6 +1,4 @@
-import re
-from typing import List, Union
-
+from src.col import Col  # type: ignore
 from src.num import Num  # type: ignore
 from src.sym import Sym  # type: ignore
 

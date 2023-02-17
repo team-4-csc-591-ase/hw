@@ -13,6 +13,8 @@ class CONSTS(Enum):
     Far = "Far"
     min = "min"
     cliffs = "cliffs"
+    bins = "bins"
+    Max = "Max"
 
 
 CONSTS_LIST: Dict[str, Any] = {
@@ -26,4 +28,6 @@ CONSTS_LIST: Dict[str, Any] = {
     CONSTS.min.name: 0.5,
     CONSTS.Sample.name: 512,
     CONSTS.cliffs.name: 0.147,
+    CONSTS.bins.name: 16,
+    CONSTS.Max.name: 512,
 }

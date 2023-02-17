@@ -1,7 +1,3 @@
-import math
-from typing import Any, Optional
-
-
 class Sym:
     def __init__(self, at=0, txt="") -> None:
         self.n = 0
