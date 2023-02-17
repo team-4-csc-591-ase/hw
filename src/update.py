@@ -42,3 +42,10 @@ def extend(range, n, s):
     range.hi = max(n, range.hi)
     add(range.y, s)
 
+
+def adds(col, t):
+    if t is None:
+        return col
+    for x in t:
+        add(col, x)
+    return col
