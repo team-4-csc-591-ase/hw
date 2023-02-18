@@ -390,6 +390,7 @@ function rnd(n, nPlaces)
 -- Random number generation.
 Seed=937162211 -- seed
 function rint(nlo,nhi)  -- random ints
+  -- print('Current seed value:', Seed)
   return m.floor(0.5 + rand(nlo,nhi)) end
 
 function rand(nlo,nhi) -- random floats

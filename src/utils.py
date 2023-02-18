@@ -73,7 +73,7 @@ def settings(s: str) -> dict:
     return dict(re.findall(r"\n[\s]+[-][\S]+[\s]+[-][-]([\S]+)[^\n]+= ([\S]+)", s))
 
 
-def rand(lo, hi) -> float:
+def rand(lo=None, hi=None) -> float:
     """
     Args: hi, lo
 
