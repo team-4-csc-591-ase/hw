@@ -5,13 +5,13 @@ from src.config import CONSTS, CONSTS_LIST
 
 
 def row(data, t):
-    if data.cols:
+    if data['cols']:
         data["rows"].append(t)
         for cols in [data["cols"]["x"], data["cols"]["y"]]:
             for col in cols:
                 add(col, t[col.at])
     else:
-        data.cols = Cols(t)
+        data['cols'] = Cols(t)
     return data
 
 

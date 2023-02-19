@@ -1,8 +1,7 @@
+from src.data import clone
 from src.lists import many
 from src.query import dist, stats
-from src.data import Data
 from src.config import CONSTS, CONSTS_LIST
-from src.utils import o
 
 
 # Cluster `rows` into two sets by
@@ -39,9 +38,9 @@ def half(data, rows=None, cols=None, above=None):
 # Cluster, recursively, some `rows` by  dividing them in two, many times
 def tree(data, rows=None, cols=None, above=None):
     rows = rows or data["rows"]
-    here = {"data": Data.clone(data, rows)}
+    here = {"data": clone(data, rows)}
     if len(rows) >= 2*(len(data["rows"])**CONSTS_LIST[CONSTS.min.name]):
-        left, right, A, B = Data.half(data, rows, cols, above)
+        left, right, A, B = half(data, rows, cols, above)
         here["left"] = tree(data, left, cols, A)
         here["right"] = tree(data, right, cols, B)
     return here

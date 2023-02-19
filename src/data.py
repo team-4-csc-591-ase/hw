@@ -1,5 +1,5 @@
 from src.utils import csv
-from update import row
+from src.update import row
 
 
 def new():

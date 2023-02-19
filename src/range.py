@@ -1,4 +1,4 @@
-from sym import Sym
+from src.sym import Sym
 
 
 class RANGE:
