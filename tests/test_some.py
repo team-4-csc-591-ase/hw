@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from src.config import CONSTS_LIST, CONSTS
+from src.config import CONSTS, CONSTS_LIST
 from src.num import Num
 from src.query import has
 from src.update import add
@@ -20,5 +20,6 @@ def test_some(mock_print=None):
         " 4469 4570 5863 5907 5957 6147 6440 6727 7228 7517 7574 7598"
         " 7765 7955 8311 8379 8538 9052 9189 9323}"
     )
+
 
 #

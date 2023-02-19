@@ -1,6 +1,6 @@
 import os
 
-from src.config import CONSTS_LIST, CONSTS
+from src.config import CONSTS, CONSTS_LIST
 from src.data import read
 from src.num import Num
 from src.query import dist, mid

@@ -2,7 +2,7 @@ import os
 
 from src.config import CONSTS, CONSTS_LIST
 from src.data import read
-from src.query import mid, div, stats
+from src.query import div, mid, stats
 from src.utils import get_project_root, oo
 
 
@@ -12,7 +12,7 @@ def test_data():
 
     """
     project_root = get_project_root()
-    file_path=os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
+    file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
 
     data = read(f)

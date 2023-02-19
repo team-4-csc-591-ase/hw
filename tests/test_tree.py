@@ -1,7 +1,7 @@
 import os
 
-from src.clustering import tree, show_tree
-from src.config import CONSTS_LIST, CONSTS
+from src.clustering import show_tree, tree
+from src.config import CONSTS, CONSTS_LIST
 from src.data import read
 from src.utils import get_project_root
 

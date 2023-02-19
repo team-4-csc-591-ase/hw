@@ -1,6 +1,6 @@
 import os
 
-from src.config import CONSTS_LIST, CONSTS
+from src.config import CONSTS, CONSTS_LIST
 from src.data import read
 from src.discretization import bins
 from src.optimization import sway
@@ -17,14 +17,15 @@ def test_bins():
     best, rest = sway(data)
     print("all", "", "", "", o({"best": len(best.rows), "rest": len(rest.rows)}))
     b4 = None
-    for k, t in (bins(data.cols.x, {"best": best.rows, "rest": rest.rows})):
+    for k, t in bins(data.cols.x, {"best": best.rows, "rest": rest.rows}):
         for range in t:
             if range.txt != b4:
                 print("")
             b4 = range.txt
-            print(range.txt,
-                  range.lo,
-                  range.hi,
-                  rnd(value(range.y.has, len(best.rows), len(rest.rows), "best")),
-                  o(range.y.has)
-                  )
+            print(
+                range.txt,
+                range.lo,
+                range.hi,
+                rnd(value(range.y.has, len(best.rows), len(rest.rows), "best")),
+                o(range.y.has),
+            )
