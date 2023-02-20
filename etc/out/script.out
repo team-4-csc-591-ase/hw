@@ -354,3 +354,15 @@ J BroadbandNetworks
                       A
 Running test test_every - success
 Tests succeeded ✅
+Path provided: tests
+Files to ignore: ['__pycache__']
+Test files: tests/test_some.py
+Running test test_some - failure
+Test files: tests/test_cliffs.py
+> 1.0 False
+> 1.025 True
+Running test test_cliffs - success
+Test files: tests/test_stats.py
+Not required for HW4
+Running test test_stats - success
+Test files: tests/test_tree.py
