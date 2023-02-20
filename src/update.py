@@ -2,6 +2,7 @@ import random
 
 from src.cols import Cols
 from src.config import CONSTS, CONSTS_LIST
+from src.utils import rint
 
 
 def row(data, t):
@@ -18,23 +19,26 @@ def row(data, t):
 def add(col, x, n=1):
     if x != "?":
         col.n = col.n + n  # Source of variable 'n'
-        if col.isSym:
+        if hasattr(col, "isSym") and col.isSym:
             col.has[x] = n + col.has.get(x, 0)
             if col.has[x] > col.most:
                 col.most, col.mode = col.has[x], x
         else:
+            x = float(x)
             col.lo = min(x, col.lo)
             col.hi = max(x, col.hi)
             all = len(col.has)
             if all < CONSTS_LIST[CONSTS.Max.name]:
                 pos = all + 1
             elif random.random() < CONSTS_LIST[CONSTS.Max.name] / col.n:
-                pos = random.randint(1, all)
+                pos = rint(1, all)
             else:
                 pos = None
             if pos:
-                col.has[pos - 1] = x
-                col.ok = False
+                if isinstance(col.has, dict):
+                    col.has[pos] = x
+                else:
+                    col.has.append(x)
 
 
 def extend(range, n, s):

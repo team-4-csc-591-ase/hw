@@ -19,8 +19,11 @@ def div(col):
 
 
 def has(col):
-    if not col.isSym and not col.ok:
-        col.has.sort()
+    if not hasattr(col, "isSym") and not col.ok:
+        if isinstance(col.has, dict):
+            col.has = dict(sorted(col.has.items(), key=lambda item: item[1]))
+        else:
+            col.has.sort()
     col.ok = True
     return col.has
 
