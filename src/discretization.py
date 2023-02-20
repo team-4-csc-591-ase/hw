@@ -46,10 +46,15 @@ def bins(cols, rowss):
                 x = row[col.at]
                 if x != "?":
                     k = int(bin(col, float(x) if x != "?" else x))
-                    if k in ranges:
-                        ranges[k] = ranges[k]
-                    else:
-                        RANGE(col.at, col.txt, float(x) if x != "?" else x)
+                    # if k in ranges:
+                    #     ranges[k] = ranges[k]
+                    # else:
+                    #     RANGE(col.at, col.txt, float(x) if x != "?" else x)
+                    ranges[k] = (
+                        ranges[k]
+                        if k in ranges
+                        else RANGE(col.at, col.txt, float(x) if x != "?" else x)
+                    )
                     update.extend(ranges[k], float(x), y)
         ranges = {
             key: value for key, value in sorted(ranges.items(), key=lambda x: x[1].lo)
