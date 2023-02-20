@@ -6,11 +6,6 @@ from src.utils import get_project_root
 
 
 def test_csv() -> None:
-    """
-    Not needed for HW4
-    Returns:
-
-    """
     project_root = get_project_root()
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path

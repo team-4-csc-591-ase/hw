@@ -10,3 +10,4 @@ class Sym:
         self.isKlass = False
         self.isIgnored = False
         self.isGoal = False
+        self.ok = False

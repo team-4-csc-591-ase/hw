@@ -214,7 +214,8 @@ def diffs(nums1, nums2):
         return [fn(k, v) for k, v in enumerate(nums)]
 
     return kap(
-        nums1, lambda k, nums: (cliffs_delta(nums["has"], nums2[k]["has"]), nums["txt"])
+        nums1,
+        lambda k, nums: (cliffs_delta(nums.col.has, nums2[k].col.has), nums.col.txt),
     )
 
 

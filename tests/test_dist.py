@@ -1,7 +1,7 @@
 import os
 
 from src.config import CONSTS, CONSTS_LIST
-from src.data import read
+from src.data import Data
 from src.num import Num
 from src.query import dist, mid
 from src.update import add
@@ -13,8 +13,9 @@ def test_dist():
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
 
-    data = read(f)
+    data = Data().read(f)
     num = Num()
     for row in data.rows:
         add(num, dist(data, row, data.rows[1]))
-    print({"lo": num.lo, "hi": num.hi, "mid": rnd(mid(num)), "div": rnd(num)})
+    # print({"lo": num.lo, "hi": num.hi, "mid": rnd(mid(num)), "div": rnd(num)})
+    print({"lo": num.lo, "hi": num.hi, "mid": rnd(mid(num)), "div": rnd(num.n)})

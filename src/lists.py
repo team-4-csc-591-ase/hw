@@ -55,7 +55,7 @@ def map(t, fun):
 # Map a function on table (results in items key1,key2,...)
 def kap(t, fun):
     u = {}
-    for k, v in t.items():
+    for k, v in enumerate(t):
         v, k = fun(k, v)
         u[k or len(u) + 1] = v
     return u

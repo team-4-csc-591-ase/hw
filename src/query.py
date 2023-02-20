@@ -29,17 +29,24 @@ def has(col):
 
 
 def mid(col):
-    if col.isSym:
+    if hasattr(col, "isSym") and col.isSym:
         return col.mode
     else:
         return per(has(col), 0.5)
 
 
 def stats(data, fun=None, cols=None, n_places=2):
+    def helper(k, col):
+        col = col.col
+        return round((fun or mid)(col), n_places), col.txt
+
     cols = cols or data.cols.y
-    tmp = kap(cols, lambda k, col: (round((fun or mid)(col), n_places), col.txt))
-    tmp["N"] = len(data.rows)
-    return tmp, list(map(mid, cols))
+
+    # tmp = kap(cols, lambda k, col: (round((fun or mid)(col), n_places), col.txt))
+    temp = kap(cols, helper)
+    temp["N"] = len(data.rows)
+    # return temp, map(mid, cols)
+    return temp
 
 
 def norm(num, n):
@@ -48,7 +55,7 @@ def norm(num, n):
 
 def value(has, nB=1, nR=1, sGoal=True):
     b, r = 0, 0
-    for x, n in enumerate(has):
+    for x, n in has.items():
         if x == sGoal:
             b = b + n
         else:
@@ -61,7 +68,7 @@ def dist(data, t1, t2, cols=None):
     def dist1(col, x, y):
         if x == "?" and y == "?":
             return 1
-        if col.isSym:
+        if hasattr(col, "isSym"):
             if x == y:
                 return 0
             else:
@@ -73,19 +80,22 @@ def dist(data, t1, t2, cols=None):
                 if y < 0.5:
                     x = 1
                 else:
-                    x = 0
+                    x = 1
             if y == "?":
                 if x < 0.5:
                     y = 1
                 else:
-                    y = 0
+                    y = 1
             return abs(x - y)
 
     d, n = 0, 1 / float("inf")
     cols = cols or data.cols.x
     for col in cols:
         n += 1
-        d += dist1(col, t1[col.at], t2[col.at]) ** CONSTS_LIST[CONSTS.p.name]
+        d += (
+            dist1(col.col, float(t1[col.col.at]), float(t2[col.col.at]))
+            ** CONSTS_LIST[CONSTS.p.name]
+        )
 
     return (d / n) ** (1 / CONSTS_LIST[CONSTS.p.name])
 
@@ -93,10 +103,10 @@ def dist(data, t1, t2, cols=None):
 def better(data, row1, row2):
     s1, s2, ys = 0, 0, data.cols.y
     for _, col in enumerate(ys):
-        x = norm(col, row1[col.at])
-        y = norm(col, row2[col.at])
+        x = norm(col.col, row1[col.col.at])
+        y = norm(col.col, row2[col.col.at])
 
-        s1 = s1 - math.exp(col.w * (x - y) / len(ys))
-        s2 = s2 - math.exp(col.w * (y - x) / len(ys))
+        s1 = s1 - math.exp(col.col.w * (x - y) / len(ys))
+        s2 = s2 - math.exp(col.col.w * (y - x) / len(ys))
 
     return s1 / len(ys) < s2 / len(ys)

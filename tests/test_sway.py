@@ -1,7 +1,7 @@
 import os
 
 from src.config import CONSTS, CONSTS_LIST
-from src.data import read
+from src.data import Data
 from src.optimization import sway
 from src.query import div, stats
 from src.utils import diffs, get_project_root, o
@@ -12,7 +12,7 @@ def test_sway():
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
 
-    data = read(f)
+    data = Data().read(f)
     best, rest = sway(data)
     print("\nall ", o(stats(data)))
     print("    ", o(stats(data, div)))

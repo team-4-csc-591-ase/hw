@@ -6,13 +6,13 @@ from src.utils import rint
 
 
 def row(data, t):
-    if data["cols"]:
-        data["rows"].append(t)
-        for cols in [data["cols"]["x"], data["cols"]["y"]]:
+    if data.cols:
+        data.rows.append(t)
+        for cols in [data.cols.x, data.cols.y]:
             for col in cols:
-                add(col, t[col.at])
+                add(col.col, t[col.col.at])
     else:
-        data["cols"] = Cols(t)
+        data.cols = Cols(t)
     return data
 
 

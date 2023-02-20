@@ -1,31 +1,70 @@
 import math
 
+from src import update
+from src.col import Col
 from src.config import CONSTS, CONSTS_LIST
 from src.lists import copy
 from src.query import div
 from src.range import RANGE
-from src.update import add, extend
-from src.utils import itself
+from src.update import add
+
+# def bins(cols, rowss):
+#     out = []
+#     for col in cols:
+#         ranges = []
+#         for y, rows in enumerate(rowss):
+#             for row in rows:
+#                 if isinstance(col, Col):
+#                     col = col.col
+#                 x = row[col.at]
+#                 if x != "?":
+#                     k = int(bin(col, float(x) if x != "?" else x))
+#                     ranges[k] = ranges[k] if ranges[k] else RANGE(col.at, col.txt, x)
+#                     extend(ranges[k], x, y)
+#         ranges = sorted(map(itself, ranges))
+#         out.append(ranges if col.isSym else merge_any(ranges))
+#     return out
 
 
 def bins(cols, rowss):
     out = []
     for col in cols:
-        ranges = []
-        for y, rows in enumerate(rowss):
+        ranges = {}
+        for y, rows in rowss.items():
             for row in rows:
-                x, k = row[col.at]
+                if isinstance(col, Col):
+                    col = col.col
+                x = row[col.at]
                 if x != "?":
-                    k = bin(col, x)
-                    ranges[k] = ranges[k] if ranges[k] else RANGE(col.at, col.txt, x)
-                    extend(ranges[k], x, y)
-        ranges = sorted(map(ranges, itself))
-        out.append(ranges if col.isSym else merge_any(ranges))
+                    k = int(bin(col, float(x) if x != "?" else x))
+                    ranges[k] = (
+                        ranges[k]
+                        if k in ranges
+                        else RANGE(col.at, col.txt, float(x) if x != "?" else x)
+                    )
+                    update.extend(ranges[k], float(x), y)
+        ranges = {
+            key: value for key, value in sorted(ranges.items(), key=lambda x: x[1].lo)
+        }
+        newRanges = {}
+        i = 0
+        for key in ranges:
+            newRanges[i] = ranges[key]
+            i += 1
+        newRangesList = []
+        if hasattr(col, "isSym") and col.isSym:
+            for item in newRanges.values():
+                newRangesList.append(item)
+        out.append(
+            newRangesList
+            if hasattr(col, "isSym") and col.isSym
+            else merge_any(newRanges)
+        )
     return out
 
 
 def bin(col, x):
-    if x == "?" or col.isSym:
+    if x == "?" or hasattr(col, "isSym"):
         return x
     tmp = (col.hi - col.lo) / (CONSTS_LIST[CONSTS.bins.name] - 1)
     return 1 if col.hi == col.lo else math.floor(x / tmp + 0.5) * tmp
@@ -41,7 +80,7 @@ def merge_any(ranges0):
 
     ranges1, j = [], 0
     while j < len(ranges0):
-        left, right = ranges0[j], ranges0[j + 1]
+        left, right = ranges0[j], ranges0[j + 1] if j + 1 < len(ranges0) else None
         if right:
             y = merge2(left.y, right.y)
             if y:

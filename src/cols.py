@@ -3,13 +3,17 @@ from src.col import Col  # type: ignore
 
 class Cols:
     def __init__(self, ss):
-        self.cols = {"names": ss, "all": [], "x": [], "y": []}
-        for i in ss:
-            col = self.cols["all"].append(Col(i))
-            if not col["isIgnored"]:
-                if col["isKlass"]:
-                    col["isKlass"] = col
-                if col["isGoal"]:
-                    col.y.append(col)
+        self.names = ss
+        self.all = []
+        self.x = []
+        self.y = []
+        for i, val in enumerate(ss):
+            col = Col(i, val)
+            self.all.append(col)
+            if not col.isIgnored:
+                if col.isKlass:
+                    col.isKlass = col
+                if col.isGoal:
+                    self.y.append(col)
                 else:
-                    col.x.append(col)
+                    self.x.append(col)

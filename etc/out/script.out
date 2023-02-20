@@ -353,11 +353,10 @@ J BroadbandNetworks
           G
                       A
 Running test test_every - success
-Tests succeeded ✅
-Path provided: tests
+Tests succeeded ✅Path provided: tests
 Files to ignore: ['__pycache__']
 Test files: tests/test_some.py
-Running test test_some - failure
+Running test test_some - success
 Test files: tests/test_cliffs.py
 > 1.0 False
 > 1.025 True
@@ -366,3 +365,91 @@ Test files: tests/test_stats.py
 Not required for HW4
 Running test test_stats - success
 Test files: tests/test_tree.py
+[398]{'Lbs-': 2254.0, 'Acc+': 23.5, 'Mpg+': 20.0, 'N': 398}
+|.. [199]
+|.. |.. [100]
+|.. |.. |.. [50]
+|.. |.. |.. |.. [25]{'Lbs-': 2979.0, 'Acc+': 19.5, 'Mpg+': 20.0, 'N': 25}
+|.. |.. |.. |.. [25]{'Lbs-': 2464.0, 'Acc+': 15.5, 'Mpg+': 30.0, 'N': 25}
+|.. |.. |.. [50]
+|.. |.. |.. |.. [25]{'Lbs-': 2155.0, 'Acc+': 14.8, 'Mpg+': 30.0, 'N': 25}
+|.. |.. |.. |.. [25]{'Lbs-': 3190.0, 'Acc+': 24.8, 'Mpg+': 30.0, 'N': 25}
+|.. |.. [99]
+|.. |.. |.. [50]
+|.. |.. |.. |.. [25]{'Lbs-': 2635.0, 'Acc+': 18.3, 'Mpg+': 30.0, 'N': 25}
+|.. |.. |.. |.. [25]{'Lbs-': 2515.0, 'Acc+': 14.8, 'Mpg+': 20.0, 'N': 25}
+|.. |.. |.. [49]
+|.. |.. |.. |.. [25]{'Lbs-': 2640.0, 'Acc+': 18.6, 'Mpg+': 30.0, 'N': 25}
+|.. |.. |.. |.. [24]{'Lbs-': 2545.0, 'Acc+': 17.0, 'Mpg+': 20.0, 'N': 24}
+|.. [199]
+|.. |.. [100]
+|.. |.. |.. [50]
+|.. |.. |.. |.. [25]{'Lbs-': 4746.0, 'Acc+': 12.0, 'Mpg+': 10.0, 'N': 25}
+|.. |.. |.. |.. [25]{'Lbs-': 3664.0, 'Acc+': 11.0, 'Mpg+': 10.0, 'N': 25}
+|.. |.. |.. [50]
+|.. |.. |.. |.. [25]{'Lbs-': 3425.0, 'Acc+': 13.2, 'Mpg+': 20.0, 'N': 25}
+|.. |.. |.. |.. [25]{'Lbs-': 3221.0, 'Acc+': 13.5, 'Mpg+': 20.0, 'N': 25}
+|.. |.. [99]
+|.. |.. |.. [50]
+|.. |.. |.. |.. [25]{'Lbs-': 2542.0, 'Acc+': 17.0, 'Mpg+': 30.0, 'N': 25}
+|.. |.. |.. |.. [25]{'Lbs-': 3278.0, 'Acc+': 18.0, 'Mpg+': 20.0, 'N': 25}
+|.. |.. |.. [49]
+|.. |.. |.. |.. [25]{'Lbs-': 3245.0, 'Acc+': 15.4, 'Mpg+': 20.0, 'N': 25}
+|.. |.. |.. |.. [24]{'Lbs-': 3651.0, 'Acc+': 17.7, 'Mpg+': 20.0, 'N': 24}
+Running test test_tree - success
+Test files: tests/test_half.py
+199 199
+l {:Acc+ 13.2 :Lbs- 3735.0 :Mpg+ 20.0 :N 199}
+r {:Acc+ 14.5 :Lbs- 1940.0 :Mpg+ 30.0 :N 199}
+Running test test_half - success
+Test files: tests/__init__.py
+Test files: tests/test_clone.py
+{:Acc+ 23.5 :Lbs- 2254.0 :Mpg+ 20.0 :N 398}
+{:Acc+ 23.5 :Lbs- 2254.0 :Mpg+ 20.0 :N 398}
+Running test test_clone - success
+Test files: tests/test_nums.py
+Running test test_nums - success
+Test files: tests/test_the.py
+Running test test_the - success
+Test files: tests/test_rand.py
+Running test test_rand - success
+Test files: tests/test_syms.py
+a 1.38
+Running test test_syms - success
+Test files: tests/test_data.py
+68.0 455.0 97.0 -117.44186046511628
+{:Acc+ 23.5 :Lbs- 2254.0 :Mpg+ 20.0 :N 398}
+Running test test_data - success
+Test files: tests/test_sway.py
+
+all  {:Acc+ 23.5 :Lbs- 2254.0 :Mpg+ 20.0 :N 398}
+     {:Acc+ 1.67 :Lbs- -882.17 :Mpg+ 7.75 :N 398}
+
+best {:Acc+ 16.2 :Lbs- 1995.0 :Mpg+ 40.0 :N 13}
+     {:Acc+ 1.71 :Lbs- -67.83 :Mpg+ 3.88 :N 13}
+
+rest {:Acc+ 16.5 :Lbs- 3102.0 :Mpg+ 20.0 :N 52}
+     {:Acc+ -0.12 :Lbs- -197.29 :Mpg+ 3.88 :N 52}
+
+all ~= best? {(True, 'Lbs-') (True, 'Acc+') (True, 'Mpg+')}
+best ~= rest? {(True, 'Lbs-') (True, 'Acc+') (True, 'Mpg+')}
+Running test test_sway - success
+Test files: tests/test_bins.py
+all    {:best 13 :rest 52}
+
+Clndrs -inf inf 0.5 {:best 13 :rest 52}
+
+Volume -inf inf 0.5 {:best 13 :rest 52}
+
+Model -inf inf 0.5 {:best 13 :rest 52}
+
+origin 1.0 1.0 0.0 {:rest 31}
+origin 2.0 2.0 0.0 {:rest 9}
+origin 3.0 3.0 0.813 {:best 13 :rest 12}
+Running test test_bins - success
+Test files: tests/test_dist.py
+{'lo': 0.0, 'hi': 0.9022161422721422, 'mid': 0.73, 'div': 398.0}
+Running test test_dist - success
+Test files: tests/test_csv.py
+Running test test_csv - success
+Tests succeeded ✅
