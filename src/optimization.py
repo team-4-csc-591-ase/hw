@@ -14,6 +14,16 @@ def sway(data):
     """
 
     def worker(rows, worse, above=None):
+        """
+
+        Args:
+            rows:
+            worse:
+            above:
+
+        Returns:
+
+        """
         if len(rows) <= len(data.rows) ** CONSTS_LIST[CONSTS.min.name]:
             return rows, lists.many(worse, CONSTS_LIST[CONSTS.rest.name] * len(rows))
         else:

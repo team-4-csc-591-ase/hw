@@ -1,5 +1,11 @@
 class Sym:
     def __init__(self, n=0, s="") -> None:
+        """
+
+        Args:
+            n:
+            s:
+        """
         self.n = 0
         self.has: dict = {}
         self.most = 0
