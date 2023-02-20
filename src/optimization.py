@@ -4,6 +4,15 @@ from src.config import CONSTS, CONSTS_LIST
 
 
 def sway(data):
+    """
+
+    Args:
+        data:
+
+    Returns:
+
+    """
+
     def worker(rows, worse, above=None):
         if len(rows) <= len(data.rows) ** CONSTS_LIST[CONSTS.min.name]:
             return rows, lists.many(worse, CONSTS_LIST[CONSTS.rest.name] * len(rows))

@@ -24,6 +24,14 @@ class Data:
         #             self.add(line)
 
     def read(self, file_name):
+        """
+
+        Args:
+            file_name:
+
+        Returns:
+
+        """
         data = Data()
         utils.csv(file_name, lambda t: update.row(data, t))
         return data
@@ -41,6 +49,14 @@ class Data:
         """
 
         def fun(col):
+            """
+
+            Args:
+                col:
+
+            Returns:
+
+            """
             _callable = getattr(col, what)
             return col.rnd(_callable(), n_places), col.txt
 

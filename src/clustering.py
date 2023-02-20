@@ -1,17 +1,24 @@
-# from src.data import Data
-# from src.lists import many
 from src import lists, query
 from src.config import CONSTS, CONSTS_LIST
 
-# from src.query import dist, stats
 
-
-# Cluster `rows` into two sets by
-# dividing the data via their distance to two remote points.
-# To speed up finding those remote points, only look at
-# `some` of the data. Also, to avoid outliers, only look
-# `the.Far=.95` (say) of the way across the space.
 def half(data, rows=None, cols=None, above=None):
+    """
+    Cluster `rows` into two sets by
+    dividing the data via their distance to two remote points.
+    To speed up finding those remote points, only look at
+    `some` of the data. Also, to avoid outliers, only look
+    `the.Far=.95` (say) of the way across the space.
+    Args:
+        data:
+        rows:
+        cols:
+        above:
+
+    Returns:
+
+    """
+
     def gap(r1, r2):
         return query.dist(data, r1, r2, cols)
 
@@ -35,8 +42,18 @@ def half(data, rows=None, cols=None, above=None):
     return left, right, A, B, c
 
 
-# Cluster, recursively, some `rows` by  dividing them in two, many times
 def tree(data, rows=None, cols=None, above=None):
+    """
+    Cluster, recursively, some `rows` by  dividing them in two, many times
+    Args:
+        data:
+        rows:
+        cols:
+        above:
+
+    Returns:
+
+    """
     rows = rows or data.rows
     here = {"data": data.clone(data, rows)}
     if len(rows) >= 2 * (len(data.rows) ** CONSTS_LIST[CONSTS.min.name]):
@@ -46,8 +63,17 @@ def tree(data, rows=None, cols=None, above=None):
     return here
 
 
-# Cluster can be displayed by this function.
 def show_tree(tree, lvl=0, post=None):
+    """
+    Cluster can be displayed by this function.
+    Args:
+        tree:
+        lvl:
+        post:
+
+    Returns:
+
+    """
     if tree:
         print("{}[{}]".format("|.. " * lvl, len(tree["data"].rows)), end="")
         if lvl == 0 or ("left" not in tree):

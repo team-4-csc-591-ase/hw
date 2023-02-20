@@ -27,6 +27,15 @@ from src.update import add
 
 
 def bins(cols, rowss):
+    """
+
+    Args:
+        cols:
+        rowss:
+
+    Returns:
+
+    """
     out = []
     for col in cols:
         ranges = {}
@@ -46,15 +55,15 @@ def bins(cols, rowss):
         ranges = {
             key: value for key, value in sorted(ranges.items(), key=lambda x: x[1].lo)
         }
-        newRanges = {}
+        new_ranges_dict = {}
         i = 0
         for key in ranges:
             newRanges[i] = ranges[key]
             i += 1
         newRangesList = []
         if hasattr(col, "isSym") and col.isSym:
-            for item in newRanges.values():
-                newRangesList.append(item)
+            for item in new_ranges_dict.values():
+                new_ranges_list.append(item)
         out.append(
             newRangesList
             if hasattr(col, "isSym") and col.isSym
@@ -64,6 +73,15 @@ def bins(cols, rowss):
 
 
 def bin(col, x):
+    """
+
+    Args:
+        col:
+        x:
+
+    Returns:
+
+    """
     if x == "?" or hasattr(col, "isSym"):
         return x
     tmp = (col.hi - col.lo) / (CONSTS_LIST[CONSTS.bins.name] - 1)
@@ -71,6 +89,15 @@ def bin(col, x):
 
 
 def merge_any(ranges0):
+    """
+
+    Args:
+        ranges0:
+
+    Returns:
+
+    """
+
     def no_gaps(t):
         for j in range(1, len(t)):
             t[j].lo = t[j - 1].hi
@@ -92,12 +119,30 @@ def merge_any(ranges0):
 
 
 def merge2(col1, col2):
+    """
+
+    Args:
+        col1:
+        col2:
+
+    Returns:
+
+    """
     new = merge(col1, col2)
     if div(new) <= (div(col1) * col1.n + div(col2) * col2.n) / new.n:
         return new
 
 
 def merge(col1, col2):
+    """
+
+    Args:
+        col1:
+        col2:
+
+    Returns:
+
+    """
     new = copy(col1)
     if col1.isSym:
         for x, n in col2.has.items():

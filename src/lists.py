@@ -1,24 +1,54 @@
 import random
 
 
-# Push an item `x` onto a list.
 def push(t, x):
+    """
+    Push an item `x` onto a list.
+    Args:
+        t:
+        x:
+
+    Returns:
+
+    """
     t.append(x)
     return x
 
 
-# Return a list, sorted on `fun`.
 def sort(t, f):
+    """
+    Return a list, sorted on `fun`.
+    Args:
+        t:
+        f:
+
+    Returns:
+
+    """
     return sorted(t, key=f)
 
 
-# Return a function sorting down on field `x`.
 def lt(x):
+    """
+    Return a function sorting down on field `x`.
+    Args:
+        x:
+
+    Returns:
+
+    """
     return lambda a, b: a[x] < b[x]
 
 
-# Return a function sorting up on field `x`.
 def gt(x):
+    """
+    Return a function sorting up on field `x`.
+    Args:
+        x:
+
+    Returns:
+
+    """
     return lambda a, b: a[x] > b[x]
 
 
@@ -27,10 +57,9 @@ def any(t):
     return random.choice(t)
 
 
-# Return many items, selected at random.
 def many(t, n):
     """
-
+    Return many items, selected at random.
     Args:
         t:
         n:
@@ -44,16 +73,32 @@ def many(t, n):
     return u
 
 
-# Map a function on table (results in items 1,2,3...)
 def map(t, fun):
+    """
+    Map a function on table (results in items 1,2,3...)
+    Args:
+        t:
+        fun:
+
+    Returns:
+
+    """
     u = {}
     for i, v in enumerate(t):
         u[i + 1] = fun(v)
     return u
 
 
-# Map a function on table (results in items key1,key2,...)
 def kap(t, fun):
+    """
+    Map a function on table (results in items key1,key2,...)
+    Args:
+        t:
+        fun:
+
+    Returns:
+
+    """
     u = {}
     for k, v in enumerate(t):
         v, k = fun(k, v)
@@ -61,11 +106,18 @@ def kap(t, fun):
     return u
 
 
-# Return the `p`-ratio item in `t`; e.g. `per(t,.5)` returns the medium.
 def per(t, p=0.5):
+    """
+    Return the `p`-ratio item in `t`; e.g. `per(t,.5)` returns the medium.
+    Args:
+        t:
+        p:
+
+    Returns:
+
+    """
     p = int(round(p * len(t)))
     return t[min(max(1, p), len(t)) - 1]
-
 
 # Deep copy of a table `t`.
 def copy(t):

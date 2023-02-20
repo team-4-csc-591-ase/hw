@@ -6,6 +6,15 @@ from src.utils import rint
 
 
 def row(data, t):
+    """
+
+    Args:
+        data:
+        t:
+
+    Returns:
+
+    """
     if data.cols:
         data.rows.append(t)
         for cols in [data.cols.x, data.cols.y]:
@@ -17,6 +26,16 @@ def row(data, t):
 
 
 def add(col, x, n=1):
+    """
+
+    Args:
+        col:
+        x:
+        n:
+
+    Returns:
+
+    """
     if x != "?":
         col.n = col.n + n  # Source of variable 'n'
         if hasattr(col, "isSym") and col.isSym:
@@ -42,12 +61,31 @@ def add(col, x, n=1):
 
 
 def extend(range, n, s):
+    """
+
+    Args:
+        range:
+        n:
+        s:
+
+    Returns:
+
+    """
     range.lo = min(n, range.lo)
     range.hi = max(n, range.hi)
     add(range.y, s)
 
 
 def adds(col, t):
+    """
+
+    Args:
+        col:
+        t:
+
+    Returns:
+
+    """
     if t is None:
         return col
     for x in t:

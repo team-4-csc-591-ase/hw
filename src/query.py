@@ -5,6 +5,14 @@ from src.lists import kap, per
 
 
 def div(col):
+    """
+
+    Args:
+        col:
+
+    Returns:
+
+    """
     if hasattr(col, "isSym"):
         e = 0
         if isinstance(col.has, dict):
@@ -19,6 +27,14 @@ def div(col):
 
 
 def has(col):
+    """
+
+    Args:
+        col:
+
+    Returns:
+
+    """
     if not hasattr(col, "isSym") and not col.ok:
         if isinstance(col.has, dict):
             col.has = dict(sorted(col.has.items(), key=lambda item: item[1]))
@@ -29,6 +45,14 @@ def has(col):
 
 
 def mid(col):
+    """
+
+    Args:
+        col:
+
+    Returns:
+
+    """
     if hasattr(col, "isSym") and col.isSym:
         return col.mode
     else:
@@ -36,6 +60,18 @@ def mid(col):
 
 
 def stats(data, fun=None, cols=None, n_places=2):
+    """
+
+    Args:
+        data:
+        fun:
+        cols:
+        n_places:
+
+    Returns:
+
+    """
+
     def helper(k, col):
         col = col.col
         return round((fun or mid)(col), n_places), col.txt
@@ -50,10 +86,30 @@ def stats(data, fun=None, cols=None, n_places=2):
 
 
 def norm(num, n):
+    """
+
+    Args:
+        num:
+        n:
+
+    Returns:
+
+    """
     return n if n == "?" else (n - num.lo) / (num.hi - num.lo + 1 / float("inf"))
 
 
 def value(has, nB=1, nR=1, sGoal=True):
+    """
+
+    Args:
+        has:
+        nB:
+        nR:
+        sGoal:
+
+    Returns:
+
+    """
     b, r = 0, 0
     for x, n in has.items():
         if x == sGoal:
@@ -65,6 +121,18 @@ def value(has, nB=1, nR=1, sGoal=True):
 
 
 def dist(data, t1, t2, cols=None):
+    """
+
+    Args:
+        data:
+        t1:
+        t2:
+        cols:
+
+    Returns:
+
+    """
+
     def dist1(col, x, y):
         if x == "?" and y == "?":
             return 1
@@ -101,6 +169,16 @@ def dist(data, t1, t2, cols=None):
 
 
 def better(data, row1, row2):
+    """
+
+    Args:
+        data:
+        row1:
+        row2:
+
+    Returns:
+
+    """
     s1, s2, ys = 0, 0, data.cols.y
     for _, col in enumerate(ys):
         x = norm(col.col, row1[col.col.at])
