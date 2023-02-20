@@ -3,6 +3,11 @@ from src.col import Col  # type: ignore
 
 class Cols:
     def __init__(self, ss):
+        """
+
+        Args:
+            ss:
+        """
         self.names = ss
         self.all = []
         self.x = []

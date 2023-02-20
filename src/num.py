@@ -3,6 +3,12 @@ from typing import List
 
 class Num:
     def __init__(self, n=0, s="") -> None:
+        """
+
+        Args:
+            n:
+            s:
+        """
         self.at = n
         self.txt = s
         self.n = 0

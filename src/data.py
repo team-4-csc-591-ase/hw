@@ -146,7 +146,6 @@ class Data:
 
     def half(self, rows=None, cols=None, above=None):
         """
-
         Args:
             rows:
             cols:

@@ -46,11 +46,10 @@ def bins(cols, rowss):
                 x = row[col.at]
                 if x != "?":
                     k = int(bin(col, float(x) if x != "?" else x))
-                    ranges[k] = (
-                        ranges[k]
-                        if k in ranges
-                        else RANGE(col.at, col.txt, float(x) if x != "?" else x)
-                    )
+                    if k in ranges:
+                        ranges[k] = ranges[k]
+                    else:
+                        RANGE(col.at, col.txt, float(x) if x != "?" else x)
                     update.extend(ranges[k], float(x), y)
         ranges = {
             key: value for key, value in sorted(ranges.items(), key=lambda x: x[1].lo)
@@ -58,16 +57,16 @@ def bins(cols, rowss):
         new_ranges_dict = {}
         i = 0
         for key in ranges:
-            newRanges[i] = ranges[key]
+            new_ranges_dict[i] = ranges[key]
             i += 1
-        newRangesList = []
+        new_ranges_list = []
         if hasattr(col, "isSym") and col.isSym:
             for item in new_ranges_dict.values():
                 new_ranges_list.append(item)
         out.append(
-            newRangesList
+            new_ranges_list
             if hasattr(col, "isSym") and col.isSym
-            else merge_any(newRanges)
+            else merge_any(new_ranges_dict)
         )
     return out
 

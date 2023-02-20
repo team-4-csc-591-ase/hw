@@ -184,10 +184,27 @@ def map(t, fun):
 
 
 def itself(x):
+    """
+
+    Args:
+        x:
+
+    Returns:
+
+    """
     return x
 
 
 def cliffs_delta(ns1, ns2):
+    """
+
+    Args:
+        ns1:
+        ns2:
+
+    Returns:
+
+    """
     if len(ns1) > 256:
         ns1 = lists.many(ns1, 256)
     if len(ns2) > 256:
@@ -210,6 +227,15 @@ def cliffs_delta(ns1, ns2):
 
 
 def diffs(nums1, nums2):
+    """
+
+    Args:
+        nums1:
+        nums2:
+
+    Returns:
+
+    """
     def kap(nums, fn):
         return [fn(k, v) for k, v in enumerate(nums)]
 
@@ -220,6 +246,14 @@ def diffs(nums1, nums2):
 
 
 def cells(s):
+    """
+
+    Args:
+        s:
+
+    Returns:
+
+    """
     t = []
     for s1 in s.split(","):
         t.append(coerce(s1.strip()))
@@ -227,10 +261,28 @@ def cells(s):
 
 
 def lines(file_name, fun):
+    """
+
+    Args:
+        file_name:
+        fun:
+
+    Returns:
+
+    """
     with open(file_name, "r") as src:
         for line in src:
             fun(line.rstrip("\r\n"))
 
 
 def csv(file_name, fun):
+    """
+
+    Args:
+        file_name:
+        fun:
+
+    Returns:
+
+    """
     lines(file_name, lambda line: fun(cells(line)))

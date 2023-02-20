@@ -52,8 +52,15 @@ def gt(x):
     return lambda a, b: a[x] > b[x]
 
 
-# Return one item at random.
 def any(t):
+    """
+    Return one item at random
+    Args:
+        t:
+
+    Returns:
+
+    """
     return random.choice(t)
 
 
@@ -119,8 +126,16 @@ def per(t, p=0.5):
     p = int(round(p * len(t)))
     return t[min(max(1, p), len(t)) - 1]
 
-# Deep copy of a table `t`.
+
 def copy(t):
+    """
+    Deep copy of a table `t`.
+    Args:
+        t:
+
+    Returns:
+
+    """
     if type(t) is not dict:
         return t
     u = {}
@@ -129,9 +144,19 @@ def copy(t):
     return u
 
 
-# Return a portion of `t`; go,stop,inc defaults to 1,#t,1.
-# Negative indexes are supported.
 def slice(t, go=None, stop=None, inc=None):
+    """
+    Return a portion of `t`; go,stop,inc defaults to 1,#t,1.
+    Negative indexes are supported.
+    Args:
+        t:
+        go:
+        stop:
+        inc:
+
+    Returns:
+
+    """
     if go and go < 0:
         go = len(t) + go
     if stop and stop < 0:
