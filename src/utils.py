@@ -236,6 +236,7 @@ def diffs(nums1, nums2):
     Returns:
 
     """
+
     def kap(nums, fn):
         return [fn(k, v) for k, v in enumerate(nums)]
 
