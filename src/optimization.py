@@ -37,9 +37,9 @@ from src.lists import many
 
 
 def sway(data):
-    def worker(rows, worse, evals0, above):
+    def worker(rows, worse, evals0=None, above=None):
         if len(rows) <= len(data.rows) ** CONSTS_LIST[CONSTS.min.name]:
-            return rows, [worse] * CONSTS_LIST[CONSTS.rest.name] * len(rows), evals0
+            return rows, many(worse, CONSTS_LIST[CONSTS.rest.name] * len(rows)), evals0
         else:
             l, r, A, B, c, evals = half(data, rows, None, above)
             if query.better(data, B, A):
