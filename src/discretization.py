@@ -61,6 +61,7 @@ def bins(cols, rowss):
             y,
         ):
             nonlocal n
+            print(col, x)
             if x != "?":
                 n += 1
                 k = bin(col, x)
@@ -68,7 +69,7 @@ def bins(cols, rowss):
                 extend(ranges[k], x, y)
 
         for y, rows in enumerate(rowss):
-            for _, row in enumerate(rows):
+            for _, row in enumerate(rowss[rows]):
                 xy(row[col.at], y)
 
         return n, ranges
@@ -89,10 +90,11 @@ def bin(col, x):
     Returns:
 
     """
-    if x == "?" or hasattr(col, "isSym"):
+    if x == "?" or col.isSym:
         return x
     tmp = (col.hi - col.lo) / (CONSTS_LIST[CONSTS.bins.name] - 1)
-    return 1 if col.hi == col.lo else math.floor(x / tmp + 0.5) * tmp
+    print(x, tmp)
+    return 1 if col.hi == col.lo else math.floor((x / tmp) + 0.5) * tmp
 
 
 def merge_any(ranges0, n_small, n_far):
