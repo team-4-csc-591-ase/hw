@@ -17,3 +17,4 @@ class Num:
         self.lo = float("inf")
         self.hi = float("-inf")
         self.w = -1 if s.endswith("-") else 1
+        self.isSym = False

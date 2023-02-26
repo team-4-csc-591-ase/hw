@@ -36,4 +36,5 @@ CONSTS_LIST: Dict[str, Any] = {
     CONSTS.Reuse.name: True,
     CONSTS.Halves.name: 512,
     CONSTS.rest.name: 4,
+    CONSTS.d.name: 0.35,
 }

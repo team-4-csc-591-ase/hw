@@ -18,7 +18,7 @@ def test_half():
     f = str(project_root) + "/" + file_path
 
     data = Data().read(f)
-    left, right, A, B, c = half(data)
+    left, right, A, B, c, _ = half(data)
     print(len(left), len(right))
     l, r = data.clone(data, left), data.clone(data, right)
     print("l", o(stats(l)))

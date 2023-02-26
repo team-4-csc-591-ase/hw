@@ -1,8 +1,6 @@
-import random
-
 from src.cols import Cols
 from src.config import CONSTS, CONSTS_LIST
-from src.utils import rint
+from src.utils import rand, rint
 
 
 def row(data, t):
@@ -36,28 +34,28 @@ def add(col, x, n=1):
     Returns:
 
     """
+
+    def sym(t: dict):
+        t[x] = n + (t.get(x, 0))
+        if t[x] > col.most:
+            col.most, col.mode = t[x], x
+
+    def num(t: list):
+        col.lo, col.hi = min(x, col.lo), max(x, col.hi)
+        if len(t) < CONSTS_LIST[CONSTS.Max.name]:
+            col.ok = False
+            t.append(x)
+        elif rand() < CONSTS_LIST[CONSTS.Max.name] / col.n:
+            col.ok = False
+            t[rint(0, len(t) - 1)] = x
+
     if x != "?":
         col.n = col.n + n  # Source of variable 'n'
-        if hasattr(col, "isSym") and col.isSym:
-            col.has[x] = n + col.has.get(x, 0)
-            if col.has[x] > col.most:
-                col.most, col.mode = col.has[x], x
+        if col.isSym:
+            sym(col.has)
         else:
-            x = float(x)
-            col.lo = min(x, col.lo)
-            col.hi = max(x, col.hi)
-            all = len(col.has)
-            if all < CONSTS_LIST[CONSTS.Max.name]:
-                pos = all + 1
-            elif random.random() < CONSTS_LIST[CONSTS.Max.name] / col.n:
-                pos = rint(1, all)
-            else:
-                pos = None
-            if pos:
-                if isinstance(col.has, dict):
-                    col.has[pos] = x
-                else:
-                    col.has.append(x)
+            num(col.has)
+        return col
 
 
 def extend(range, n, s):

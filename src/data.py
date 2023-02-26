@@ -14,14 +14,6 @@ class Data:
         self.cols: Union[Cols, None] = None
         self.rows: List[Any] = []
         self.n = 0
-        # if isinstance(src, str):
-        #     self.parse_csv(src)
-        # else:
-        #     if isinstance(src[0], str):
-        #         self.add(src)
-        #     else:
-        #         for line in src:
-        #             self.add(line)
 
     def read(self, file_name):
         """

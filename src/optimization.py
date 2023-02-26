@@ -1,4 +1,4 @@
-from src import lists, query
+from src import query
 from src.clustering import half
 from src.config import CONSTS, CONSTS_LIST
 
