@@ -1,3 +1,4 @@
+import math
 import random
 
 
@@ -123,8 +124,10 @@ def per(t, p=0.5):
     Returns:
 
     """
-    p = int(round(p * len(t)))
-    return t[min(max(1, p), len(t)) - 1]
+    p = math.floor(((p or 0.5) * len(t) - 1) + 0.5)
+    return t[max(1, min(len(t) - 1, p))]
+    # p=math.floor(((p or .5)*#t)+.5);
+    # # return t[m.max(1,m.min(#t,p))]
 
 
 def copy(t):

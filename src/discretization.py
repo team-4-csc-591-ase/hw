@@ -1,12 +1,14 @@
 import math
 
-from src import update
+from src import query, update
 from src.col import Col
 from src.config import CONSTS, CONSTS_LIST
-from src.lists import copy
+from src.lists import copy, lt
 from src.query import div
 from src.range import RANGE
-from src.update import add
+from src.sym import Sym
+from src.update import add, extend
+from src.utils import itself
 
 # def bins(cols, rowss):
 #     out = []
@@ -36,44 +38,45 @@ def bins(cols, rowss):
     Returns:
 
     """
-    out = []
-    for col in cols:
-        ranges = {}
-        for y, rows in rowss.items():
-            for row in rows:
-                if isinstance(col, Col):
-                    col = col.col
-                x = row[col.at]
-                if x != "?":
-                    k = int(bin(col, float(x) if x != "?" else x))
-                    # if k in ranges:
-                    #     ranges[k] = ranges[k]
-                    # else:
-                    #     RANGE(col.at, col.txt, float(x) if x != "?" else x)
-                    ranges[k] = (
-                        ranges[k]
-                        if k in ranges
-                        else RANGE(col.at, col.txt, float(x) if x != "?" else x)
-                    )
-                    update.extend(ranges[k], float(x), y)
-        ranges = {
-            key: value for key, value in sorted(ranges.items(), key=lambda x: x[1].lo)
-        }
-        new_ranges_dict = {}
-        i = 0
-        for key in ranges:
-            new_ranges_dict[i] = ranges[key]
-            i += 1
-        new_ranges_list = []
-        if hasattr(col, "isSym") and col.isSym:
-            for item in new_ranges_dict.values():
-                new_ranges_list.append(item)
-        out.append(
-            new_ranges_list
-            if hasattr(col, "isSym") and col.isSym
-            else merge_any(new_ranges_dict)
-        )
-    return out
+
+    def with1Col(col):
+        n, ranges = withAllRows(col)
+
+        ranges = sorted(map(itself, ranges), key=lambda x: x["lo"])
+        if col.isSym:
+            return ranges
+        else:
+            merge_any(
+                ranges,
+                n / (CONSTS_LIST[CONSTS.bins.name]),
+                (CONSTS_LIST[CONSTS.d.name]) * div(col),
+            )
+
+    def withAllRows(col):
+        if isinstance(col, Col):
+            col = col.col
+
+        def xy(
+            x,
+            y,
+        ):
+            nonlocal n
+            if x != "?":
+                n += 1
+                k = bin(col, x)
+                ranges[k] = ranges[k] or RANGE(col.at, col.txt, x)
+                extend(ranges[k], x, y)
+
+        for y, rows in enumerate(rowss):
+            for _, row in enumerate(rows):
+                xy(row[col.at], y)
+
+        return n, ranges
+
+    n, ranges = 0, {}
+    print(list(map(with1Col, cols)))
+    print(n, ranges)
+    return list(map(with1Col, cols))
 
 
 def bin(col, x):
@@ -92,7 +95,7 @@ def bin(col, x):
     return 1 if col.hi == col.lo else math.floor(x / tmp + 0.5) * tmp
 
 
-def merge_any(ranges0):
+def merge_any(ranges0, n_small, n_far):
     """
 
     Args:
@@ -113,16 +116,35 @@ def merge_any(ranges0):
     while j < len(ranges0):
         left, right = ranges0[j], ranges0[j + 1] if j + 1 < len(ranges0) else None
         if right:
-            y = merge2(left.y, right.y)
+            y = merge2(left.y, right.y, n_small, n_far)
             if y:
                 j += 1  # next round, skip over right.
                 left.hi, left.y = right.hi, y
         ranges1.append(left)
         j += 1
-    return no_gaps(ranges0) if len(ranges0) == len(ranges1) else merge_any(ranges1)
+    return (
+        no_gaps(ranges0)
+        if len(ranges0) == len(ranges1)
+        else merge_any(ranges1, n_small, n_far)
+    )
 
 
-def merge2(col1, col2):
+# def merge2(col1, col2):
+#     """
+#
+#     Args:
+#         col1:
+#         col2:
+#
+#     Returns:
+#
+#     """
+#     new = merge(col1, col2)
+#     if div(new) <= (div(col1) * col1.n + div(col2) * col2.n) / new.n:
+#         return new
+
+
+def merge2(col1, col2, n_small=None, n_far=None):
     """
 
     Args:
@@ -133,6 +155,13 @@ def merge2(col1, col2):
 
     """
     new = merge(col1, col2)
+    if n_small:
+        if col1.n < n_small or col2.n < n_small:
+            return new
+    if n_far:
+        if not col1.isSym and abs(query.mid(col1) - query.mid(col2)) < n_far:
+            return new
+
     if div(new) <= (div(col1) * col1.n + div(col2) * col2.n) / new.n:
         return new
 

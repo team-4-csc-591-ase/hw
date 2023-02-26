@@ -49,7 +49,7 @@ def add(col, x, n=1):
             col.ok = False
             t[rint(0, len(t) - 1)] = x
 
-    if x != "?":
+    if (isinstance(x, int) or isinstance(x, float)) and x != "?":
         col.n = col.n + n  # Source of variable 'n'
         if col.isSym:
             sym(col.has)

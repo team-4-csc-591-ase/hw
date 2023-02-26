@@ -16,7 +16,7 @@ def test_bins():
     f = str(project_root) + "/" + file_path
 
     data = Data().read(f)
-    best, rest = sway(data)
+    best, rest, _ = sway(data)
     print("all", "", "", "", o({"best": len(best.rows), "rest": len(rest.rows)}))
     b4 = None
     for k, t in enumerate(bins(data.cols.x, {"best": best.rows, "rest": rest.rows})):

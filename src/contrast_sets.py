@@ -2,7 +2,7 @@ from src.discretization import bins
 from src.lists import kap
 from src.query import value
 from src.rule import Rule
-from src.utils import rnd, o, oo
+from src.utils import o, oo, rnd
 
 
 def xpln(data, best, rest):
@@ -33,14 +33,22 @@ def xpln(data, best, rest):
 def firstN(sorted_ranges, score_fun):
     print("")
     for r in sorted_ranges:
-        print(r["range"].txt, r["range"].lo, r["range"].hi, round(r["val"], 2), r["range"].y.has)
+        print(
+            r["range"].txt,
+            r["range"].lo,
+            r["range"].hi,
+            round(r["val"], 2),
+            r["range"].y.has,
+        )
     first = sorted_ranges[0]["val"]
 
     def useful(range):
         if range["val"] > 0.05 and range["val"] > first / 10:
             return range
 
-    sorted_ranges = list(filter(lambda r: useful(r), sorted_ranges))  # reject  useless ranges
+    sorted_ranges = list(
+        filter(lambda r: useful(r), sorted_ranges)
+    )  # reject  useless ranges
     most, out = -1, None
     for n in range(1, len(sorted_ranges) + 1):
         tmp, rule = score_fun(list(map(lambda r: r["range"], sorted_ranges[:n])))
@@ -50,7 +58,6 @@ def firstN(sorted_ranges, score_fun):
 
 
 def show_rule(rule):
-
     def pretty(range):
         return range.lo if range.lo == range.hi else [range.lo, range.hi]
 
@@ -91,6 +98,3 @@ def selects(rule, rows):
         return True
 
     return [r for r in rows if conjunction(r)]
-
-
-

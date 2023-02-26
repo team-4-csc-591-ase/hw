@@ -13,7 +13,8 @@ def test_sway():
     f = str(project_root) + "/" + file_path
 
     data = Data().read(f)
-    best, rest = sway(data)
+    best, rest, _ = sway(data)
+    print(rest)
     print("\nall ", o(stats(data)))
     print("    ", o(stats(data, div)))
     print("\nbest", o(stats(best)))
