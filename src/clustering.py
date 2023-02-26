@@ -58,7 +58,7 @@ def tree(data, rows=None, cols=None, above=None):
     rows = rows or data.rows
     here = {"data": data.clone(data, rows)}
     if len(rows) >= 2 * (len(data.rows) ** CONSTS_LIST[CONSTS.min.name]):
-        left, right, A, B, _ = half(data, rows, cols, above)
+        left, right, A, B, _, _ = half(data, rows, cols, above)
         here["left"] = tree(data, left, cols, A)
         here["right"] = tree(data, right, cols, B)
     return here

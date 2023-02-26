@@ -18,6 +18,7 @@ class CONSTS(Enum):
     Reuse = "Reuse"
     Halves = "Halves"
     rest = "rest"
+    d = "d"
 
 
 CONSTS_LIST: Dict[str, Any] = {
