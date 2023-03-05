@@ -93,11 +93,10 @@ def bin(col, x):
     if x == "?" or col.isSym:
         return x
     tmp = (col.hi - col.lo) / (CONSTS_LIST[CONSTS.bins.name] - 1)
-    print(x, tmp)
-    return 1 if col.hi == col.lo else math.floor((x / tmp) + 0.5) * tmp
+    return 1 if col.hi == col.lo else math.floor((x) / tmp + 0.5) * tmp
 
 
-def merge_any(ranges0, n_small, n_far):
+def merge_any(ranges0):
     """
 
     Args:
