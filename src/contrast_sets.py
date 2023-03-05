@@ -19,8 +19,8 @@ def xpln(data, best, rest):
                 return v({"best": len(bestr), "rest": len(restr)}), rule
 
     tmp = []
-    max_sizes = []
-    for _, ranges in bins(data.cols.x, {"best": best.rows, "rest": rest.rows}).items():
+    max_sizes = {}
+    for ranges in bins(data.cols.x, {"best": best.rows, "rest": rest.rows}):
         max_sizes[ranges[0].txt] = len(ranges)
         print("")
         for _, range in enumerate(ranges):
@@ -32,14 +32,6 @@ def xpln(data, best, rest):
 
 def firstN(sorted_ranges, score_fun):
     print("")
-    for r in sorted_ranges:
-        print(
-            r["range"].txt,
-            r["range"].lo,
-            r["range"].hi,
-            round(r["val"], 2),
-            r["range"].y.has,
-        )
     first = sorted_ranges[0]["val"]
 
     def useful(range):
@@ -47,22 +39,27 @@ def firstN(sorted_ranges, score_fun):
             return range
 
     sorted_ranges = list(
-        filter(lambda r: useful(r), sorted_ranges)
+        filter(lambda x: x is not None, map(useful, sorted_ranges))
     )  # reject  useless ranges
     most, out = -1, None
-    for n in range(1, len(sorted_ranges) + 1):
-        tmp, rule = score_fun(list(map(lambda r: r["range"], sorted_ranges[:n])))
+    for n in range(len(sorted_ranges)):
+        tmp, rule = score_fun(list(map(lambda x: x["range"], sorted_ranges[:n])))
         if tmp and tmp > most:
             out, most = rule, tmp
     return out, most
 
 
 def show_rule(rule):
+    # if isinstance(rule, Rule):
+    #     rule = rule.t
+
     def pretty(range):
         return range.lo if range.lo == range.hi else [range.lo, range.hi]
 
+    # def merges(attr, ranges):
+    #     return [pretty(r) for r in merge(sorted(ranges, key=lambda r: r.lo))], attr
     def merges(attr, ranges):
-        return [pretty(r) for r in merge(sorted(ranges, key=lambda r: r.lo))], attr
+        return list(map(pretty, merge(sorted(ranges, key=lambda r: r["lo"])))), attr
 
     def merge(t0):
         t, j = [], 0
@@ -79,6 +76,9 @@ def show_rule(rule):
 
 
 def selects(rule, rows):
+    # if isinstance(rule, Rule):
+    #     rule = rule.t
+
     def disjunction(ranges, row):
         for range in ranges:
             lo, hi, at = range.lo, range.hi, range.at

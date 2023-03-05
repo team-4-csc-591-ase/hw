@@ -31,6 +31,7 @@ def half(data, rows=None, cols=None, above=None):
     rows = rows or data.rows
     some = lists.many(rows, CONSTS_LIST[CONSTS.Halves.name])
     A = (CONSTS_LIST[CONSTS.Reuse.name] and above) or lists.any(some)
+    # A = above if CONSTS_LIST[CONSTS.Reuse.name] else lists.any(some)
     tmp = sorted([{"row": r, "d": gap(r, A)} for r in some], key=lambda x: x["d"])
     far = tmp[int(len(tmp) * CONSTS_LIST[CONSTS.Far.name]) // 1]
     B, c, left, right = far["row"], far["d"], [], []

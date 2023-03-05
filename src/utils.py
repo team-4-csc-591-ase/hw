@@ -287,14 +287,3 @@ def csv(file_name, fun):
 
     """
     lines(file_name, lambda line: fun(cells(line)))
-
-
-def prune(rule, maxSize):
-    n = 0
-    for txt, ranges in rule.items():
-        n += 1
-        if len(ranges) == maxSize[txt]:
-            n += 1
-            del rule[txt]
-    if n > 0:
-        return rule

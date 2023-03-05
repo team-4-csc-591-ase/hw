@@ -14,6 +14,8 @@ def div(col):
     Returns:
 
     """
+    if isinstance(col, Col):
+        col = col.col
     if hasattr(col, "isSym"):
         e = 0
         if isinstance(col.has, dict):
@@ -36,6 +38,8 @@ def has(col):
     Returns:
 
     """
+    if isinstance(col, Col):
+        col = col.col
     if not hasattr(col, "isSym") and not col.ok:
         if isinstance(col.has, dict):
             col.has = dict(sorted(col.has.items(), key=lambda item: item[1]))

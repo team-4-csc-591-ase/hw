@@ -90,6 +90,11 @@ class Data:
             update.row(data1, t)
         return data1
 
+    def clone2(self, init={}):
+        data = Data([self.cols.names])
+        _ = list(map(data.add, init))
+        return data
+
     def around(self, row1, rows=None, cols=None):
         """
 
