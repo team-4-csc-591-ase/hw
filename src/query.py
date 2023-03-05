@@ -1,5 +1,6 @@
 import math
 
+from src.col import Col
 from src.config import CONSTS, CONSTS_LIST
 from src.lists import kap, per
 
@@ -98,25 +99,25 @@ def norm(num, n):
     return n if n == "?" else (n - num.lo) / (num.hi - num.lo + 1 / float("inf"))
 
 
-def value(has, nB=1, nR=1, sGoal=True):
+def value(has, n_B=1, n_R=1, s_goal=True):
     """
 
     Args:
         has:
-        nB:
-        nR:
-        sGoal:
+        n_B:
+        n_R:
+        s_goal:
 
     Returns:
 
     """
     b, r = 0, 0
     for x, n in has.items():
-        if x == sGoal:
+        if x == s_goal:
             b = b + n
         else:
             r = r + n
-    b, r = b / (nB + 1 / float("inf")), r / (nR + 1 / float("inf"))
+    b, r = b / (n_B + 1 / float("inf")), r / (n_R + 1 / float("inf"))
     return (b**2) / (b + r)
 
 

@@ -55,7 +55,7 @@ def add(col, x, n=1):
             sym(col.has)
         else:
             num(col.has)
-        return col
+        #   return col
 
 
 def extend(range, n, s):
@@ -84,8 +84,6 @@ def adds(col, t):
     Returns:
 
     """
-    if t is None:
-        return col
-    for x in t:
-        add(col, x)
+    for value in t or []:
+        add(col, value)
     return col

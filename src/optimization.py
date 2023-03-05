@@ -37,7 +37,7 @@ from src.lists import many
 
 
 def sway(data):
-    def worker(rows, worse, evals0=None, above=None):
+    def worker(rows, worse, evals0, above=None):
         if len(rows) <= len(data.rows) ** CONSTS_LIST[CONSTS.min.name]:
             return rows, many(worse, CONSTS_LIST[CONSTS.rest.name] * len(rows)), evals0
         else:
@@ -46,7 +46,6 @@ def sway(data):
                 l, r, A, B = r, l, B, A
             for row in r:
                 worse.append(row)
-            # map(r, lambda row: worse.append(row))
             return worker(l, worse, evals + evals0, A)
 
     best, rest, evals = worker(data.rows, [], 0, None)

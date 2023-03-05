@@ -6,6 +6,21 @@ from src.data import Data
 from src.optimization import sway
 from src.utils import get_project_root
 
+"""
+  data=DATA(is.file)
+  best,rest,evals = sway(data)
+  rule,most= xpln(data,best,rest)
+  print("\n-----------\nexplain=", o(showRule(rule)))
+  data1= DATA(data,selects(rule,data.rows))
+  print("all               ",o(stats(data)),o(stats(data,div)))
+  print(fmt("sway with %5s evals",evals),o(stats(best)),o(stats(best,div)))
+  print(fmt("xpln on   %5s evals",evals),o(stats(data1)),o(stats(data1,div)))
+  top,_ = betters(data, #best.rows)
+  top = DATA(data,top)
+  print(fmt("sort with %5s evals",#data.rows) ,o(stats(top)), o(stats(top,div)))
+
+"""
+
 
 def test_xpln():
     project_root = get_project_root()
