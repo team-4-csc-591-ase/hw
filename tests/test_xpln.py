@@ -23,12 +23,12 @@ from src.utils import get_project_root
 
 
 def test_xpln():
-    project_root = get_project_root()
-    file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
-    f = str(project_root) + "/" + file_path
-    data = Data().read(f)
-    best, rest, evals = sway(data)
-    rule, most = xpln(data, best, rest)
+    # project_root = get_project_root()
+    # file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
+    # f = str(project_root) + "/" + file_path
+    # data = Data().read(f)
+    # best, rest, evals = sway(data)
+    # rule, most = xpln(data, best, rest)
     # print("\n-----------\nexplain=", show_rule(rule))
     #
     #

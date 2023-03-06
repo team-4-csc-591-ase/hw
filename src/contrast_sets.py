@@ -2,7 +2,7 @@ from src.discretization import bins
 from src.lists import kap
 from src.query import value
 from src.rule import Rule
-from src.utils import o, oo, rnd
+from src.utils import oo
 
 
 def xpln(data, best, rest):
@@ -59,6 +59,8 @@ def show_rule(rule):
     # def merges(attr, ranges):
     #     return [pretty(r) for r in merge(sorted(ranges, key=lambda r: r.lo))], attr
     def merges(attr, ranges):
+        if not isinstance(ranges, list):
+            ranges = [ranges]
         return list(map(pretty, merge(sorted(ranges, key=lambda r: r["lo"])))), attr
 
     def merge(t0):
@@ -72,7 +74,7 @@ def show_rule(rule):
             j += 1
         return t if len(t0) == len(t) else merge(t)
 
-    return kap(rule, merges)
+    return kap([rule], merges)
 
 
 def selects(rule, rows):
