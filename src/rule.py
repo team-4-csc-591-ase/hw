@@ -1,10 +1,10 @@
 class Rule:
     def __init__(self, ranges, max_size):
-        t = []
+        self.t = []
         for range in ranges:
-            t[range.txt] = t[range.txt] or {}
-            t[range.txt].append({"lo": range.lo, "hi": range.hi, "at": range.at})
-        self.prune(t, max_size)
+            self.t[range.txt] = self.t[range.txt] or {}
+            self.t[range.txt].append({"lo": range.lo, "hi": range.hi, "at": range.at})
+        self.prune(self.t, max_size)
 
     def prune(self, rule, max_size):
         n = 0
