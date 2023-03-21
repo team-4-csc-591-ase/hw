@@ -1,7 +1,6 @@
 # from typing import List
 
 
-
 class Num:
     def __init__(self, t) -> None:
         """
@@ -15,7 +14,7 @@ class Num:
         self.m2 = 0
         self.sd = 0
         for x in t or []:
-            add(self, x)
+            self.add(x)
 
     def add(self, x):
         self.n += 1
