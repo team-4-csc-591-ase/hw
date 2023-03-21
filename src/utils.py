@@ -385,7 +385,7 @@ def bootstrap(y0, z0):
 
 
 def RX(t, s=None):
-    t.sort()
+    t = sorted(t)
     return {"name": s or "", "rank": 0, "n": len(t), "show": "", "has": t}
 
 
@@ -408,9 +408,17 @@ def merge(rx1, rx2):
     return rx3
 
 
-def scottKnot(rxs, all, cohen):
+def rxs_sort(rxs):
+    for i, x in enumerate(rxs):
+        for j, y in enumerate(rxs):
+            if mid(x) < mid(y):
+                rxs[j], rxs[i] = rxs[i], rxs[j]
+    return rxs
+
+
+def scottKnot(rxs):
     def merges(i, j):
-        out = RX([], rxs[i].name)
+        out = RX([], rxs[i]["name"])
         for k in range(i, j + 1):
             out = merge(out, rxs[j])
         return out
@@ -440,7 +448,7 @@ def scottKnot(rxs, all, cohen):
             rank = recurse(cut + 1, hi, rank)
         else:
             for i in range(lo, hi + 1):
-                rxs[i].rank = rank
+                rxs[i]["rank"] = rank
         return rank
 
     rxs = sorted(rxs, key=lambda x: mid(x))
@@ -449,19 +457,56 @@ def scottKnot(rxs, all, cohen):
     return rxs
 
 
+# def tiles(rxs):
+#     huge = math.inf
+#     lo, hi = huge, -huge
+#     for rx in rxs:
+#         lo, hi = min(lo, rx["has"][0]), max(hi, rx["has"][-1])
+#     for rx in rxs:
+#         t, u = rx["has"], []
+#
+#         def of(x, most):
+#             return max(1, min(most, x))
+#
+#         def at(x):
+#             return t[of(len(t) * x // 1, len(t) - 1)]
+#
+#         def pos(x):
+#             return math.floor(
+#                 of(
+#                     CONSTS_LIST[CONSTS.width.name] *(x - lo) / (hi - lo + 1e-32) // 1,
+#                     CONSTS_LIST[CONSTS.width.name],
+#                 )
+#             )
+#
+#         for i in range(CONSTS_LIST[CONSTS.width.name]):
+#             u.append(" ")
+#         a, b, c, d, e = at(0.1), at(0.3), at(0.5), at(0.7), at(0.9)
+#         A, B, C, D, E = pos(a), pos(b), pos(c), pos(d), pos(e)
+#         for i in range(A, B + 1):
+#             u[i] = "-"
+#         for i in range(D, E + 1):
+#             u[i] = "-"
+#         u[CONSTS_LIST[CONSTS.width.name] // 2] = "|"
+#         u[C] = "*"
+#         rx.show = "".join(u) + " {" + f"{a:.2f}"
+#         for x in [b, c, d, e]:
+#             rx.show += f", {x:.2f}"
+#         rx.show += "}"
+#     return rxs
 def tiles(rxs):
-    huge = math.inf
-    lo, hi = huge, -huge
+    huge = float("inf")
+    lo, hi = huge, float("-inf")
     for rx in rxs:
-        lo, hi = min(lo, rx.has[0]), max(hi, rx.has[-1])
+        lo, hi = min(lo, rx["has"][0]), max(hi, rx["has"][len(rx["has"]) - 1])
     for rx in rxs:
-        t, u = rx.has, []
+        t, u = rx["has"], []
 
         def of(x, most):
-            return max(1, min(most, x))
+            return int(max(0, min(most, x)))
 
         def at(x):
-            return t[of(len(t) * x // 1, len(t) - 1)]
+            return t[of(len(t) * x // 1, len(t))]
 
         def pos(x):
             return math.floor(
@@ -471,7 +516,7 @@ def tiles(rxs):
                 )
             )
 
-        for i in range(CONSTS_LIST[CONSTS.width.name]):
+        for i in range(0, CONSTS_LIST[CONSTS.width.name] + 1):
             u.append(" ")
         a, b, c, d, e = at(0.1), at(0.3), at(0.5), at(0.7), at(0.9)
         A, B, C, D, E = pos(a), pos(b), pos(c), pos(d), pos(e)
@@ -481,8 +526,8 @@ def tiles(rxs):
             u[i] = "-"
         u[CONSTS_LIST[CONSTS.width.name] // 2] = "|"
         u[C] = "*"
-        rx.show = "".join(u) + " {" + f"{a:.2f}"
-        for x in [b, c, d, e]:
-            rx.show += f", {x:.2f}"
-        rx.show += "}"
+        x = []
+        for i in [a, b, c, d, e]:
+            x.append("{:.2f}".format(i))
+        rx["show"] = "".join(u) + str(x)
     return rxs
