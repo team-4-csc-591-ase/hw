@@ -8,7 +8,7 @@
 #
 # def test_clone():
 #     project_root = get_project_root()
-#     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
+#     file_path = os.path.join(project_root,"/etc/data/", CONSTS_LIST[CONSTS.file.name])
 #     f = str(project_root) + "/" + file_path
 #
 #     data_obj = Data()
