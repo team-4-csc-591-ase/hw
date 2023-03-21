@@ -18,6 +18,11 @@ class CONSTS(Enum):
     Reuse = "Reuse"
     Halves = "Halves"
     rest = "rest"
+    bootstrap = "bootstrap"
+    conf = "conf"
+    cliff = "cliff"
+    cohen = "cohen"
+    width = "width"
 
 
 CONSTS_LIST: Dict[str, Any] = {
@@ -36,4 +41,9 @@ CONSTS_LIST: Dict[str, Any] = {
     CONSTS.Reuse.name: True,
     CONSTS.Halves.name: 512,
     CONSTS.rest.name: 4,
+    CONSTS.bootstrap.name: 512,
+    CONSTS.conf.name: 0.05,
+    CONSTS.cliff.name: 0.4,
+    CONSTS.cohen.name: 0.35,
+    CONSTS.width.name: 40,
 }
