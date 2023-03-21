@@ -2,7 +2,7 @@
 
 
 class Num:
-    def __init__(self, t) -> None:
+    def __init__(self, t=None) -> None:
         """
 
         Args:
