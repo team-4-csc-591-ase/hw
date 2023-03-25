@@ -82,7 +82,10 @@ def stats(data, fun=None, cols=None, n_places=2):
             col = col.col
         return round((fun or mid)(col), n_places), col.txt
 
-    cols = cols or data.cols.y
+    try:
+        cols = cols or data.cols.y
+    except AttributeError:
+        return None
 
     # tmp = kap(cols, lambda k, col: (round((fun or mid)(col), n_places), col.txt))
     temp = kap(cols, helper)

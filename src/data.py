@@ -26,7 +26,6 @@ class Data:
         data = Data()
 
         # add = lambda t: update.row(self, t)
-        # def add(t):
         def add(t):
             update.row(self, t)
 
