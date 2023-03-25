@@ -108,7 +108,11 @@ def kap(t, fun):
 
     """
     u = {}
-    for k, v in enumerate(t):
+    if isinstance(t, list):
+        e = enumerate(t)
+    else:
+        e = t.items()
+    for k, v in enumerate(e):
         v, k = fun(k, v)
         u[k or len(u) + 1] = v
     return u

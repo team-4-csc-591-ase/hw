@@ -14,8 +14,6 @@ def div(col):
     Returns:
 
     """
-    if isinstance(col, Col):
-        col = col.col
     if hasattr(col, "isSym"):
         e = 0
         if isinstance(col.has, dict):
@@ -78,7 +76,10 @@ def stats(data, fun=None, cols=None, n_places=2):
     """
 
     def helper(k, col):
-        col = col.col
+        if isinstance(col, list) or isinstance(col, tuple):
+            col = col[1]
+        if isinstance(col, Col):
+            col = col.col
         return round((fun or mid)(col), n_places), col.txt
 
     cols = cols or data.cols.y
@@ -138,39 +139,53 @@ def dist(data, t1, t2, cols=None):
 
     """
 
+    # def dist1(col, x, y):
+    #     if x == "?" and y == "?":
+    #         return 1
+    #     if hasattr(col, "isSym"):
+    #         if x == y:
+    #             return 0
+    #         else:
+    #             return 1
+    #     else:
+    #         x, y = norm(col, x), norm(col, y)
+    #
+    #         if x == "?":
+    #             if y < 0.5:
+    #                 x = 1
+    #             else:
+    #                 x = 1
+    #         if y == "?":
+    #             if x < 0.5:
+    #                 y = 1
+    #             else:
+    #                 y = 1
+    #         return abs(x - y)
+    def sym(x, y):
+        return 0 if x == y else 1
+
+    def num(x, y):
+        if x == "?":
+            x = 1 if y < 0.5 else 1
+        if y == "?":
+            y = 1 if x < 0.5 else 1
+        return abs(x - y)
+
     def dist1(col, x, y):
         if x == "?" and y == "?":
             return 1
-        if hasattr(col, "isSym"):
-            if x == y:
-                return 0
-            else:
-                return 1
-        else:
-            x, y = norm(col, x), norm(col, y)
-
-            if x == "?":
-                if y < 0.5:
-                    x = 1
-                else:
-                    x = 1
-            if y == "?":
-                if x < 0.5:
-                    y = 1
-                else:
-                    y = 1
-            return abs(x - y)
-
-    d, n = 0, 1 / float("inf")
-    cols = cols or data.cols.x
-    for col in cols:
-        n += 1
-        d += (
-            dist1(col.col, float(t1[col.col.at]), float(t2[col.col.at]))
-            ** CONSTS_LIST[CONSTS.p.name]
+        return (
+            sym(x, y)
+            if hasattr(col, "isSym") and col.isSym
+            else num(norm(col, float(x)), norm(col, float(y)))
         )
 
-    return (d / n) ** (1 / CONSTS_LIST[CONSTS.p.name])
+    d, cols = 0, cols or data.cols.x
+    for col in cols:
+        d += (
+            dist1(col.col, t1[col.col.at], t2[col.col.at]) ** CONSTS_LIST[CONSTS.p.name]
+        )
+    return (d / len(cols)) ** (1 / CONSTS_LIST[CONSTS.p.name])
 
 
 def better(data, row1, row2):
@@ -193,3 +208,24 @@ def better(data, row1, row2):
         s2 = s2 - math.exp(col.col.w * (y - x) / len(ys))
 
     return s1 / len(ys) < s2 / len(ys)
+
+
+def betters(data, n=None):
+    def quicksort(arr, cmp_func):
+        if len(arr) <= 1:
+            return arr
+
+        pivot = arr[0]
+        left = []
+        right = []
+
+        for item in arr[1:]:
+            if cmp_func(data, item, pivot):
+                left.append(item)
+            else:
+                right.append(item)
+
+        return quicksort(left, cmp_func) + [pivot] + quicksort(right, cmp_func)
+
+    tmp = quicksort(data.rows, better)
+    return tmp[:n], tmp[n:] if n else tmp

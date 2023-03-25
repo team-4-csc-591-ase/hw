@@ -1,8 +1,7 @@
 import os
 
 from src.config import CONSTS, CONSTS_LIST
-
-# from src.contrast_sets import xpln
+from src.contrast_sets import selects, show_rule, xpln
 from src.data import Data
 from src.optimization import sway
 from src.utils import get_project_root
@@ -28,42 +27,22 @@ def test_xpln():
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
     data = Data().read(f)
-    best, rest, evals = sway(data)
-    # rule, most = xpln(data, best, rest)
-    # print("\n-----------\nexplain=", show_rule(rule))
-    #
-    #
-    # selects_res = selects(rule, data.rows)
-    # data_selects = [s for s in selects_res if s != None]
-    # data1 = data.clone(data_selects)
-    #
-    # print(
-    #     "all               ",
-    #     data.stats("mid", data.cols.y, 2),
-    #     data.stats("div", data.cols.y, 2),
-    # )
-    # print(
-    #     "sway with",
-    #     evals,
-    #     "evals",
-    #     best.stats("mid", best.cols.y, 2),
-    #     best.stats("div", best.cols.y, 2),
-    # )
-    # print(
-    #     "xpln on",
-    #     evals,
-    #     "evals",
-    #     data1.stats("mid", data1.cols.y, 2),
-    #     data1.stats("div", data1.cols.y, 2),
-    # )
-    # top, _ = data.betters(len(best.rows))
-    # top = data.clone(top)
-    # print(
-    #     "sort with",
-    #     len(data.rows),
-    #     "evals",
-    #     top.stats("mid", top.cols.y, 2),
-    #     top.stats("div", top.cols.y, 2),
-    # )
 
-    assert True
+    best, rest, evals = sway(data)
+    rule, _ = xpln(data, best, rest)
+    print("\n-----------\nexplain=", show_rule(rule))
+    data1 = Data().read(file_name=data, rows=selects(rule, data.rows))
+
+    print("all               ", query.stats(data), query.stats(data, query.div))
+    print(f"sway with   {evals} evals", query.stats(best), query.stats(best, query.div))
+    print(
+        f"xpln on     {evals} evals", query.stats(data1), query.stats(data1, query.div)
+    )
+
+    top, _ = query.betters(data, len(best.rows))
+    top = Data().read(data, top)
+    print(
+        f"sort with {len(data.rows)} evals",
+        query.stats(top),
+        query.stats(top, query.div),
+    )

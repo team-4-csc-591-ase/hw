@@ -3,7 +3,7 @@ import os
 from src.config import CONSTS, CONSTS_LIST
 from src.data import Data
 from src.query import stats
-from src.utils import get_project_root, oo
+from src.utils import get_project_root
 
 
 def test_clone():
@@ -14,5 +14,6 @@ def test_clone():
     data_obj = Data()
     data1 = data_obj.read(f)
     data2 = data_obj.clone(data1, data1.rows)
-    oo(stats(data1))
-    oo(stats(data2))
+
+    print(stats(data1))
+    print(stats(data2))

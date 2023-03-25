@@ -1,8 +1,7 @@
 from src.discretization import bins
 from src.lists import kap
 from src.query import value
-from src.rule import Rule
-from src.utils import oo
+from src.rule import RULE
 
 
 def xpln(data, best, rest):
@@ -10,9 +9,9 @@ def xpln(data, best, rest):
         return value(has, len(best.rows), len(rest.rows), "best")
 
     def score(ranges):
-        rule = Rule(ranges, max_sizes)
+        rule = RULE(ranges, max_sizes)
         if rule:
-            oo(show_rule(rule))
+            print(show_rule(rule))  # {'origin': [{'lo': 3.0, 'hi': 3.0, 'at': 6}]}
             bestr = selects(rule, best.rows)
             restr = selects(rule, rest.rows)
             if len(bestr) + len(restr) > 0:
@@ -32,61 +31,73 @@ def xpln(data, best, rest):
 
 def firstN(sorted_ranges, score_fun):
     print("")
+    for r in sorted_ranges:
+        print(
+            r["range"].txt,
+            r["range"].lo,
+            r["range"].hi,
+            round(r["val"], 2),
+            r["range"].y.has,
+        )
     first = sorted_ranges[0]["val"]
 
     def useful(range):
         if range["val"] > 0.05 and range["val"] > first / 10:
             return range
 
-    sorted_ranges = list(
-        filter(lambda x: x is not None, map(useful, sorted_ranges))
-    )  # reject  useless ranges
+    # sorted_ranges = list(r
+    # filter(lambda x: x is not None, map(useful, sorted_ranges))
+    # )  # reject  useless ranges
+    sorted_ranges = list(filter(useful, sorted_ranges))
     most, out = -1, None
     for n in range(len(sorted_ranges)):
-        tmp, rule = score_fun(list(map(lambda x: x["range"], sorted_ranges[:n])))
+        # tmp, rule = score_fun(list(map(lambda x: x["range"], sorted_ranges[:n])))
+        tmp, rule = score_fun([r["range"] for r in sorted_ranges[: n + 1]]) or (
+            None,
+            None,
+        )
         if tmp and tmp > most:
             out, most = rule, tmp
     return out, most
 
 
 def show_rule(rule):
-    # if isinstance(rule, Rule):
-    #     rule = rule.t
-
     def pretty(range):
-        return range.lo if range.lo == range.hi else [range.lo, range.hi]
+        return range["lo"] if range["lo"] == range["hi"] else [range["lo"], range["hi"]]
 
-    # def merges(attr, ranges):
-    #     return [pretty(r) for r in merge(sorted(ranges, key=lambda r: r.lo))], attr
     def merges(attr, ranges):
-        if not isinstance(ranges, list):
-            ranges = [ranges]
-        return list(map(pretty, merge(sorted(ranges, key=lambda r: r["lo"])))), attr
+        new_ranges = []
+        for i in ranges:
+            if isinstance(i, list):
+                new_ranges.extend(i)
+        return [
+            pretty(r) for r in merge(sorted(new_ranges, key=lambda r: r["lo"]))
+        ], attr
 
     def merge(t0):
         t, j = [], 0
         while j < len(t0):
             left, right = t0[j], t0[j + 1] if j + 1 < len(t0) else None
-            if right and left.hi == right.lo:
-                left.hi = right.hi
+            if right and left["hi"] == right["lo"]:
+                left["hi"] = right["hi"]
                 j += 1
-            t.append({"lo": left.lo, "hi": left.hi})
+            t.append({"lo": left["lo"], "hi": left["hi"]})
             j += 1
         return t if len(t0) == len(t) else merge(t)
 
-    return kap([rule], merges)
+    return kap(rule, merges)
 
 
 def selects(rule, rows):
-    # if isinstance(rule, Rule):
-    #     rule = rule.t
-
     def disjunction(ranges, row):
         for range in ranges:
-            lo, hi, at = range.lo, range.hi, range.at
+            lo = int(range["lo"]) if isinstance(range["lo"], str) else range["lo"]
+            hi = int(range["hi"]) if isinstance(range["hi"], str) else range["hi"]
+            at = int(range["at"])
             x = row[at]
             if x == "?":
                 return True
+            x = float(x)
             if lo == hi == x:
                 return True
             if lo <= x < hi:
@@ -94,7 +105,7 @@ def selects(rule, rows):
         return False
 
     def conjunction(row):
-        for ranges in rule:
+        for ranges in rule.values():
             if not disjunction(ranges, row):
                 return False
         return True
