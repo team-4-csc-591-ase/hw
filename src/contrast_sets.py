@@ -11,7 +11,7 @@ def xpln(data, best, rest):
     def score(ranges):
         rule = RULE(ranges, max_sizes)
         if rule:
-            print(show_rule(rule))  # {'origin': [{'lo': 3.0, 'hi': 3.0, 'at': 6}]}
+            print(show_rule(rule))
             bestr = selects(rule, best.rows)
             restr = selects(rule, rest.rows)
             if len(bestr) + len(restr) > 0:
@@ -73,9 +73,10 @@ def show_rule(rule):
                 current_attr = i
             if isinstance(i, list):
                 new_ranges.extend(i)
-        return [
-            pretty(r) for r in merge(sorted(new_ranges, key=lambda r: r["lo"]))
-        ], attr
+        return (
+            list(map(pretty, merge(sorted(new_ranges, key=lambda r: r["lo"])))),
+            current_attr,
+        )
 
     def merge(t0):
         t, j = [], 0

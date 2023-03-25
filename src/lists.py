@@ -112,6 +112,7 @@ def kap(t, fun):
         e = enumerate(t)
     else:
         e = t.items()
+
     for k, v in enumerate(e):
         v, k = fun(k, v)
         u[k or len(u) + 1] = v
