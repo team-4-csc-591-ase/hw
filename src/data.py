@@ -4,7 +4,6 @@ from src import update, utils
 from src.cols import Cols
 
 
-
 class Data:
     """
     The Data Class
