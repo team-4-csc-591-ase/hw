@@ -12,7 +12,7 @@ def test_sway():
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
 
-    data = Data().read(f)
+    data = Data(f)
     best, rest, _ = sway(data)
     print(rest)
     print("\nall ", o(stats(data)))

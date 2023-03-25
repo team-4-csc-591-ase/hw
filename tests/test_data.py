@@ -15,7 +15,7 @@ def test_data():
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
 
-    data = Data().read(f)
+    data = Data(f)
     col = data.cols.x[1]
     print(col.col.lo, col.col.hi, mid(col.col), div(col.col))
     oo(stats(data))

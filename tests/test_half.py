@@ -17,9 +17,9 @@ def test_half():
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
 
-    data = Data().read(f)
+    data = Data(f)
     left, right, A, B, c, _ = half(data)
     print(len(left), len(right))
-    l, r = data.clone(data, left), data.clone(data, right)
+    l, r = Data(data, left), Data(data, right)
     print("l", o(stats(l)))
     print("r", o(stats(r)))

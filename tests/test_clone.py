@@ -11,9 +11,8 @@ def test_clone():
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
 
-    data_obj = Data()
-    data1 = data_obj.read(f)
-    data2 = data_obj.clone(data1, data1.rows)
+    data1 = Data(f)
+    data2 = Data(data1, data1.rows)
 
     print(stats(data1))
     print(stats(data2))

@@ -1,5 +1,6 @@
 from src import lists, query
 from src.config import CONSTS, CONSTS_LIST
+from src.data import Data
 
 
 def half(data, rows=None, cols=None, above=None):
@@ -57,7 +58,7 @@ def tree(data, rows=None, cols=None, above=None):
 
     """
     rows = rows or data.rows
-    here = {"data": data.clone(data, rows)}
+    here = {"data": Data(data, rows)}
     if len(rows) >= 2 * (len(data.rows) ** CONSTS_LIST[CONSTS.min.name]):
         left, right, A, B, _, _ = half(data, rows, cols, above)
         here["left"] = tree(data, left, cols, A)

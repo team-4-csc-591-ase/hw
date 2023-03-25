@@ -11,5 +11,5 @@ def test_tree():
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
 
-    data = Data().read(f)
+    data = Data(f)
     show_tree(tree(data))

@@ -67,7 +67,10 @@ def show_rule(rule):
 
     def merges(attr, ranges):
         new_ranges = []
+        current_attr = None
         for i in ranges:
+            if isinstance(i, str):
+                current_attr = i
             if isinstance(i, list):
                 new_ranges.extend(i)
         return [

@@ -1,6 +1,7 @@
 from src import query
 from src.clustering import half
 from src.config import CONSTS, CONSTS_LIST
+from src.data import Data
 from src.lists import many
 
 
@@ -17,5 +18,4 @@ def sway(data):
             return worker(l, worse, evals + evals0, A)
 
     best, rest, evals = worker(data.rows, [], 0, None)
-    # return Data(data, best), Data(data, rest), evals
-    return data.clone(data, best), data.clone(data, rest), evals
+    return Data(data, best), Data(data, rest), evals

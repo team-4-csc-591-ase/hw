@@ -15,7 +15,8 @@ def test_bins():
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
 
-    data = Data().read(f)
+    # data = Data().read(f)
+    data = Data(f)
     best, rest, _ = sway(data)
     print("all", "", "", "", o({"best": len(best.rows), "rest": len(rest.rows)}))
     b4 = None

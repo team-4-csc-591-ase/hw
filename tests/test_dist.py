@@ -13,7 +13,7 @@ def test_dist():
     file_path = os.path.join(project_root, "/etc/data/", CONSTS_LIST[CONSTS.file.name])
     f = str(project_root) + "/" + file_path
 
-    data = Data().read(f)
+    data = Data(f)
     num = Num()
     for row in data.rows:
         add(num, dist(data, row, data.rows[1]))
