@@ -31,7 +31,7 @@ ______________________________________________________________________
 | [Homework 3](https://github.com/team-4-csc-591-ase/hw/tree/3.0) |
 | [Homework 4](https://github.com/team-4-csc-591-ase/hw/tree/4.1) |
 | [Homework 5](https://github.com/team-4-csc-591-ase/hw/tree/5.0) |
-| [Homework 6](https://github.com/team-4-csc-591-ase/hw/tree/6.0) |
+| [Homework 6](https://github.com/team-4-csc-591-ase/hw/tree/6.1) |
 | [Homework 7](https://github.com/team-4-csc-591-ase/hw/tree/7.0) |
 
 ______________________________________________________________________
