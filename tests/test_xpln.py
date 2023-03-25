@@ -1,5 +1,6 @@
 import os
 
+from src import query
 from src.config import CONSTS, CONSTS_LIST
 from src.contrast_sets import selects, show_rule, xpln
 from src.data import Data

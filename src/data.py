@@ -39,53 +39,6 @@ class Data:
                     add(row)
         return data
 
-    def stats(self, what: str, cols: Union[Cols, None], n_places: int):
-        """
-
-        Args:
-            what:
-            cols:
-            n_places:
-
-        Returns:
-
-        """
-
-        def fun(col):
-            """
-
-            Args:
-                col:
-
-            Returns:
-
-            """
-            _callable = getattr(col, what)
-            return col.rnd(_callable(), n_places), col.txt
-
-        return lists.kap(cols, fun)
-
-    def dist(self, row1, row2, cols=None):
-        """
-
-        Args:
-            row1:
-            row2:
-            cols:
-
-        Returns:
-
-        """
-        n, d = 0, 0
-        for _, col in enumerate(cols or self.cols.x):
-            n = n + 1
-            d = (
-                d
-                + col.dist(row1.cells[col.at], row2.cells[col.at])
-                ** CONSTS_LIST[CONSTS.p.name]
-            )
-        return (d / n) ** (1 / CONSTS_LIST[CONSTS.p.name])
-
     def clone(self, data, ts=None):
         """
 
