@@ -45,6 +45,9 @@ def read_csv():
             data = standardscaler(
                 data=data, columns=categorical_columns, updated_cols=updated_cols
             )
+            # file_name_without_ext = os.path.splitext(file_name)[0]
+            # file_path = DATA_DIR+f"{file_name_without_ext}_1.csv"
+            # data.to_csv(file_path, index=False)
             _data_dict[file_name] = data
         except Exception as e:
             print(data[data.values == "?"])
